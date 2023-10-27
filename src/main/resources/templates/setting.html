@@ -1,9 +1,9 @@
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <title>CBT</title>
   </head>
   <body style="width: 100%; height: 720px; margin: 0; background: #000c2d">
-    {% include "header.html" %}
+  <div th:replace="header :: header1"></div>
     <table
       style="
         /* background: #000c2d; */
@@ -14,7 +14,7 @@
     >
       <tr style="background: #bae2ff">
         <td style="width: 200px; vertical-align: baseline; padding: 0px">
-          {% include "navbar.html" %}
+          <div th:replace="navbar :: navbar1"></div>
         </td>
         <td style="vertical-align: top">
           <div
@@ -161,8 +161,7 @@
 
                         margin-right: 30px;
                       "
-                      >Organization:</label
-                    >
+                      >Organization:</label>
                     <input
                       type="text"
                       style="
@@ -222,7 +221,7 @@
                   <!-- email address------------ -->
                   <div style="display: flex; flex-direction: row">
                     <label
-                      for=""
+
                       style="
                         display: flex;
                         width: 170px;

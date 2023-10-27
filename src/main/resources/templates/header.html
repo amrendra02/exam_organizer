@@ -1,3 +1,4 @@
+<!--
 {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'header.css' %}" />
@@ -34,3 +35,71 @@
     </svg>
   </div>
 </div>
+-->
+
+<html xmlns:th="http://www.thymeleaf.org">
+<body th:fragment="header1">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+
+.header {
+width: 100%;
+height: 51px;
+
+border-bottom: 0.5px solid #E4E4E4;
+background: #000C2D;
+text-align: center;
+
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+
+}
+
+.logo {
+display: flex;
+
+margin-top: 1px;
+margin-left: 40px;
+
+font-size: 40px;
+color: aliceblue;
+font-weight: bolder;
+font-family: 'Inter', sans-serif;
+
+}
+
+
+.logout {
+font-family: 'Inter', sans-serif;
+font-weight: 800;
+font-size: 24px;
+color: aliceblue;
+cursor: pointer;
+}
+</style>
+<div class="header">
+    <h1 class="logo">CBT</h1>
+    <form th:action="@{/logout}" method="post"
+          style="display: flex; flex-direction: row; width: 150px; background-color: red; text-align: center; align-items: center; justify-content: space-around;    height: 100%;">
+
+
+        <div class="logout">
+            <button type="submit" class="logout" style=" background: none;
+    border: none;
+    height: 100%;
+    width: 100%;">Logout</button>
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none"
+             style="cursor: pointer">
+            <path d="M25 15H13.125M22.5 18.75L26.25 15L22.5 11.25M16.25 8.75V7.5C16.25 6.83696 15.9866 6.20107 15.5178 5.73223C15.0489 5.26339 14.413 5 13.75 5H7.5C6.83696 5 6.20107 5.26339 5.73223 5.73223C5.26339 6.20107 5 6.83696 5 7.5V22.5C5 23.1631 5.26339 23.7989 5.73223 24.2678C6.20107 24.7366 6.83696 25 7.5 25H13.75C14.413 25 15.0489 24.7366 15.5178 24.2678C15.9866 23.7989 16.25 23.1631 16.25 22.5V21.25"
+                  stroke="white" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+    </form>
+
+</div>
+</body>
+</html>
+
