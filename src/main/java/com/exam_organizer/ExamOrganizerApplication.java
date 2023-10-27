@@ -10,6 +10,7 @@ public class ExamOrganizerApplication {
 		SpringApplication.run(ExamOrganizerApplication.class, args);
 		System.out.println("Amrendra from intellije");
 		System.out.println("html-css pushed");
+		System.out.println("recived");
 	}
 
 }
