@@ -8,8 +8,9 @@ public class ExamOrganizerApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ExamOrganizerApplication.class, args);
-		System.out.println("Started...");
-
+		System.out.println("Amrendra from intellije");
+		System.out.println("html-css pushed");
+		System.out.println("recived");
 	}
 
 }
