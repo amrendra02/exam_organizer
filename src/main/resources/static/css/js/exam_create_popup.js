@@ -1,16 +1,18 @@
 // alert button ----------------------
 
+console.log("hello exam");
+alert("hello");
+
 function alertCopy() {
     alert('Copy Successfully.');
 };
 
-
 // popup window ------------------
-// var flag = 0;
+
 function openPopup() {
     var popup = document.getElementById("popup");
     popup.style.display = "block";
-    // flag = 1;
+
 }
 
 function closePopup() {
@@ -19,14 +21,6 @@ function closePopup() {
     console.log(flag);
 }
 
-// const popupContainer = document.getElementById("popupContainer");
-
-
-// document.addEventListener("click", function (event) {
-//     if (event.target !== popupContainer && !popupContainer.contains(event.target)) {
-//         closePopup();
-//     }
-// });
 
 
 

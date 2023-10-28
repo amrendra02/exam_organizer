@@ -24,7 +24,6 @@
       flex-direction: row;
       justify-content: space-between;
       font-family: 'Inter', sans-serif;
-
   }
 
   .exam_info {
@@ -70,7 +69,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-
   }
 
   .exam_indicator_block p {
@@ -98,7 +96,6 @@
       font-size: 18px;
       border: 1.5px solid rgb(60, 60, 60);
       background: #F7F7F7;
-
   }
 
   .exam_detail_block::-webkit-scrollbar {
@@ -121,7 +118,6 @@
       border: 0.5px solid #606060;
       background: #B7B7B7;
       box-shadow: 0px 0px 8px 0px #595959 inset;
-
   }
 
   .table-cell {
@@ -315,6 +311,10 @@
   }
 
     </style>
+
+<!--    <script th:src="@{/js/exam_create_popup.js}"></script>-->
+
+
 </head>
 <body style="width: 100%; height: 720px; margin: 0; background: #000c2d">
 <div th:replace="header :: header1"></div>
@@ -416,7 +416,7 @@
                     >
                         <!-- exam data -->
                         <div
-                                id="exam_deatil_data"
+                                id=""
                                 style="
                     width: 100%;
                     height: 50px;
@@ -609,7 +609,7 @@
                         <!-- Dummy data -->
 
                         <div
-                                id="exam_deatil_data"
+
                                 style="
                     width: 100%;
                     height: 50px;
@@ -801,7 +801,7 @@
 
                         <!-- Dummy data -->
                         <div
-                                id="exam_deatil_data"
+
                                 style="
                     width: 100%;
                     height: 50px;
@@ -992,7 +992,7 @@
                         </div>
                         <!-- Dummy data -->
                         <div
-                                id="exam_deatil_data"
+
                                 style="
                     width: 100%;
                     height: 50px;
@@ -1184,7 +1184,7 @@
 
                         <!-- Dummy___data -->
                         <div
-                                id="exam_deatil_data"
+
                                 style="
                     width: 100%;
                     height: 50px;
@@ -1375,7 +1375,6 @@
                         </div>
                         <!-- Dummy__data -->
                         <div
-                                id="exam_deatil_data"
                                 style="
                     width: 100%;
                     height: 50px;
@@ -1566,7 +1565,6 @@
                         </div>
                         <!-- Dummy___data -->
                         <div
-                                id="exam_deatil_data"
                                 style="
                     width: 100%;
                     height: 50px;
@@ -1757,7 +1755,6 @@
                         </div>
                         <!-- Dummy_data -->
                         <div
-                                id="exam_deatil_data"
                                 style="
                     width: 100%;
                     height: 50px;
@@ -1948,7 +1945,6 @@
                         </div>
                         <!-- Dummy__data -->
                         <div
-                                id="exam_deatil_data"
                                 style="
                     width: 100%;
                     height: 50px;
@@ -2139,7 +2135,6 @@
                         </div>
                         <!-- Dummy__data -->
                         <div
-                                id="exam_deatil_data"
                                 style="
                     width: 100%;
                     height: 50px;
@@ -2330,7 +2325,6 @@
                         </div>
                         <!-- Dummy___data -->
                         <div
-                                id="exam_deatil_data"
                                 style="
                     width: 100%;
                     height: 50px;
@@ -2521,7 +2515,6 @@
                         </div>
                         <!-- Dummy__data -->
                         <div
-                                id="exam_deatil_data"
                                 style="
                     width: 100%;
                     height: 50px;
@@ -2712,7 +2705,6 @@
                         </div>
                         <!-- Dummy___data -->
                         <div
-                                id="exam_deatil_data"
                                 style="
                     width: 100%;
                     height: 50px;
@@ -2903,7 +2895,6 @@
                         </div>
                         <!-- Dummy__data -->
                         <div
-                                id="exam_deatil_data"
                                 style="
                     width: 100%;
                     height: 50px;
@@ -3325,11 +3316,12 @@
                             </button>
                         </div>
                     </div>
-                    <button onclick="openPopup()">Create New Test</button>
+                    <button th:onclick="openPopup()">Create New Test</button>
                 </div>
             </div>
         </td>
     </tr>
+
 </table>
 
 <div class="popup" id="popup">
@@ -3440,6 +3432,29 @@
         </div>
     </div>
 </div>
-<script src="{% static 'exam_create_popup.js' %}"></script>
+
+<script th:inline="javascript">
+    // alert button ----------------------
+function alertCopy() {
+    alert('Copy Successfully.');
+};
+
+// popup window ------------------
+
+function openPopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "block";
+
+}
+
+function closePopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "none";
+    console.log(flag);
+}
+
+
+</script>
+
 </body>
 </html>

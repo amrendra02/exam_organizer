@@ -3,6 +3,7 @@
 <div th:fragment="navbar1" style="height: 100%; background: #000C2D;
     display: flex;
     justify-content: center;">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
 
@@ -56,11 +57,11 @@
     </style>
     <table style="border-collapse: collapse">
         <tr
-
+                id="profile"
                 style="width: 100%; display: flex; justify-content: space-around"
                 class="nav_routs_tr"
         >
-<!--                th:classappend="${request.requestURI == '/profile' ? 'active' : ''}"-->
+            <!--                th:classappend="${#request.requestURI == '/profile' ? 'active' : ''}"-->
             <td class="nav_routes">
                 <a th:href="@{/profile}"
                    style="text-decoration: none; color: inherit; display: flex; align-items: center; width: 100%;">
@@ -92,8 +93,9 @@
         <tr
                 class="nav_routs_tr"
                 style="width: 100%; display: flex; justify-content: space-around"
+                id="exam"
         >
-<!--                th:classappend="${request.requestURI == '/exam/' ? 'active' : ''}"-->
+            <!--                th:classappend="${request.requestURI == '/exam/' ? 'active' : ''}"-->
             <td class="nav_routes">
                 <a th:href="@{/exam}"
                    style="text-decoration: none; color: inherit; display: flex; align-items: center;width: 100%;">
@@ -133,8 +135,9 @@
         <tr
                 class="nav_routs_tr"
                 style="width: 100%; display: flex; justify-content: space-around"
+                id="candidate"
         >
-<!--                th:classappend="${request.requestURI == '/candidate/' ? 'active' : ''}"-->
+            <!--                th:classappend="${request.requestURI == '/candidate/' ? 'active' : ''}"-->
             <td class="nav_routes">
                 <a th:href="@{/candidate}"
                    style="text-decoration: none; color: inherit; display: flex; align-items: center;width: 100%;">
@@ -163,8 +166,9 @@
         <tr
                 class="nav_routs_tr"
                 style="width: 100%; display: flex; justify-content: space-around"
+                id="question"
         >
-<!--                th:classappend="${request.requestURI == '/question/' ? 'active' : ''}"-->
+            <!--                th:classappend="${request.requestURI == '/question/' ? 'active' : ''}"-->
             <td class="nav_routes">
                 <a th:href="@{/question}"
                    style="text-decoration: none; color: inherit; display: flex; align-items: center;width: 100%;">
@@ -201,8 +205,9 @@
         <tr
                 class="nav_routs_tr"
                 style="width: 100%; display: flex; justify-content: space-around"
+                id="result"
         >
-<!--                th:classappend="${request.requestURI == '/result/' ? 'active' : ''}"-->
+            <!--                th:classappend="${request.requestURI == '/result/' ? 'active' : ''}"-->
             <td class="nav_routes">
                 <a th:href="@{/result}"
                    style="text-decoration: none; color: inherit; display: flex; align-items: center;width: 100%;">
@@ -231,8 +236,9 @@
         <tr
                 class="nav_routs_tr"
                 style="width: 100%; display: flex; justify-content: space-around"
+                id="setting"
         >
-<!--                th:classappend="${request.requestURI == '/setting/' ? 'active' : ''}"-->
+            <!--                th:classappend="${request.requestURI == '/setting/' ? 'active' : ''}"-->
             <td class="nav_routes">
                 <a th:href="@{/setting}"
                    style="text-decoration: none; color: inherit; display: flex; align-items: center;width: 100%;">
@@ -257,8 +263,9 @@
         <tr
                 class="nav_routs_tr"
                 style="width: 100%; display: flex; justify-content: space-around"
+                id="about"
         >
-<!--                th:classappend="${request.requestURI == '/about' ? 'active' : ''}"-->
+            <!--                th:classappend="${request.requestURI == '/about' ? 'active' : ''}"-->
             <td class="nav_routes">
                 <a th:href="@{/about}"
                    style="text-decoration: none; color: inherit; display: flex; align-items: center;width: 100%;">
@@ -330,9 +337,37 @@
             <!-- {{request.path}} -->
         </tr>
     </table>
-</div>
 
+    <script th:inline="javascript">
+
+        let currentPath = window.location.pathname;
+
+        if (currentPath === '/profile') {
+        document.getElementById('profile').classList.add('active');
+        }
+        if (currentPath === '/exam') {
+        document.getElementById('exam').classList.add('active');
+        }
+        if (currentPath === '/candidate') {
+        document.getElementById('candidate').classList.add('active');
+        }
+        if (currentPath === '/question') {
+        document.getElementById('question').classList.add('active');
+        }
+        if (currentPath === '/result') {
+        document.getElementById('result').classList.add('active');
+        }
+        if (currentPath === '/setting') {
+        document.getElementById('setting').classList.add('active');
+        }
+        if (currentPath === '/about') {
+        document.getElementById('about').classList.add('active');
+        }
+    </script>
+
+</div>
 </body>
+
 </html>
 
 
