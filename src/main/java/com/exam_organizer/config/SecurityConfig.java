@@ -17,6 +17,8 @@ public class SecurityConfig {
         http.authorizeHttpRequests(auth-> auth
                         .requestMatchers("/")
                         .permitAll()
+//                        .requestMatchers("/resources/**")
+//                        .permitAll()
                         .requestMatchers("/signup")
                         .permitAll()
 

@@ -1,5 +1,4 @@
 console.log("hello exam");
-alert("hello");
 
 function alertCopy() {
     alert('Copy Successfully.');
