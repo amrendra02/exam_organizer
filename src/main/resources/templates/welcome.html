@@ -1,11 +1,62 @@
-<!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Welcome</title>
 </head>
 <body>
 <h1>Welcome</h1>
+
+<table style="border:2px solid black">
+    <tr>
+        <th>Exam ID</th>
+        <th>Exam Name</th>
+        <th>Exam Date</th>
+        <th>Start Time</th>
+        <th>Duration</th>
+        <th>Total Marks</th>
+        <th>Status</th>
+    </tr>
+    <style>
+        .ACTIVE{
+            background-color:green;
+        }
+        .active{
+            background-color:green;
+        }
+        .CANCELLED{
+            background-color:red;
+        }
+        .cancelled{
+            background-color:red;
+        }
+/*        .LIVE{*/
+/*            background-color:blue;*/
+/*        }*/
+/*        .live{*/
+/*            background-color:blue;*/
+/*        }*/
+
+        .b{
+            background-color:white;
+        }
+    </style>
+    <tr th:each="exam : ${exams}">
+        <td th:text="${exam.examId}"></td>
+        <td th:text="${exam.examName}"></td>
+        <td th:text="${exam.examDate}"></td>
+        <td th:text="${exam.startTime}"></td>
+        <td th:text="${exam.duration}"></td>
+        <td th:text="${exam.totalMarks}"></td>
+
+        <td th:class="${exam.status}" th:text="${exam.status}"></td>
+        <td  th:text="${#strings.toString(exam.status)} "></td>
+
+
+
+                <td th:text="${exam.status}" class="b" th:class="${#strings.toString(exam.status) == 'ACTIVE' ? 'active' : #strings.toString(exam.status) == 'CANCELLED' ? 'cancelled' : 'live'}"></td>
+        <!--        th:class="${exam.status == 'ACTIVE'} ? 'active' : ${exam.status == 'CANCELLED'} ? 'cancelled' : 'live'"-->
+    </tr>
+</table>
 
 </body>
 </html>

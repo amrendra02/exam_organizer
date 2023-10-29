@@ -14,7 +14,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "candidates")
-public class Candidate {
+public class CandidateModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long candidateId;
@@ -25,7 +25,7 @@ public class Candidate {
 
     @ManyToOne
     @JoinColumn(name = "exam_id")
-    private Exam exam;
+    private ExamModel examModel;
 
     // Constructors, getters, and setters
 }

@@ -14,18 +14,18 @@ import java.util.Map;
 
 @Entity
 @Table(name = "results")
-public class Result {
+public class ResultModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long resultId;
 
     @ManyToOne
     @JoinColumn(name = "candidate_id")
-    private Candidate candidate;
+    private CandidateModel candidateModel;
 
     @ManyToOne
     @JoinColumn(name = "exam_id")
-    private Exam exam;
+    private ExamModel examModel;
 
     private int marksObtained;
     private Date examDate;

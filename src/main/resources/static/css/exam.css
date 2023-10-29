@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
 
-
 .exam_root {
     background: #BAE2FF;
     width: 100%;
@@ -9,8 +8,6 @@
     display: flex;
     flex-direction: column;
 }
-
-
 
 .exam_head {
     width: 100%;
@@ -73,15 +70,12 @@
     margin: 0;
     margin: 5px;
     font-weight: 600;
-
 }
 
 .exam_head_idicator {
-
     width: 30px;
     height: 30px;
     border-radius: 30px;
-    /* background-color: black; */
     border: 4px solid black;
 }
 
@@ -99,8 +93,6 @@
 
 .exam_detail_block::-webkit-scrollbar {
     width: 4px;
-    /* display: none; */
-
 }
 
 .exam_detail_block::-webkit-scrollbar-thumb {
@@ -128,14 +120,22 @@
 }
 
 .exam_status {
-
     width: 25px;
     height: 25px;
     border-radius: 25px;
-
     border: 4px solid black;
     display: flex;
     justify-content: center;
+}
+
+.ACTIVE{
+    background-color:#03ff03;
+}
+.CANCELLED{
+    background-color:#ff0000;
+}
+.LIVE{
+    background-color:#0066ff;
 }
 
 .exam_create {
@@ -177,11 +177,7 @@
     color: #00D1FF;
 }
 
-
-
-
 /* POPUP WINDOW ------------------------------------- */
-
 
 /* .popup container------------ */
 .popup {
@@ -207,17 +203,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 
-
     border-radius: 10px;
     border: 3px solid #000;
     background: #BCF3FF;
-
 }
 
 /* close button---------------- */
@@ -227,7 +220,7 @@
 
 .exam_create_box {
     width: 350px;
-    height: 120px;
+    height: 180px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -252,7 +245,6 @@
 }
 
 .exam_create_input p {
-
     width: 120px;
     margin-right: 10px;
     color: #595959;
@@ -291,8 +283,6 @@
 }
 
 .exam_create_test_btn {
-
-
     width: 150px;
     height: 54px;
     flex-shrink: 0;
@@ -308,4 +298,10 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+}
+
+.exam_create_test_btn:hover{
+    cursor:pointer;
+    background:white;
+    color:black;
 }

@@ -12,14 +12,14 @@ import lombok.*;
 
 @Entity
 @Table(name = "options")
-public class Option {
+public class OptionModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long optionId;
 
     @ManyToOne
     @JoinColumn(name = "question_id")
-    private Question question;
+    private QuestionModel questionModel;
 
     private String optionText;
 
