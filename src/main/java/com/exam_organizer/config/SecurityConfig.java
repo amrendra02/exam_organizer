@@ -15,13 +15,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
 
         http.authorizeHttpRequests(auth-> auth
-                        .requestMatchers("/")
-                        .permitAll()
-//                        .requestMatchers("/resources/**")
-//                        .permitAll()
                         .requestMatchers("/signup")
                         .permitAll()
-
+                        .requestMatchers("/")
+                        .permitAll()
                         .anyRequest()
                         .authenticated())
                 .formLogin(form->form

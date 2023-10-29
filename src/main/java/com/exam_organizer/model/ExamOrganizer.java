@@ -3,6 +3,10 @@ package com.exam_organizer.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
 
 @Getter
 @Setter
@@ -12,7 +16,7 @@ import lombok.*;
 
 @Entity
 @Table(name = "exam_organizers")
-public class ExamOrganizer {
+public class ExamOrganizer implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long organizerId;
@@ -24,6 +28,32 @@ public class ExamOrganizer {
     private String email;
     private String phoneNumber;
     private String password;
+
+    // Methods for the UserDetails store and use by Spring Security
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 
     // Constructors, getters, and setters
 }

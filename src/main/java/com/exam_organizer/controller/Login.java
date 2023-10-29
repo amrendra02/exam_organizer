@@ -11,16 +11,16 @@ public class Login {
 
     @RequestMapping("/login")
     public String login(){
-        System.out.println("from login...");
+        System.out.println("from login...A");
         return "login";
     }
 
-    @PostMapping("/login")
-    public String lgoinPost(){
-
-        System.out.println("from post Login...");
-        return "";
-    }
+//    @PostMapping("/login")
+//    public  lgoinPost(){
+//
+//        System.out.println("from post Login...");
+//        return "";
+//    }
     @GetMapping("/logout")
     public String logout(){
         return "logout";
