@@ -1,62 +1,145 @@
+<!--
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+    <input type="file" name="image"/>
+    <input type="text" name="questionText"/>
+    <button type="submit"> Submit</button>
+</form>
+
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Options Form</title>
+</head>
+<body>
+<form id="optionsForm">
+    <label for="optionInput">Enter Option:</label>
+    <input type="text" id="optionInput" name="optionInput">
+    <button type="button" onclick="addOption()">Add Option</button>
+    <ul id="optionsList"></ul>
+    <button type="button" onclick="submitOptions()">Submit Options</button>
+</form>
+
+<script>
+    var options = [];
+
+    function addOption() {
+        var optionInput = document.getElementById("optionInput").value;
+        if (optionInput !== '') {
+            options.push(optionInput);
+            document.getElementById("optionsList").innerHTML = '';
+            for (var i = 0; i < options.length; i++) {
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(options[i]));
+                document.getElementById("optionsList").appendChild(li);
+            }
+            document.getElementById("optionInput").value = '';
+        }
+    }
+
+    function submitOptions() {
+        fetch('/upload', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ options: options })
+        })
+            .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            console.log('Options submitted successfully');
+        })
+            .catch(error => {
+            console.error('Error submitting options:', error);
+        });
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Image upload and get template succesfully code-->
+
+<!--
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
 </head>
 <body>
-<h1>Welcome</h1>
 
-<table style="border:2px solid black">
-    <tr>
-        <th>Exam ID</th>
-        <th>Exam Name</th>
-        <th>Exam Date</th>
-        <th>Start Time</th>
-        <th>Duration</th>
-        <th>Total Marks</th>
-        <th>Status</th>
-    </tr>
-    <style>
-        .ACTIVE{
-            background-color:green;
-        }
-        .active{
-            background-color:green;
-        }
-        .CANCELLED{
-            background-color:red;
-        }
-        .cancelled{
-            background-color:red;
-        }
-/*        .LIVE{*/
-/*            background-color:blue;*/
-/*        }*/
-/*        .live{*/
-/*            background-color:blue;*/
-/*        }*/
+<form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+    <input type="file" name="image"/>
+    <input type="text" name="questionText"/>
+    <button type="submit"> Submit</button>
+</form>
 
-        .b{
-            background-color:white;
-        }
-    </style>
-    <tr th:each="exam : ${exams}">
-        <td th:text="${exam.examId}"></td>
-        <td th:text="${exam.examName}"></td>
-        <td th:text="${exam.examDate}"></td>
-        <td th:text="${exam.startTime}"></td>
-        <td th:text="${exam.duration}"></td>
-        <td th:text="${exam.totalMarks}"></td>
-
-        <td th:class="${exam.status}" th:text="${exam.status}"></td>
-        <td  th:text="${#strings.toString(exam.status)} "></td>
+&lt;!&ndash;
+<button onclick="fetchImage()">Get Image</button>
+<br><br>
+<img id="displayedImage" alt="Displayed Image" style="max-width: 100%; height: auto;">
+<script>
+    function fetchImage() {
+        fetch('/display')
+            .then(response => response.text())
+            .then(data => {
+            document.getElementById('displayedImage').src = 'data:image/jpeg;base64,' + data;
+        })
+            .catch(error => console.error('Error fetching image:', error));
+    }
+</script>&ndash;&gt;
 
 
+<img id="imageDisplay" src="" alt="Displayed Image">
+<button onclick="fetchImage()">Display Image</button>
 
-                <td th:text="${exam.status}" class="b" th:class="${#strings.toString(exam.status) == 'ACTIVE' ? 'active' : #strings.toString(exam.status) == 'CANCELLED' ? 'cancelled' : 'live'}"></td>
-        <!--        th:class="${exam.status == 'ACTIVE'} ? 'active' : ${exam.status == 'CANCELLED'} ? 'cancelled' : 'live'"-->
-    </tr>
-</table>
+<script>
+    function fetchImage() {
+        fetch('/display')
+            .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+            .then(data => {
+            // Modify the 'src' attribute of the img tag
+            document.getElementById('imageDisplay').src = 'data:image/jpeg;base64,' + data;
+        })
+            .catch(error => {
+            console.error('Error fetching image:', error);
+        });
+    }
+</script>
 
 </body>
 </html>
+
+-->

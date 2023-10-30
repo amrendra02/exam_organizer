@@ -8,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ExamService {
@@ -32,6 +32,18 @@ public class ExamService {
             return"failed";
         }
     }
+
+
+ /*   public Optional<ExamModel> examData(Long id){
+
+        Optional<ExamModel> exam=null;
+        try{
+            exam = examRepository.findById(id);
+        }catch (Exception ex){
+            return exam;
+        }
+        return exam;
+    }*/
 
     public Page<ExamModel> examList(int page){
         /*int pageNumber = page; // Default page number

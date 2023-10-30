@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 
 @Controller
@@ -28,14 +30,22 @@ public class Exam {
     @Autowired
     private ExamService examService;
 
+
+    private final ExamRepository examRepository;
+
+    public Exam(ExamRepository examRepository) {
+        this.examRepository = examRepository;
+    }
+
     @RequestMapping(value = "/exam", method = RequestMethod.GET)
     public String exam(Model model) {
         System.out.println("from Exam...");
         return "exam";
     }
 
-    @GetMapping("/exam-data")
-    public ResponseEntity<List<ExamModel>> getExams(@RequestParam(defaultValue = "0") int page) {
+
+    @GetMapping("/exam-list")
+    public ResponseEntity<List<ExamModel>> getExamsList(@RequestParam(defaultValue = "0") int page) {
         System.out.println("from Login get...");
         int pageSize = 10; // Set the page size
         Pageable pageable = PageRequest.of(page, pageSize, Sort.by("examId").descending());
@@ -44,16 +54,15 @@ public class Exam {
             System.out.println(page);
             Page<ExamModel> examPage = examService.examList(page);
             exams = examPage.getContent();
-            for(ExamModel i: exams){
-                System.out.println(i);
-            }
+//            for(ExamModel i: exams){
+//                System.out.println(i);
+//            }
         } catch (Exception ex) {
             System.out.println("Error retrieving exams: " + ex.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<>(exams, HttpStatus.OK);
     }
-
 
     @PostMapping("/exam")
     public String examCreate(@ModelAttribute ExamModel exam) {

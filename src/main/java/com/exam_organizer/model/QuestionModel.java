@@ -22,6 +22,8 @@ public class QuestionModel {
     @JoinColumn(name = "exam_id")
     private ExamModel examModel;
 
+    @Lob
+    @Column(length = 1000)
     private String questionText;
 
     @Lob
