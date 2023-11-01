@@ -46,16 +46,6 @@ public class ExamService {
     }*/
 
     public Page<ExamModel> examList(int page){
-        /*int pageNumber = page; // Default page number
-        Pageable pageable = PageRequest.of(pageNumber, PAGE_SIZE, Sort.by("examId").descending());
-        Page<ExamModel> exams = null;
-        try{
-            exams = examRepository.findAll(pageable).getContent();
-            return exams;
-        }catch(Exception ex){
-            System.out.println("Exam list null: "+ex);
-            return exams;
-        }*/
         int pageSize = 10; // Define the page size
         Pageable pageable = PageRequest.of(page, pageSize, Sort.by("examId").descending());
         try {

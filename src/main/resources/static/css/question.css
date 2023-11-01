@@ -8,10 +8,8 @@
 .question_block_c {
     width: 100%;
     height: 100%;
-
     display: flex;
     flex-direction: row;
-
 }
 
 .question_block_c_a {

@@ -4,6 +4,9 @@
     <link rel="stylesheet" th:href="@{/css/question.css}"/>
 </head>
 <body style="width: 100%; height: 720px; margin: 0; background: #000c2d">
+<input type="hidden" id="csrfHeader" data-th-value="${_csrf.headerName}"/>
+<input type="hidden" id="csrfToken" data-th-value="${_csrf.token}"/>
+
 <div th:replace="~{header :: header1}"></div>
 <table style="
         /* background: #000c2d; */
@@ -17,7 +20,7 @@
         </td>
         <td style="vertical-align: top">
             <div class="question_root">
-                <div class="question_block_a">
+                <div class="question_block_a" style="display:flex">
                     <form id="search_form" th:action="@{/exam-data}" method="post" class="question_exam_search">
                         <p
                                 style="
@@ -90,7 +93,7 @@
                     </form>
                 </div>
                 <!-- question detail show ------------ -->
-                <div id="question_b" class="question_block_b">
+                <div id="question_b" class="question_block_b" style="display:flex;">
                     <div class="question_flex">
                         <div style="
                     width: 200px;
@@ -109,7 +112,7 @@
                     background: #d0d0d0;
                   ">
                             <p id="exam_name_a">
-                                Amrendra
+
                             </p>
                         </div>
                         <div id="exam_schedule" style="
@@ -131,7 +134,7 @@
 
                         </div>
                         <div id="exam_status" style="
-                    width: 80px;
+                    width: 90px;
                     height: 47px;
                     color: #000;
 
@@ -174,19 +177,20 @@
                     <div class="question_block_c_a">
                         <!-- question block -->
 
-                        <form id="question_form" th:action="@{/question}" method="post" enctype="multipart/form-data" style="margin:0px; height:auto; width:100%; display:flex; flex-direction:column;">
+                        <form id="question_form" th:action="@{/question}" method="post" enctype="multipart/form-data"
+                              style="margin:0px; height:auto; width:100%; display:flex; flex-direction:column;">
                             <div class="question_input">
                                 <p>Question :</p>
                                 <textarea id="questionText" name="questionText"
-                                        rows="4"
-                                        cols="50"
+                                          rows="4"
+                                          cols="50"
                                 ></textarea>
                             </div>
                             <!-- image upload -->
                             <div class="question_image_upload">
                                 <div class="question_img_upload_a">
                                     <p>Add image:</p>
-                                    <img src="" alt="image"/>
+                                    <img id="previewImage" src="" alt="image"/>
                                 </div>
                                 <div class="question_img_upload_b">
                                     <div style="
@@ -195,12 +199,17 @@
                         background-color: #fff;
                         border-radius: 0px 8px 8px 0;
                       ">
-                                        <input type="file" name="image"/>
+                                        <input type="file" id="imageInput" name="image" onchange="previewFile()"/>
                                     </div>
-                                    <p>* Please upload only .jpge, .png, .jpeg file</p>
+                                    <p id="fileWarning">* Please upload only .jpge, .png, .jpeg file</p>
+                                    <input type="text" name="correctOption" style="outline:none; background-color:white; font-size:16px;
+                                    width:250px;margin-top:10px;height: 30px; border-radius: 6px;"
+                                           placeholder="Answer/Options"/>
                                 </div>
 
-                                <button class="q_o_add_li_btn" type="button"  onclick="submitForm()"    style=" align-self:flex-end">Save</button>
+                                <button id="question_save" class="q_o_add_li_btn" type="button" onclick="submitForm()"
+                                        style="align-self:flex-end">Save
+                                </button>
                             </div>
                         </form>
 
@@ -208,54 +217,16 @@
                             <p>Options:</p>
                             <div class="question_option_a">
                                 <!-- all question options show here  -->
-                                <div class="question_option_a_a">
-                                    <!-- dummy option------------------------- -->
-                                    <div class="q_option">
-                                        <p
-                                                class="q_o_a"
-                                                style="
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                          "
-                                        >
-                                            A
-                                        </p>
-                                        <p
-                                                class="q_o_b"
-                                                style="
-                            display: flex;
-                            align-items: center;
-                            padding-left: 5px;
-                          "
-                                        >
-                                            Amrendra yadav
-                                        </p>
-                                        <div class="q_o_c">
-                                            <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="20"
-                                                    height="20"
-                                                    viewBox="0 0 20 20"
-                                                    fill="none"
-                                                    style="cursor: pointer"
-                                            >
-                                                <path
-                                                        d="M3.125 5.00003H1.875C1.70924 5.00003 1.55027 4.93418 1.43306 4.81697C1.31585 4.69976 1.25 4.54079 1.25 4.37503C1.25 4.20927 1.31585 4.0503 1.43306 3.93309C1.55027 3.81588 1.70924 3.75003 1.875 3.75003H6.875V1.87378C6.875 1.70802 6.94085 1.54905 7.05806 1.43184C7.17527 1.31463 7.33424 1.24878 7.5 1.24878H12.5C12.6658 1.24878 12.8247 1.31463 12.9419 1.43184C13.0592 1.54905 13.125 1.70802 13.125 1.87378V3.75003H18.125C18.2908 3.75003 18.4497 3.81588 18.5669 3.93309C18.6842 4.0503 18.75 4.20927 18.75 4.37503C18.75 4.54079 18.6842 4.69976 18.5669 4.81697C18.4497 4.93418 18.2908 5.00003 18.125 5.00003H16.875V18.125C16.875 18.2908 16.8092 18.4498 16.6919 18.567C16.5747 18.6842 16.4158 18.75 16.25 18.75H3.75C3.58424 18.75 3.42527 18.6842 3.30806 18.567C3.19085 18.4498 3.125 18.2908 3.125 18.125V5.00003ZM11.875 3.75003V2.50003H8.125V3.75003H11.875ZM4.375 17.5H15.625V5.00003H4.375V17.5ZM8.125 15C7.95924 15 7.80027 14.9342 7.68306 14.817C7.56585 14.6998 7.5 14.5408 7.5 14.375V8.12503C7.5 7.95927 7.56585 7.8003 7.68306 7.68309C7.80027 7.56588 7.95924 7.50003 8.125 7.50003C8.29076 7.50003 8.44973 7.56588 8.56694 7.68309C8.68415 7.8003 8.75 7.95927 8.75 8.12503V14.375C8.75 14.5408 8.68415 14.6998 8.56694 14.817C8.44973 14.9342 8.29076 15 8.125 15ZM11.875 15C11.7092 15 11.5503 14.9342 11.4331 14.817C11.3158 14.6998 11.25 14.5408 11.25 14.375V8.12503C11.25 7.95927 11.3158 7.8003 11.4331 7.68309C11.5503 7.56588 11.7092 7.50003 11.875 7.50003C12.0408 7.50003 12.1997 7.56588 12.3169 7.68309C12.4342 7.8003 12.5 7.95927 12.5 8.12503V14.375C12.5 14.5408 12.4342 14.6998 12.3169 14.817C12.1997 14.9342 12.0408 15 11.875 15Z"
-                                                        fill="black"
-                                                />
-                                            </svg>
-                                        </div>
-                                    </div>
-
+                                <!-- dummy option------------------------- -->
+                                <div class="question_option_a_a" id="optionsContainer">
                                     <!-- option end  -->
                                 </div>
                                 <!-- add operation here- -->
                                 <div class="question_option_a_b">
                                     <!-- --------------------------------- -->
-                                    <input class="q_o_no" type="text"/>
-                                    <input class="q_o_detail" type="text"/>
-                                    <div class="q_o_add">
+                                    <input class="q_o_no" type="text" id="optionNumber"/>
+                                    <input class="q_o_detail" type="text" id="optionInput"/>
+                                    <div class="q_o_add" onclick="addOptionToList()">
                                         <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 width="30"
@@ -276,16 +247,15 @@
                         </div>
                         <!-- add question list   -->
                         <div class="question_add_list">
-                            <div
-                                    style="
+                            <div style="
                       width: 350px;
                       display: flex;
                       flex-direction: row;
                       justify-content: space-around;
-                    "
-                            >
+                    ">
                                 <p class="q_o_add_list_i">Add to Question list</p>
-                                <button class="q_o_add_li_btn">Add</button>
+                                <button id="option_add_b" class="q_o_add_li_btn" onclick="sendOptionsToAPI()">Add
+                                </button>
                                 <div class="q_o_add_li_v">
                                     <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -393,36 +363,30 @@
     </tr>
 </table>
 
-<script>
+<script th:inline="javascript">
+
+    var csrfHeader = document.getElementById("csrfHeader").getAttribute("data-th-value");
+    var csrfToken = document.getElementById("csrfToken").getAttribute("data-th-value");
+
 
     var block_b= document.getElementById("question_b");
-    var block_c= document.getElementById("question_c");
     var warning = document.getElementById("warning_exam_search");
-
-    var name = document.getElementById("exam_name_a");
+    var q_save = document.getElementById("question_save");
+    var opt_save = document.getElementById("option_add_b");
+    var examName = document.getElementById("exam_name_a");
     var schedule = document.getElementById("exam_schedule");
-    var status = document.getElementById("exam_status");
+    var examStatus = document.getElementById("exam_status");
     var marks = document.getElementById("exam_marks");
+    var eId="";
+    var qId="";
+    var options = [];
 
-    var qid=null;
-    function submitForm() {
-        const form = document.getElementById('question_form');
-        const formData = new FormData(form);
-        fetch('/question', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-            console.log('Received ID:', data);
-            const id = data.id; // Storing the ID in a JavaScript variable
-            // Perform actions with the ID as needed
-        })
-            .catch(error => console.error('Error:', error));
+    if(!eId){
+        block_b.style.display="none";
+        q_save.style.display = "none";
+        opt_save.style.display = "none";
     }
-
     function searchExam() {
-
         const form = document.getElementById('search_form');
         const formData = new FormData(form);
         fetch('/exam-data', {
@@ -431,52 +395,172 @@
         })
             .then(response => response.json())
             .then(data => {
-            console.log('Received Exam:', data);
-            const id = data.id; // Storing the ID in a JavaScript variable
-            // Perform actions with the ID as needed
-            warning.style.display = "none";
-//            block_b.style.display="flex";
-//            block_c.style.display="flex";
-            console.log(data.examName);
-            console.log(data.examId);
-            console.log(name.textContent+"hello");
+            console.log('Received Exam id:', data);
+            eId = data.examId;
 
-            name.textContent = `${data.examName} / ${data.examId}`;
-            schedule.textContent =`${data.examDate} / ${data.startTime} / ${exam.duration}`;
-            status.textContent = data.status;
+            warning.style.display = "none";
+            q_save.style.display = "inline-block";
+            block_b.style.display="flex";
+
+
+            var x= data.duration;
+            examName.innerHTML = `${data.examName} <br> id: ${data.examId}`;
+            schedule.textContent =`${data.examDate} /${data.startTime} /${x}min`;
+            examStatus.textContent = data.status;
             marks.textContent = data.totalMarks;
+
         })
             .catch(error => {
             warning.style.display = "block";
-//            block_b.style.dispaly="none";
-//            block_c.style.display="none";
+            block_b.style.display="none";
+            q_save.style.display = "none";
             console.error('Error:', error)
         });
     }
 
-    /*  function searchExam() {
-           const inputValue = document.getElementById('examId').value;
-           console.log("Input Value:", inputValue);
+    function submitForm() {
+        console.log("from submit form...")
+        const form = document.getElementById('question_form');
+        const formData = new FormData(form);
+        formData.append('examId', eId);
+        if (eId == null) {
+            console.log("Exam Id not found!...");
+            return;
+        }
+        fetch('/question', {
+            method: 'POST',
+            headers: {
+                [csrfHeader]: csrfToken,
+            },
+            body: formData,
+        })
+            .then(response => response.json())
+            .then(data => {
+            console.log('Received Question ID:', data);
+            qId = data;
+            console.log("qId:"+qId);
+            if(qId!=null){
+                opt_save.style.display = "inline-block";
+            }
+            // Storing the ID in a JavaScript variable
+            // Perform actions with the ID as needed
+            console.log(data);
+        })
+            .catch(error => {
+            opt_save.style.display = "none";
+            console.error('Error:', error)
+        });
+    }
 
-           fetch('/exam-data', {
-               method: 'POST',
-               headers: {
-                   'Content-Type': 'application/json'
-               },
-               body: JSON.stringify({ value: inputValue })
-           })
-               .then(response => response.json())
-               .then(data => {
-               // Handle the response data
-               console.log('Response:', data);
-           })
-               .catch(error => {
-               // Handle any errors
-               console.error('Error:', error);
-           });
-       }
-   */
+    function previewFile() {
+        const preview = document.getElementById('previewImage');
+        const fileInput = document.getElementById('imageInput');
+        const file = fileInput.files[0];
+        const reader = new FileReader();
 
+        const fileWarning = document.getElementById('fileWarning');
+
+        const validExtensions = ['jpg', 'jpeg', 'png'];
+        const fileExtension = file.name.split('.').pop().toLowerCase();
+
+        if (!validExtensions.includes(fileExtension)) {
+            preview.src = '';
+            fileInput.value = null;
+            fileWarning.style.display = 'block';
+            return;
+        }
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+            fileWarning.style.display = 'none';
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '';
+        }
+    }
+
+    function addOptionToList() {
+        var optionText = document.getElementById("optionInput").value;
+        var optionNumber = document.getElementById("optionNumber").value;
+        if (optionText.trim() === "" || optionNumber.trim() === "") {
+            alert("Please enter both option text and number");
+            return;
+        }
+        var optionsContainer = document.getElementById("optionsContainer");
+        var newOption = document.createElement("div");
+        newOption.className = "q_option";
+        newOption.innerHTML = `
+                 <p
+            class="q_o_a"
+            style="display: flex; justify-content: center; align-items: center"
+          >
+          ${optionNumber}
+          </p>
+          <p
+            class="q_o_b"
+            style="display: flex; align-items: center; padding-left: 5px"
+          >
+          ${optionText}
+          </p>
+          <div class="q_o_c" onclick="deleteOption(this)">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              style="cursor: pointer"
+            >
+              <path
+                d="M3.125 5.00003H1.875C1.70924 5.00003 1.55027 4.93418 1.43306 4.81697C1.31585 4.69976 1.25 4.54079 1.25 4.37503C1.25 4.20927 1.31585 4.0503 1.43306 3.93309C1.55027 3.81588 1.70924 3.75003 1.875 3.75003H6.875V1.87378C6.875 1.70802 6.94085 1.54905 7.05806 1.43184C7.17527 1.31463 7.33424 1.24878 7.5 1.24878H12.5C12.6658 1.24878 12.8247 1.31463 12.9419 1.43184C13.0592 1.54905 13.125 1.70802 13.125 1.87378V3.75003H18.125C18.2908 3.75003 18.4497 3.81588 18.5669 3.93309C18.6842 4.0503 18.75 4.20927 18.75 4.37503C18.75 4.54079 18.6842 4.69976 18.5669 4.81697C18.4497 4.93418 18.2908 5.00003 18.125 5.00003H16.875V18.125C16.875 18.2908 16.8092 18.4498 16.6919 18.567C16.5747 18.6842 16.4158 18.75 16.25 18.75H3.75C3.58424 18.75 3.42527 18.6842 3.30806 18.567C3.19085 18.4498 3.125 18.2908 3.125 18.125V5.00003ZM11.875 3.75003V2.50003H8.125V3.75003H11.875ZM4.375 17.5H15.625V5.00003H4.375V17.5ZM8.125 15C7.95924 15 7.80027 14.9342 7.68306 14.817C7.56585 14.6998 7.5 14.5408 7.5 14.375V8.12503C7.5 7.95927 7.56585 7.8003 7.68306 7.68309C7.80027 7.56588 7.95924 7.50003 8.125 7.50003C8.29076 7.50003 8.44973 7.56588 8.56694 7.68309C8.68415 7.8003 8.75 7.95927 8.75 8.12503V14.375C8.75 14.5408 8.68415 14.6998 8.56694 14.817C8.44973 14.9342 8.29076 15 8.125 15ZM11.875 15C11.7092 15 11.5503 14.9342 11.4331 14.817C11.3158 14.6998 11.25 14.5408 11.25 14.375V8.12503C11.25 7.95927 11.3158 7.8003 11.4331 7.68309C11.5503 7.56588 11.7092 7.50003 11.875 7.50003C12.0408 7.50003 12.1997 7.56588 12.3169 7.68309C12.4342 7.8003 12.5 7.95927 12.5 8.12503V14.375C12.5 14.5408 12.4342 14.6998 12.3169 14.817C12.1997 14.9342 12.0408 15 11.875 15Z"
+                fill="black"
+              />
+            </svg>
+          </div>
+            `;
+        optionsContainer.appendChild(newOption);
+        options.push({ number: optionNumber, text: optionText });
+        document.getElementById("optionInput").value = "";
+        document.getElementById("optionNumber").value = "";
+    }
+
+    function deleteOption(element) {
+        var optionContainer = element.parentNode;
+        var optionIndex = Array.prototype.indexOf.call(
+            optionContainer.parentNode.children,
+            optionContainer
+        );
+        optionContainer.parentNode.removeChild(optionContainer);
+        options.splice(optionIndex, 1);
+    }
+
+    function sendOptionsToAPI() {
+        console.log(options);
+        console.log("qID:" + qId);
+        // global csrf token header not working therefore created locally
+
+        var csrfHeader_ = /*[[${_csrf.headerName}]]*/ "";
+        var csrfToken_ = /*[[${_csrf.token}]]*/ "";
+
+        var formData = new FormData();
+        formData.append("options", JSON.stringify(options)); //append  json as string
+        formData.append("qId", qId);
+        fetch("/option-add", {
+            method: "POST",
+            headers: {
+                [csrfHeader_]: csrfToken_,
+            },
+            body: formData,
+        }).then((response) => {
+            //            console.log("----", response);
+            return response.json();
+        }).then((data) => {
+            console.log("Option save"+data);
+        }).catch((error) => console.error("Error:", error));
+    }
 
 
 </script>

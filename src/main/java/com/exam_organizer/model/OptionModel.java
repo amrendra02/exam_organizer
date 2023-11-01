@@ -21,7 +21,8 @@ public class OptionModel {
     @JoinColumn(name = "question_id")
     private QuestionModel questionModel;
 
-    private String optionText;
+    private String number;
+    private String text;
 
     // Constructors, getters, and setters
 }

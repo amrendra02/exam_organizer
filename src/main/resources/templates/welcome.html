@@ -1,140 +1,32 @@
-<!--
-
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>Document</title>
-</head>
-<body>
-
-<form th:action="@{/upload}" method="post" enctype="multipart/form-data">
-    <input type="file" name="image"/>
-    <input type="text" name="questionText"/>
-    <button type="submit"> Submit</button>
-</form>
-
-</body>
-</html>-->
-
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Options Form</title>
-</head>
-<body>
-<form id="optionsForm">
-    <label for="optionInput">Enter Option:</label>
-    <input type="text" id="optionInput" name="optionInput">
-    <button type="button" onclick="addOption()">Add Option</button>
-    <ul id="optionsList"></ul>
-    <button type="button" onclick="submitOptions()">Submit Options</button>
-</form>
-
-<script>
-    var options = [];
-
-    function addOption() {
-        var optionInput = document.getElementById("optionInput").value;
-        if (optionInput !== '') {
-            options.push(optionInput);
-            document.getElementById("optionsList").innerHTML = '';
-            for (var i = 0; i < options.length; i++) {
-                var li = document.createElement("li");
-                li.appendChild(document.createTextNode(options[i]));
-                document.getElementById("optionsList").appendChild(li);
-            }
-            document.getElementById("optionInput").value = '';
-        }
-    }
-
-    function submitOptions() {
-        fetch('/upload', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ options: options })
-        })
-            .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            console.log('Options submitted successfully');
-        })
-            .catch(error => {
-            console.error('Error submitting options:', error);
-        });
-    }
-</script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--Image upload and get template succesfully code-->
-
-<!--
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome</title>
+    <title>Question List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 
-<form th:action="@{/upload}" method="post" enctype="multipart/form-data">
-    <input type="file" name="image"/>
-    <input type="text" name="questionText"/>
-    <button type="submit"> Submit</button>
-</form>
+<h2>Question List</h2>
 
-&lt;!&ndash;
-<button onclick="fetchImage()">Get Image</button>
-<br><br>
-<img id="displayedImage" alt="Displayed Image" style="max-width: 100%; height: auto;">
-<script>
-    function fetchImage() {
-        fetch('/display')
-            .then(response => response.text())
-            .then(data => {
-            document.getElementById('displayedImage').src = 'data:image/jpeg;base64,' + data;
-        })
-            .catch(error => console.error('Error fetching image:', error));
-    }
-</script>&ndash;&gt;
+<button onclick="getQuestions()">Get Questions</button>
 
-
-<img id="imageDisplay" src="" alt="Displayed Image">
-<button onclick="fetchImage()">Display Image</button>
+<div id="questionList">
+    <ul>
+        <li th:each="question : ${questions}" th:text="${question.questionText}"></li>
+    </ul>
+</div>
 
 <script>
-    function fetchImage() {
-        fetch('/display')
-            .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+    function getQuestions() {
+        var examId = 3; // Replace with the appropriate examId
+        $.get("/question-list/" + examId, function (data, status) {
+            if (status === "success") {
+                var questionList = $("#questionList");
+                questionList.empty();
+                $.each(data, function (index, question) {
+                    questionList.append("<p>" + question.questionText + "</p>");
+                });
             }
-            return response.text();
-        })
-            .then(data => {
-            // Modify the 'src' attribute of the img tag
-            document.getElementById('imageDisplay').src = 'data:image/jpeg;base64,' + data;
-        })
-            .catch(error => {
-            console.error('Error fetching image:', error);
         });
     }
 </script>
@@ -142,4 +34,4 @@
 </body>
 </html>
 
--->
+
