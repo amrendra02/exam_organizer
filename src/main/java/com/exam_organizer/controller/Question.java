@@ -6,15 +6,13 @@ import com.exam_organizer.model.QuestionModel;
 import com.exam_organizer.repository.ExamRepository;
 import com.exam_organizer.repository.OptionRepository;
 import com.exam_organizer.repository.QuestionRepository;
+import com.exam_organizer.service.QuestionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
@@ -33,11 +31,14 @@ public class Question {
 
     private final OptionRepository optionRepository;
 
-    public Question(ObjectMapper objectMapper, ExamRepository examRepository, QuestionRepository questionRepository, OptionRepository optionRepository) {
+    private final QuestionService questionService;
+
+    public Question(ObjectMapper objectMapper, ExamRepository examRepository, QuestionRepository questionRepository, OptionRepository optionRepository, QuestionService questionService) {
         this.objectMapper = objectMapper;
         this.examRepository = examRepository;
         this.questionRepository = questionRepository;
         this.optionRepository = optionRepository;
+        this.questionService = questionService;
     }
 
     @RequestMapping("/question")
@@ -120,9 +121,10 @@ public class Question {
     //------Option add----------------
 
     @PostMapping("/option-add")
-    public ResponseEntity<String> handleOptionAdd(@RequestParam("options") String options, @RequestParam("qId") String id) {
+    public ResponseEntity<String> handleOptionAdd(@RequestParam("options") String options, @RequestParam("qId") String id, @RequestParam("eId") String eid) {
 
         Long qId = Long.valueOf(id);
+        Long eId = Long.valueOf(eid);
 
         try {
             List<Map<String, String>> optionList = objectMapper.readValue(options, List.class);
@@ -130,6 +132,8 @@ public class Question {
             System.out.println(id);
 
             QuestionModel qt = questionRepository.findByQuestionId(Math.toIntExact(qId));
+            Optional<ExamModel> ex= examRepository.findById(eId);
+
             List<OptionModel> op = new ArrayList<>();
 
             for (Map<String, String> option : optionList) {
@@ -139,6 +143,7 @@ public class Question {
                 optemp.setNumber(option.get("number"));
                 optemp.setText(option.get("text"));
                 optemp.setQuestionModel(qt);
+                optemp.setExam_id(ex.get().getExamId());
                 optionRepository.save(optemp);
                 op.add(optemp);
             }
@@ -154,13 +159,23 @@ public class Question {
         }
     }
 
-
-    @GetMapping("/question-list")
-    public ResponseEntity<String> getQuestionList(@RequestParam("eaxnId") String id,Model model){
-
-        System.out.println("from question list exam id:"+id);
-
-        return ResponseEntity.ok("ok");
+    @GetMapping(value = "/question-list/{examId}")
+    @ResponseBody
+    public List<QuestionModel> getQuestionsByExamId(@PathVariable Long examId, Model model) {
+        System.out.println("from question list... : " + examId);
+        try {
+            System.out.println("getting from database..");
+            List<QuestionModel> questions = questionService.getQuestionsByExamId(examId);
+            for (QuestionModel q : questions) {
+//                System.out.println(q.getQuestionText());
+                q.setExamModel(null);
+                q.setOptionModels(null);
+            }
+            return questions;
+        } catch (Exception ex) {
+            System.out.println("failed to get all questions");
+        }
+        return null;
     }
 
 }

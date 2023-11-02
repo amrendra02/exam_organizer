@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Question List</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -10,28 +9,33 @@
 
 <button onclick="getQuestions()">Get Questions</button>
 
-<div id="questionList">
-    <ul>
-        <li th:each="question : ${questions}" th:text="${question.questionText}"></li>
-    </ul>
+<div id="questionContainer">
 </div>
 
 <script>
     function getQuestions() {
-        var examId = 3; // Replace with the appropriate examId
-        $.get("/question-list/" + examId, function (data, status) {
-            if (status === "success") {
-                var questionList = $("#questionList");
-                questionList.empty();
-                $.each(data, function (index, question) {
-                    questionList.append("<p>" + question.questionText + "</p>");
-                });
-            }
-        });
+        var examId = 1; // Replace with the appropriate examId
+        fetch("/question-list/" + examId)
+            .then(response => response.json())
+            .then(data => {
+            console.log(data);
+            var questionContainer = document.getElementById("questionContainer");
+            questionContainer.innerHTML = `
+            <p>${data.questionText}</p>
+            <p>${data.correctOption}</p>
+
+            `
+            ; // Clear existing content
+
+            data.forEach(question => {
+                var paragraph = document.createElement("p");
+                paragraph.textContent = question.questionText;
+                questionContainer.appendChild(paragraph);
+            });
+        })
+            .catch(error => console.error('Error:'+ error));
     }
 </script>
 
 </body>
 </html>
-
-

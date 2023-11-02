@@ -21,6 +21,8 @@ public class OptionModel {
     @JoinColumn(name = "question_id")
     private QuestionModel questionModel;
 
+    private Long exam_id;
+
     private String number;
     private String text;
 

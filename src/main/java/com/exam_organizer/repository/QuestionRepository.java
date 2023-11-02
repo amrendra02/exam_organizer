@@ -12,4 +12,5 @@ public interface QuestionRepository extends JpaRepository<QuestionModel,Long> {
 
     List<QuestionModel> findAllByExamModelExamId(Long id);
 
+
 }
