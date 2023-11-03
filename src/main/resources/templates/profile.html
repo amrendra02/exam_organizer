@@ -62,12 +62,12 @@
         <td style="vertical-align: top">
             <div class="profile_root">
                 <img class="profile_img"  alt="img"/>
-                <p style="margin-top: 20px">Amrendra Yadav</p>
-                <p>Registration no: 736478687</p>
-                <p>Total Exam test: 200</p>
-                <p>Cancelled: 178</p>
-                <p>Active:20</p>
-                <p>Live: 2</p>
+                <p style="margin-top: 20px" th:text="${name}">Amrendra Yadav</p>
+                <p>Registration no: <span th:text="${id}" style="margin-left:10px"></span></p>
+                <p>Total Exam test:<span th:text="${exam}" style="margin-left:10px"></span></p>
+                <p>Cancelled:<span th:text="${cancel}" style="margin-left:10px"></span></p>
+                <p>Active:<span th:text="${active}" style="margin-left:10px"></span></p>
+                <p>Live:<span th:text="${live}" style="margin-left:10px"></span></p>
             </div>
         </td>
     </tr>

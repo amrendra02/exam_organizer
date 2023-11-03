@@ -6,6 +6,7 @@ import com.exam_organizer.model.QuestionModel;
 import com.exam_organizer.repository.ExamRepository;
 import com.exam_organizer.repository.OptionRepository;
 import com.exam_organizer.repository.QuestionRepository;
+import com.exam_organizer.service.ExamService;
 import com.exam_organizer.service.QuestionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
@@ -33,12 +34,15 @@ public class Question {
 
     private final QuestionService questionService;
 
-    public Question(ObjectMapper objectMapper, ExamRepository examRepository, QuestionRepository questionRepository, OptionRepository optionRepository, QuestionService questionService) {
+    private final ExamService examService;
+
+    public Question(ObjectMapper objectMapper, ExamRepository examRepository, QuestionRepository questionRepository, OptionRepository optionRepository, QuestionService questionService, ExamService examService) {
         this.objectMapper = objectMapper;
         this.examRepository = examRepository;
         this.questionRepository = questionRepository;
         this.optionRepository = optionRepository;
         this.questionService = questionService;
+        this.examService = examService;
     }
 
     @RequestMapping("/question")
@@ -51,18 +55,33 @@ public class Question {
     //individually get exam data....
     @PostMapping("/exam-data")
     public ResponseEntity<ExamModel> getExam(@RequestParam("examId") String input) {
-        System.out.println("from exam individual exam data...");
-//        String value = input.get("value");
-        Long id = 2L;
+        System.out.println("from exam ---------- individual exam data... "+input);
+        Long id;
+        Long organizerId=0L;
         Optional<ExamModel> exam;
         try {
             id = Long.parseLong(input);
-            exam = examRepository.findById(id);
-            ExamModel ex = exam.get();
-            ex.setOrganizer(null);
+           /* SecurityContext context = SecurityContextHolder.getContext();
+            Authentication authentication = context.getAuthentication();
+            if (authentication != null && authentication.isAuthenticated()) {
+                Object principal = authentication.getPrincipal();
+                if (principal instanceof ExamOrganizer) {
+                    ExamOrganizer examOrganizer = (ExamOrganizer) principal;
+                     organizerId = examOrganizer.getOrganizerId();
+                }
+            }
 
+              exam = Optional.ofNullable(examRepository.findByExamIdAndOrganizer_OrganizerId(id, organizerId));
+*/
+//            ExamModel ex = exam.get();
+
+            exam= examService.examData(id);
+            ExamModel ex = exam.get();
+
+
+            ex.setOrganizer(null);
             if (exam.isPresent()) {
-                return ResponseEntity.ok(exam.get()); // If the data is found, send it with 200 status code
+                return ResponseEntity.ok(exam.get());
             } else {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).build(); // If the data is not found, send 404 status code
             }

@@ -409,11 +409,14 @@
 
             getQuestions(eId);
 
+            console.log(data)
+
         }).catch(error => {
             warning.style.display = "block";
             block_b.style.display="none";
             q_save.style.display = "none";
-            console.error('Error:', error)
+            getQuestions(null);
+            console.error('Error:'+ error)
         });
     }
 
@@ -567,6 +570,14 @@
     function getQuestions(i) {
         var examId = i; // Replace with the appropriate examId
         var count=0;
+
+        if(i==null){
+            console.log()
+            var questionContainer = document.getElementById("questionContainer");
+            questionContainer.innerHTML = '';
+            return;
+        }
+
         fetch("/question-list/" + examId)
             .then(response => response.json())
             .then(data => {

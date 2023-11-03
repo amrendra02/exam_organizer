@@ -1,11 +1,17 @@
 package com.exam_organizer.service;
 
 import com.exam_organizer.model.ExamModel;
+import com.exam_organizer.model.ExamOrganizer;
 import com.exam_organizer.repository.ExamRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -22,37 +28,63 @@ public class ExamService {
 
     private static final int PAGE_SIZE = 10; // Number of items per page
 
-    public String CreateExam(ExamModel exam)
-    {
-        try{
+    public String CreateExam(ExamModel exam) {
+        try {
             examRepository.save(exam);
-            return"success";
-        }catch(Exception ex){
+            return "success";
+        } catch (Exception ex) {
 
-            return"failed";
+            return "failed";
         }
     }
 
 
- /*   public Optional<ExamModel> examData(Long id){
-
-        Optional<ExamModel> exam=null;
-        try{
-            exam = examRepository.findById(id);
-        }catch (Exception ex){
-            return exam;
-        }
-        return exam;
-    }*/
-
-    public Page<ExamModel> examList(int page){
+    public Page<ExamModel> examList(int page) {
         int pageSize = 10; // Define the page size
         Pageable pageable = PageRequest.of(page, pageSize, Sort.by("examId").descending());
         try {
-            return examRepository.findAll(pageable);
+
+            Long organizerId = null;
+            SecurityContext context = SecurityContextHolder.getContext();
+            Authentication authentication = context.getAuthentication();
+            if (authentication != null && authentication.isAuthenticated()) {
+                Object principal = authentication.getPrincipal();
+                if (principal instanceof ExamOrganizer) {
+                    ExamOrganizer examOrganizer = (ExamOrganizer) principal;
+                    organizerId = examOrganizer.getOrganizerId();
+                }
+                return examRepository.findAllByOrganizer_OrganizerId(organizerId, pageable);
+            }
+            return null;
         } catch (Exception ex) {
             System.out.println("Error retrieving exams: " + ex.getMessage());
             return null;
         }
     }
+
+    public Optional<ExamModel> examData(Long id) {
+        System.out.println("from EXAM Service...");
+        Optional<ExamModel> exam;
+        Long organizerId = 0L;
+        try {
+//            id = Long.parseLong(id);
+//            exam = examRepository.findById(id);
+            SecurityContext context = SecurityContextHolder.getContext();
+            Authentication authentication = context.getAuthentication();
+            if (authentication != null && authentication.isAuthenticated()) {
+                Object principal = authentication.getPrincipal();
+                if (principal instanceof ExamOrganizer) {
+                    ExamOrganizer examOrganizer = (ExamOrganizer) principal;
+                    organizerId = examOrganizer.getOrganizerId();
+                }
+            }
+
+            exam = Optional.ofNullable(examRepository.findByExamIdAndOrganizer_OrganizerId(id, organizerId));
+        } catch (Exception ex) {
+            return null;
+        }
+
+        return exam;
+    }
+
 }
