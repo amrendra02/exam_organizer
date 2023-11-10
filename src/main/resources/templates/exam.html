@@ -320,7 +320,7 @@
       function fetchExams() {
         if (!isLoading && loadMore) {
           isLoading = true;
-          fetch("/exam-list?page=" + page)
+          fetch("/admin/exam-list?page=" + page)
             .then((response) => response.json())
             .then((data) => {
               isLoading = false;
@@ -466,8 +466,7 @@
             });
         }
       }
-      document
-        .getElementById("examList")
+      document.getElementById("examList")
         .addEventListener("scroll", function () {
           if (this.scrollTop + this.clientHeight >= this.scrollHeight) {
             fetchExams();

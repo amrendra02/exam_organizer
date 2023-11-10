@@ -63,7 +63,7 @@
         >
             <!--                th:classappend="${#request.requestURI == '/profile' ? 'active' : ''}"-->
             <td class="nav_routes">
-                <a th:href="@{/profile}"
+                <a th:href="@{/admin/profile}"
                    style="text-decoration: none; color: inherit; display: flex; align-items: center; width: 100%;">
 
                     <svg
@@ -97,7 +97,7 @@
         >
             <!--                th:classappend="${request.requestURI == '/exam/' ? 'active' : ''}"-->
             <td class="nav_routes">
-                <a th:href="@{/exam}"
+                <a th:href="@{/admin/exam}"
                    style="text-decoration: none; color: inherit; display: flex; align-items: center;width: 100%;">
                     <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +139,7 @@
         >
             <!--                th:classappend="${request.requestURI == '/candidate/' ? 'active' : ''}"-->
             <td class="nav_routes">
-                <a th:href="@{/candidate}"
+                <a th:href="@{/admin/candidate}"
                    style="text-decoration: none; color: inherit; display: flex; align-items: center;width: 100%;">
                     <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -170,7 +170,7 @@
         >
             <!--                th:classappend="${request.requestURI == '/question/' ? 'active' : ''}"-->
             <td class="nav_routes">
-                <a th:href="@{/question}"
+                <a th:href="@{/admin/question}"
                    style="text-decoration: none; color: inherit; display: flex; align-items: center;width: 100%;">
 
                     <svg
@@ -209,7 +209,7 @@
         >
             <!--                th:classappend="${request.requestURI == '/result/' ? 'active' : ''}"-->
             <td class="nav_routes">
-                <a th:href="@{/result}"
+                <a th:href="@{/admin/result}"
                    style="text-decoration: none; color: inherit; display: flex; align-items: center;width: 100%;">
 
                     <svg
@@ -240,7 +240,7 @@
         >
             <!--                th:classappend="${request.requestURI == '/setting/' ? 'active' : ''}"-->
             <td class="nav_routes">
-                <a th:href="@{/setting}"
+                <a th:href="@{/admin/setting}"
                    style="text-decoration: none; color: inherit; display: flex; align-items: center;width: 100%;">
 
                     <svg
@@ -267,7 +267,7 @@
         >
             <!--                th:classappend="${request.requestURI == '/about' ? 'active' : ''}"-->
             <td class="nav_routes">
-                <a th:href="@{/about}"
+                <a th:href="@{/admin/about}"
                    style="text-decoration: none; color: inherit; display: flex; align-items: center;width: 100%;">
 
                     <svg
@@ -342,25 +342,25 @@
 
         let currentPath = window.location.pathname;
 
-        if (currentPath === '/profile') {
+        if (currentPath === '/admin/profile') {
         document.getElementById('profile').classList.add('active_nav');
         }
-        if (currentPath === '/exam') {
+        if (currentPath === '/admin/exam') {
         document.getElementById('exam').classList.add('active_nav');
         }
-        if (currentPath === '/candidate') {
+        if (currentPath === '/admin/candidate') {
         document.getElementById('candidate').classList.add('active_nav');
         }
-        if (currentPath === '/question') {
+        if (currentPath === '/admin/question') {
         document.getElementById('question').classList.add('active_nav');
         }
-        if (currentPath === '/result') {
+        if (currentPath === '/admin/result') {
         document.getElementById('result').classList.add('active_nav');
         }
-        if (currentPath === '/setting') {
+        if (currentPath === '/admin/setting') {
         document.getElementById('setting').classList.add('active_nav');
         }
-        if (currentPath === '/about') {
+        if (currentPath === '/admin/about') {
         document.getElementById('about').classList.add('active_nav');
         }
     </script>

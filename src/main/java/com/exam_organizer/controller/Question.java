@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/admin")
 public class Question {
 
 

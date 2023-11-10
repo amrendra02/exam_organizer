@@ -1,26 +1,23 @@
 package com.exam_organizer.controller;
 
+import com.exam_organizer.model.ExamModel;
+import com.exam_organizer.model.ExamOrganizer;
 import lombok.Getter;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/admin")
 public class Login {
 
     @RequestMapping("/login")
     public String login(){
         System.out.println("from login...A");
+//        System.out.println(user);
+//        System.out.println("p: "+password);
         return "login";
     }
 
-//    @PostMapping("/login")
-//    public  lgoinPost(){
-//
-//        System.out.println("from post Login...");
-//        return "";
-//    }
     @GetMapping("/logout")
     public String logout(){
         return "logout";

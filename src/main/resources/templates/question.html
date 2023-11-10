@@ -21,7 +21,7 @@
         <td style="vertical-align: top">
             <div class="question_root">
                 <div class="question_block_a" style="display:flex">
-                    <form id="search_form" th:action="@{/exam-data}" method="post" class="question_exam_search">
+                    <form id="search_form" th:action="@{/admin/exam-data}" method="post" class="question_exam_search">
                         <p
                                 style="
                     width: 120px;
@@ -177,7 +177,7 @@
                     <div class="question_block_c_a">
                         <!-- question block -->
 
-                        <form id="question_form" th:action="@{/question}" method="post" enctype="multipart/form-data"
+                        <form id="question_form" th:action="@{/admin/question}" method="post" enctype="multipart/form-data"
                               style="margin:0px; height:auto; width:100%; display:flex; flex-direction:column;">
                             <div class="question_input">
                                 <p>Question :</p>
@@ -388,7 +388,7 @@
     function searchExam() {
         const form = document.getElementById('search_form');
         const formData = new FormData(form);
-        fetch('/exam-data', {
+        fetch('/admin/exam-data', {
             method: 'POST',
             body: formData
         })
@@ -429,7 +429,7 @@
             console.log("Exam Id not found!...");
             return;
         }
-        fetch('/question', {
+        fetch('/admin/question', {
             method: 'POST',
             headers: {
                 [csrfHeader]: csrfToken,
@@ -552,7 +552,7 @@
         formData.append("options", JSON.stringify(options)); //append  json as string
         formData.append("qId", qId);
         formData.append("eId", eId);
-        fetch("/option-add", {
+        fetch("/admin/option-add", {
             method: "POST",
             headers: {
                 [csrfHeader_]: csrfToken_,
@@ -578,7 +578,7 @@
             return;
         }
 
-        fetch("/question-list/" + examId)
+        fetch("/admin/question-list/" + examId)
             .then(response => response.json())
             .then(data => {
             console.log(data);

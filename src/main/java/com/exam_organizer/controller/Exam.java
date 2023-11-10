@@ -25,6 +25,7 @@ import java.util.Optional;
 
 
 @Controller
+@RequestMapping("/admin")
 public class Exam {
 
     @Autowired

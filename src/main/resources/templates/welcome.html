@@ -2,40 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Question List</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #c3f3ff;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        a {
+            width:400px;
+            height:40px;
+            text-align:center;
+            margin-top:30px;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 30px;
+            background-color:#000021;
+            color:#bdf8ff;
+            font-weight:500;
+            border-radius:8px
+        }
+    </style>
 </head>
 <body>
-
-<h2>Question List</h2>
-
-<button onclick="getQuestions()">Get Questions</button>
-
-<div id="questionContainer">
-</div>
-
-<script>
-    function getQuestions() {
-        var examId = 1; // Replace with the appropriate examId
-        fetch("/question-list/" + examId)
-            .then(response => response.json())
-            .then(data => {
-            console.log(data);
-            var questionContainer = document.getElementById("questionContainer");
-            questionContainer.innerHTML = `
-            <p>${data.questionText}</p>
-            <p>${data.correctOption}</p>
-
-            `
-            ; // Clear existing content
-
-            data.forEach(question => {
-                var paragraph = document.createElement("p");
-                paragraph.textContent = question.questionText;
-                questionContainer.appendChild(paragraph);
-            });
-        })
-            .catch(error => console.error('Error:'+ error));
-    }
-</script>
-
+<a href="/admin/login">admin</a>
+<a href="/candidate/login">candidate</a>
 </body>
 </html>
