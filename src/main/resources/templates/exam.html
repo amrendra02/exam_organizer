@@ -154,7 +154,7 @@
 
     <div class="popup" id="popup">
       <form
-        th:action="@{/exam}"
+        th:action="@{/admin/exam}"
         method="post"
         class="popup-content"
         id="popupContainer"
@@ -311,33 +311,33 @@
   </script>
 -->
     <script th:inline="javascript">
-      console.log("exam list Loading...");
+        console.log("exam list Loading...");
 
-      var page = 0;
-      var isLoading = false;
-      var loadMore = true;
+        var page = 0;
+        var isLoading = false;
+        var loadMore = true;
 
-      function fetchExams() {
-        if (!isLoading && loadMore) {
-          isLoading = true;
-          fetch("/admin/exam-list?page=" + page)
-            .then((response) => response.json())
-            .then((data) => {
-              isLoading = false;
-              if (data.length === 0) {
-                loadMore = false;
-              } else {
-                const examList = document.getElementById("examList");
+        function fetchExams() {
+            if (!isLoading && loadMore) {
+                isLoading = true;
+                fetch("/admin/exam-list?page=" + page)
+                    .then((response) => response.json())
+                    .then((data) => {
+                    isLoading = false;
+                    if (data.length === 0) {
+                        loadMore = false;
+                    } else {
+                        const examList = document.getElementById("examList");
 
-                data.forEach((exam) => {
-                  const tbody = document.getElementById("examList");
-                  const tr = document.createElement("tr");
-                  tr.setAttribute("th:each", "exam: ${exams}");
-                  tr.setAttribute(
-                    "th:style",
-                    "width: 100%;"
-                  );
-                  tr.innerHTML = `
+                        data.forEach((exam) => {
+                            const tbody = document.getElementById("examList");
+                            const tr = document.createElement("tr");
+                            tr.setAttribute("th:each", "exam: ${exams}");
+                            tr.setAttribute(
+                                "th:style",
+                                "width: 100%;"
+                            );
+                            tr.innerHTML = `
                               <td class="table-cell" style="width: 28px; height: 100px;">
                                 <div class="exam_check_box"></div>
                               </td>
@@ -422,7 +422,7 @@
                                         <p style="margin: 2px; font-size: 12px">Cancel</p>
                                     </div>
                                 <!-- Delete -->
-                                   <div onclick="deletExam(${exam.examId})" style="cursor: pointer">
+                                   <div onclick="deleteExam(${exam.examId})" style="cursor: pointer">
                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
                                       fill="none"
                                     >
@@ -452,47 +452,69 @@
                                </div>
                               </td>
                             `;
-                    tbody.appendChild(tr);
+                            tbody.appendChild(tr);
 
-//                  console.log(exam);
+                            //                  console.log(exam);
+                        });
+
+                        page++;
+                    }
+                })
+                    .catch((error) => {
+                    isLoading = false;
+                    console.error("Error fetching data:", error);
                 });
-
-                page++;
-              }
-            })
-            .catch((error) => {
-              isLoading = false;
-              console.error("Error fetching data:", error);
-            });
+            }
         }
-      }
-      document.getElementById("examList")
-        .addEventListener("scroll", function () {
-          if (this.scrollTop + this.clientHeight >= this.scrollHeight) {
-            fetchExams();
-          }
+        document.getElementById("examList")
+            .addEventListener("scroll", function () {
+            if (this.scrollTop + this.clientHeight >= this.scrollHeight) {
+                fetchExams();
+            }
         });
-      fetchExams();
+        fetchExams();
 
 
-      function deletExam(id) {
-        console.log(`Delete Exam Id: ${id}`);
-      }
+        function deleteExam(id) {
+            var csrfHeader_ = /*[[${_csrf.headerName}]]*/ "";
+            var csrfToken_ = /*[[${_csrf.token}]]*/ "";
 
-      function cancelExam(id) {
-        console.log(`Cancel Exam Id: ${id}`);
-      }
+            fetch(`/admin/exam/${id}`, {
+                method: "DELETE",
+                headers: {
+                    // Add the CSRF token to the headers
+                    [csrfHeader_]: csrfToken_,
+                },
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to delete exam: ${response.status}`);
+                }
+                return response.json();
+            }).then(data => {
+                console.log('Exam deleted successfully:', data);
+                window.location.href = '/admin/exam';
+            }).catch(error => {
+                // Handle errors, e.g., display an alert
+                console.error('Error deleting exam:', error.message);
+            });
+            console.log(`Delete Exam Id: ${id}`);
+        }
 
-      function viewExam(id) {
-        console.log(`View Exam Id: ${id}`);
-      }
 
-      function downloadExam(id) {
-        console.log(`Download Id: ${id}`);
-      }
-      function generateLinkExam(id) {
-        console.log(`GenerateLink Exam Id: ${id}`);
-      }
+        function cancelExam(id) {
+            console.log(`Cancel Exam Id: ${id}`);
+        }
+
+        function viewExam(id) {
+            console.log(`View Exam Id: ${id}`);
+        }
+
+        function downloadExam(id) {
+            console.log(`Download Id: ${id}`);
+        }
+        function generateLinkExam(id) {
+            console.log(`GenerateLink Exam Id: ${id}`);
+        }
     </script>
   </body>
 </html>

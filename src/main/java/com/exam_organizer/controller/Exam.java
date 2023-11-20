@@ -2,6 +2,7 @@ package com.exam_organizer.controller;
 
 import com.exam_organizer.model.ExamModel;
 import com.exam_organizer.model.ExamOrganizer;
+import com.exam_organizer.payload.Response;
 import com.exam_organizer.repository.ExamRepository;
 import com.exam_organizer.service.ExamService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,13 +39,15 @@ public class Exam {
         this.examRepository = examRepository;
     }
 
+    // get exam page
     @RequestMapping(value = "/exam", method = RequestMethod.GET)
     public String exam(Model model) {
-        System.out.println("from Exam...");
+//        System.out.println("from Exam...");
         return "exam";
     }
 
 
+    // get exam list
     @GetMapping("/exam-list")
     public ResponseEntity<List<ExamModel>> getExamsList(@RequestParam(defaultValue = "0") int page) {
         System.out.println("from Login get...");
@@ -55,9 +58,6 @@ public class Exam {
             System.out.println(page);
             Page<ExamModel> examPage = examService.examList(page);
             exams = examPage.getContent();
-//            for(ExamModel i: exams){
-//                System.out.println(i);
-//            }
         } catch (Exception ex) {
             System.out.println("Error retrieving exams: " + ex.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -65,6 +65,7 @@ public class Exam {
         return new ResponseEntity<>(exams, HttpStatus.OK);
     }
 
+    // create exam
     @PostMapping("/exam")
     public String examCreate(@ModelAttribute ExamModel exam) {
         System.out.println("from exam create...");
@@ -89,8 +90,24 @@ public class Exam {
             System.out.println("User not authenticated");
         }
 
-        System.out.println(exam);
-        return "redirect:/exam";
+//        System.out.println(exam);
+        return "redirect:/admin/exam";
     }
+
+    // delete exam
+
+    @DeleteMapping("/exam/{examId}")
+    public ResponseEntity<Response> deleteExam(@PathVariable Long examId) {
+        System.out.println("from exam delete..."+examId);
+        try{
+            this.examService.deletExam(examId);
+        }catch (Exception ex){
+            System.out.println(ex);
+        }
+        return new ResponseEntity<Response>(new Response("Successfully deleted",true),HttpStatus.OK);
+    }
+
+
+
 
 }

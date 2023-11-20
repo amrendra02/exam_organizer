@@ -56,12 +56,10 @@ public class Profile {
                         }
 
                     }
-
                     System.out.println(active);
                     System.out.println(cancel);
                     System.out.println(live);
                     System.out.println(total);
-
                 }catch (Exception ex){
                     System.out.println("error while total count exam: "+ex);
                 }

@@ -1,14 +1,14 @@
 package com.exam_organizer.service;
 
+import com.exam_organizer.exception.ResourceNotFoundException;
 import com.exam_organizer.model.ExamModel;
 import com.exam_organizer.model.ExamOrganizer;
+import com.exam_organizer.repository.ExamOrganizerRepository;
 import com.exam_organizer.repository.ExamRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,9 +20,11 @@ import java.util.Optional;
 public class ExamService {
 
 
+    private final ExamOrganizerRepository examOrganizerRepository;
     private final ExamRepository examRepository;
 
-    public ExamService(ExamRepository examRepository) {
+    public ExamService(ExamOrganizerRepository examOrganizerRepository, ExamRepository examRepository) {
+        this.examOrganizerRepository = examOrganizerRepository;
         this.examRepository = examRepository;
     }
 
@@ -85,6 +87,12 @@ public class ExamService {
         }
 
         return exam;
+    }
+
+    public void deletExam(Long examId) {
+//        this.examOrganizerRepository.findById(organizerId).orElseThrow(()->new ResourceNotFoundException("User","User Id",organizerId));
+        ExamModel exam = this.examRepository.findById(examId).orElseThrow(() -> new ResourceNotFoundException("Exam", "Exam Id", examId));
+        this.examRepository.delete(exam);
     }
 
 }
