@@ -1,15 +1,16 @@
 package com.exam_organizer.controller;
 
+import com.exam_organizer.constant.ApiResponse;
+import com.exam_organizer.constant.User;
+import com.exam_organizer.dto.ExamDto;
 import com.exam_organizer.model.ExamModel;
 import com.exam_organizer.model.ExamOrganizer;
 import com.exam_organizer.payload.Response;
 import com.exam_organizer.repository.ExamRepository;
 import com.exam_organizer.service.ExamService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -19,10 +20,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Controller
@@ -31,6 +30,12 @@ public class Exam {
 
     @Autowired
     private ExamService examService;
+
+
+    @Autowired
+    private ModelMapper modelMapper;
+
+    private User user = new User();
 
 
     private final ExamRepository examRepository;
@@ -42,32 +47,30 @@ public class Exam {
     // get exam page
     @RequestMapping(value = "/exam", method = RequestMethod.GET)
     public String exam(Model model) {
-//        System.out.println("from Exam...");
         return "exam";
     }
 
 
     // get exam list
     @GetMapping("/exam-list")
-    public ResponseEntity<List<ExamModel>> getExamsList(@RequestParam(defaultValue = "0") int page) {
+    public ResponseEntity<?> getExamsList(@RequestParam(defaultValue = "0") int page) {
         System.out.println("from Login get...");
-        int pageSize = 10; // Set the page size
-        Pageable pageable = PageRequest.of(page, pageSize, Sort.by("examId").descending());
         List<ExamModel> exams = new ArrayList<>();
+        List<ExamDto> examR = new ArrayList<>();
         try {
-            System.out.println(page);
             Page<ExamModel> examPage = examService.examList(page);
             exams = examPage.getContent();
+            examR = exams.stream().map((x) -> this.modelMapper.map(x, ExamDto.class)).collect(Collectors.toList());
         } catch (Exception ex) {
             System.out.println("Error retrieving exams: " + ex.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<>(exams, HttpStatus.OK);
+        return new ResponseEntity<>(examR, HttpStatus.OK);
     }
 
     // create exam
     @PostMapping("/exam")
-    public String examCreate(@ModelAttribute ExamModel exam) {
+    public ResponseEntity<?> examCreate(@ModelAttribute ExamModel exam) {
         System.out.println("from exam create...");
 
         SecurityContext context = SecurityContextHolder.getContext();
@@ -86,28 +89,45 @@ public class Exam {
             } else {
                 System.out.println("Principal is not of type ExamOrganizer");
             }
+            return new ResponseEntity<>(HttpStatus.OK);
         } else {
             System.out.println("User not authenticated");
         }
 
 //        System.out.println(exam);
-        return "redirect:/admin/exam";
+//        return "redirect:/admin/exam";
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     // delete exam
 
     @DeleteMapping("/exam/{examId}")
     public ResponseEntity<Response> deleteExam(@PathVariable Long examId) {
-        System.out.println("from exam delete..."+examId);
-        try{
+        System.out.println("from exam delete..." + examId);
+        try {
             this.examService.deletExam(examId);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex);
         }
-        return new ResponseEntity<Response>(new Response("Successfully deleted",true),HttpStatus.OK);
+        return new ResponseEntity<Response>(new Response("Successfully deleted", true), HttpStatus.OK);
     }
 
+    // update exam
 
+    @PostMapping(value = "/exam/update/{examId}")
+    public ResponseEntity<?> updateExam(@PathVariable long examId, @RequestBody ExamDto examDto) {
+        System.out.println("exam update...");
+        try {
+            System.out.println(examDto);
+            this.examService.update(this.user.getUserId(), examId, examDto);
+            HashMap<String, String> map = new HashMap<>();
+            map.put("success", "update");
 
+            return new ResponseEntity<>(map, HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println(e);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
 }

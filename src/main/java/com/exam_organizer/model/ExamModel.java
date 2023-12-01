@@ -1,12 +1,15 @@
 package com.exam_organizer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -47,5 +50,26 @@ public class ExamModel {
     @JoinColumn(name = "organizer_id")
     private ExamOrganizer organizer;
 
-    // Constructors, getters, and setters
+    // ... (existing fields)
+
+    @JsonIgnoreProperties("examModel")
+    @OneToMany(mappedBy = "examModel", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<QuestionModel> questions;
+
+    // Additional method to add a question
+    public void addQuestion(QuestionModel question) {
+        if (questions == null) {
+            questions = new ArrayList<>();
+        }
+        questions.add(question);
+        question.setExamModel(this);
+    }
+
+    // Additional method to remove a question
+    public void removeQuestion(QuestionModel question) {
+        if (questions != null) {
+            questions.remove(question);
+            question.setExamModel(null);
+        }
+    }
 }

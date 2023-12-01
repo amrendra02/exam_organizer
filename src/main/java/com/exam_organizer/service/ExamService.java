@@ -1,5 +1,6 @@
 package com.exam_organizer.service;
 
+import com.exam_organizer.dto.ExamDto;
 import com.exam_organizer.exception.ResourceNotFoundException;
 import com.exam_organizer.model.ExamModel;
 import com.exam_organizer.model.ExamOrganizer;
@@ -28,8 +29,6 @@ public class ExamService {
         this.examRepository = examRepository;
     }
 
-    private static final int PAGE_SIZE = 10; // Number of items per page
-
     public String CreateExam(ExamModel exam) {
         try {
             examRepository.save(exam);
@@ -39,7 +38,6 @@ public class ExamService {
             return "failed";
         }
     }
-
 
     public Page<ExamModel> examList(int page) {
         int pageSize = 10; // Define the page size
@@ -69,8 +67,6 @@ public class ExamService {
         Optional<ExamModel> exam;
         Long organizerId = 0L;
         try {
-//            id = Long.parseLong(id);
-//            exam = examRepository.findById(id);
             SecurityContext context = SecurityContextHolder.getContext();
             Authentication authentication = context.getAuthentication();
             if (authentication != null && authentication.isAuthenticated()) {
@@ -80,19 +76,32 @@ public class ExamService {
                     organizerId = examOrganizer.getOrganizerId();
                 }
             }
-
             exam = Optional.ofNullable(examRepository.findByExamIdAndOrganizer_OrganizerId(id, organizerId));
         } catch (Exception ex) {
             return null;
         }
-
         return exam;
     }
 
     public void deletExam(Long examId) {
-//        this.examOrganizerRepository.findById(organizerId).orElseThrow(()->new ResourceNotFoundException("User","User Id",organizerId));
         ExamModel exam = this.examRepository.findById(examId).orElseThrow(() -> new ResourceNotFoundException("Exam", "Exam Id", examId));
         this.examRepository.delete(exam);
     }
 
+    public void update(String name,long examId,ExamDto examDto){
+
+        Long organizerId =  this.examOrganizerRepository.findByUsername(name).getOrganizerId();
+        ExamModel exam = this.examRepository.findByExamIdAndOrganizer_OrganizerId(examId,organizerId);
+        if(examDto.getExamName()!=null) exam.setExamName(examDto.getExamName());
+        if(examDto.getExamDate()!=null) exam.setExamDate(examDto.getExamDate());
+        if (examDto.getDuration() >0) exam.setDuration(examDto.getDuration());
+        if (examDto.getStartTime()!=null) exam.setStartTime(examDto.getStartTime());
+        if(examDto.getTotalMarks()>0) exam.setTotalMarks(examDto.getTotalMarks());
+        if(examDto.getStatus()!=null){
+            if (examDto.getStatus()== ExamDto.Status.ACTIVE) exam.setStatus(ExamModel.Status.ACTIVE);
+            if (examDto.getStatus()== ExamDto.Status.CANCELLED) exam.setStatus(ExamModel.Status.CANCELLED);
+            if (examDto.getStatus()== ExamDto.Status.LIVE) exam.setStatus(ExamModel.Status.LIVE);
+        }
+        this.examRepository.save(exam);
+    }
 }

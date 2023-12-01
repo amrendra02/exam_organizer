@@ -18,7 +18,7 @@ public class QuestionModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long questionId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "exam_id")
     private ExamModel examModel;
 

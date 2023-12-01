@@ -32,22 +32,17 @@ public class ExamOrganizer implements UserDetails {
     private String phoneNumber;
     private String password;
 
+
     private String role;
+
+    @OneToMany(mappedBy = "organizer", cascade = CascadeType.ALL)
+    private List<ExamModel> exams;
 
     // Methods for the UserDetails store and use by Spring Security
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
     }
-
-    /*@Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        if (this.role.equals("ADMIN")) {
-            authorities.add(new SimpleGrantedAuthority("ADMIN")); // Set "ADMIN" role as GrantedAuthority
-        }
-        return authorities;
-    }*/
 
     @Override
     public boolean isAccountNonExpired() {

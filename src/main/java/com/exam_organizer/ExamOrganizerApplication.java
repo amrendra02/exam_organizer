@@ -1,7 +1,9 @@
 package com.exam_organizer;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class ExamOrganizerApplication {
@@ -11,5 +13,11 @@ public class ExamOrganizerApplication {
 		System.out.println("started...");
 
 	}
+
+	@Bean
+	public ModelMapper modelMapper(){
+		return  new ModelMapper();
+	}
+
 
 }
