@@ -9,6 +9,6 @@ public class ApiResponse {
 
     private String message;
 
-    private boolean id;
+    private boolean status;
 
 }

@@ -11,7 +11,6 @@ function openPopup() {
 function closePopup() {
     var popup = document.getElementById("popup");
     popup.style.display = "none";
-    console.log(flag);
 }
 
 var page = 0;
@@ -19,8 +18,7 @@ var isLoading = false;
 var loadMore = true;
 
 function fetchExams() {
-    console.log(`${page} + ${isLoading} + ${loadMore}}`)
-    console.log("ok1.")
+    console.log(page+" "+isLoading+" "+loadMore);
     if (!isLoading && loadMore) {
         isLoading = true;
         fetch("/admin/exam-list?page=" + page)
@@ -31,7 +29,7 @@ function fetchExams() {
                 loadMore = false;
             } else {
                 const examList = document.getElementById("examList");
-                console.log("----reciveing....");
+
                 data.forEach((exam) => {
                     const tbody = document.getElementById("examList");
                     const tr = document.createElement("tr");
@@ -226,15 +224,12 @@ function cancelExam(id) {
         if (!response.ok) {
             throw new Error(`Failed to change exam: ${response.status}`);
         }
-        console.log(response);
-        console.log("---ok 1--")
-        console.log(`${page} + ${isLoading} + ${loadMore}}`)
+
         page = 0;
         isLoading = false;
         loadMore = true;
         document.getElementById("examList").innerText = '';
         fetchExams();
-        console.log("---ok 2--")
     }).then(data => {
         console.log('Exam update successfully:', data);
         //      window.location.href = '/admin/exam';
@@ -255,5 +250,38 @@ function generateLinkExam(id) {
     console.log(`GenerateLink Exam Id: ${id}`);
 }
 
+function createExam(){
+    console.log("from create exam..")
+    var csrfToken_ = window.csrfToken;
+    var csrfHeader_ = window.csrfHeader;
+    const examData={
+        examName:document.getElementById("examName").value,
+        examDate:document.getElementById('examDate').value,
+        startTime:document.getElementById('startTime').value,
+        duration:document.getElementById('duration').value,
+        totalMarks:document.getElementById('totalMarks').value,
+    };
+    fetch('/admin/exam', {
+        method: 'POST',
+        headers: {
+            [csrfHeader_]: csrfToken_,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(examData)
+    }).then(response =>response.json())
+        .then(data => {
+        console.log(data);
+        closePopup(0);
+        console.log(page+" "+isLoading+" "+loadMore);
+        page = 0;
+        isLoading = false;
+        loadMore = true;
+        document.getElementById("examList").innerText = '';
+        fetchExams();
+    }).catch(error => {
+        console.error('Error submitting exam data:', error);
+    });
+
+}
 
 

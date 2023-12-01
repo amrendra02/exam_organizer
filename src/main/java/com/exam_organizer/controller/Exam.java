@@ -70,8 +70,9 @@ public class Exam {
 
     // create exam
     @PostMapping("/exam")
-    public ResponseEntity<?> examCreate(@ModelAttribute ExamModel exam) {
-        System.out.println("from exam create...");
+    public ResponseEntity<?> examCreate(@RequestBody ExamModel exam) {
+        System.out.println("from exam create... ");
+        HashMap<String, String> map = new HashMap<>();
 
         SecurityContext context = SecurityContextHolder.getContext();
         Authentication authentication = context.getAuthentication();
@@ -80,23 +81,21 @@ public class Exam {
             Object principal = authentication.getPrincipal();
             if (principal instanceof ExamOrganizer) {
                 ExamOrganizer examOrganizer = (ExamOrganizer) principal;
-                Long organizerId = examOrganizer.getOrganizerId();
-                System.out.println("Organizer Id: " + organizerId);
+
                 exam.setOrganizer(examOrganizer);
                 String resp = examService.CreateExam(exam);
-                System.out.println("exam status: " + resp);
+//                System.out.println("exam status: " + resp);
 
+                map.put("Success", "Exam Create");
+                return new ResponseEntity<>(map,HttpStatus.OK);
             } else {
                 System.out.println("Principal is not of type ExamOrganizer");
             }
-            return new ResponseEntity<>(HttpStatus.OK);
         } else {
             System.out.println("User not authenticated");
         }
-
-//        System.out.println(exam);
-//        return "redirect:/admin/exam";
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        map.put("Failed", "Exam Create");
+        return new ResponseEntity<>(map,HttpStatus.BAD_REQUEST);
     }
 
     // delete exam
