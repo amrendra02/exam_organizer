@@ -1,0 +1,371 @@
+@import url("https://fonts.googleapis.com/css2?family=Inria+Sans&display=swap");
+
+.ExamPopup {
+    width: 800px;
+    height: 600px;
+    background: #e6e6e6;
+    position: absolute;
+    left: 50%; /* Center the element horizontally */
+    top: 20px; /* Adjust the vertical position as needed */
+    transform: translateX(-50%); /* Center the element precisely */
+    border-radius: 10px;
+    box-shadow: 0px 0px 100px 39px rgba(42, 42, 42, 0.496);
+}
+
+.Frame8 {
+    width: 369px;
+    height: 178px;
+    left: 30px;
+    top: 392px;
+    position: absolute;
+}
+
+.Rectangle107 {
+    width: 369px;
+    height: 178px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: white;
+    border-radius: 10px;
+    border: 1px black solid;
+}
+
+.Download {
+    width: 73px;
+    height: 29px;
+    left: 55px;
+    top: 39px;
+    position: absolute;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.42);
+
+
+}
+
+.Rectangle67 {
+    background: #767676;
+    border-radius: 4px;
+    border: 1px #444444 solid;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Rectangle67:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+
+.Create-1 {
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    font-family: Inria Sans;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.Create-1:hover {
+    color: black;
+}
+
+.Cancel {
+    width: 73px;
+    height: 30px;
+    left: 55px;
+    top: 73px;
+    position: absolute;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.42);
+
+}
+
+
+
+.Delete {
+    width: 73px;
+    height: 29px;
+    left: 55px;
+    top: 110px;
+    position: absolute;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.42);
+
+}
+
+.Edit {
+    width: 73px;
+    height: 29px;
+    left: 242px;
+    top: 40px;
+    position: absolute;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.42);
+
+}
+
+
+.Cadidate {
+    width: 73px;
+    height: 30px;
+    left: 242px;
+    top: 74px;
+    position: absolute;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.42);
+
+}
+
+.Question {
+    width: 73px;
+    height: 29px;
+    left: 242px;
+    top: 109px;
+    position: absolute;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.42);
+
+}
+
+.Frame7 {
+    width: 369px;
+    height: 359px;
+    left: 30px;
+    top: 30px;
+    position: absolute;
+}
+
+.Rectangle108 {
+    width: 369px;
+    height: 359px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: white;
+    border-radius: 10px;
+    border: 1px black solid;
+}
+
+.ExamName {
+    width: 271px;
+    height: 50px;
+    left: 98px;
+    top: 12px;
+    position: absolute;
+    color: black;
+    font-size: 19px;
+    font-family: Inria Sans;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.Date {
+    width: 272px;
+    height: 52px;
+    left: 97px;
+    top: 62px;
+    position: absolute;
+    color: black;
+    font-size: 19px;
+    font-family: Inria Sans;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.Time {
+    width: 272px;
+    height: 50px;
+    left: 97px;
+    top: 125px;
+    position: absolute;
+    color: black;
+    font-size: 19px;
+    font-family: Inria Sans;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.Marks {
+    width: 272px;
+    height: 53px;
+    left: 97px;
+    top: 165px;
+    position: absolute;
+    color: black;
+    font-size: 19px;
+    font-family: Inria Sans;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.Duration {
+    width: 272px;
+    height: 51px;
+    left: 97px;
+    top: 217px;
+    position: absolute;
+    color: black;
+    font-size: 19px;
+    font-family: Inria Sans;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.TotalQuestion {
+    width: 272px;
+    height: 53px;
+    left: 97px;
+    top: 268px;
+    position: absolute;
+    color: black;
+    font-size: 19px;
+    font-family: Inria Sans;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.TotalCandidate {
+    width: 272px;
+    height: 53px;
+    left: 97px;
+    top: 319px;
+    position: absolute;
+    color: black;
+    font-size: 19px;
+    font-family: Inria Sans;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.ExamIcon {
+    width: 33px;
+    height: 30px;
+    left: 46px;
+    top: 10px;
+    position: absolute;
+    background-image:url('/drawer/exam-icon.svg');
+}
+
+.Group {
+    width: 24.75px;
+    height: 25.5px;
+    left: 5px;
+    top: 2px;
+    position: absolute;
+}
+
+.UiwDate {
+    width: 25px;
+    height: 30px;
+    left: 51px;
+    top: 62px;
+    position: absolute;
+    background-image:url('/drawer/uiw_date.svg');
+}
+
+
+
+.IonTimeOutline {
+    width: 29px;
+    height: 29px;
+    left: 49px;
+    top: 113px;
+    position: absolute;
+    background-image:url('/drawer/ion_time-outline.svg');
+}
+
+
+.ArcticonsNextcloudbookmarks {
+    width: 29px;
+    height: 29px;
+    left: 49px;
+    top: 164px;
+    position: absolute;
+    background-image:url('/drawer/arcticons_nextcloudbookmarks.svg');
+}
+
+
+
+.GameIconsDuration {
+    width: 29px;
+    height: 29px;
+    left: 49px;
+    top: 216px;
+    position: absolute;
+    background-image:url('/drawer/game-icons_duration.svg');
+}
+
+
+
+.PhQuestion {
+    width: 29px;
+    height: 29px;
+    left: 49px;
+    top: 268px;
+    position: absolute;
+    background-image:url('/drawer/ph_question.svg');
+}
+
+.Icons8Student {
+    width: 29px;
+    height: 29px;
+    left: 49px;
+    top: 319px;
+    position: absolute;
+    background-image:url('/drawer/icons8_student.svg');
+}
+
+.QuestionList {
+    width: 368px;
+    height: 540px;
+    left: 402px;
+    top: 30px;
+    position: absolute;
+    background: white;
+    border-radius: 10px;
+    border: 1px black solid;
+    overflow: auto;
+}
+
+.QuestionList::-webkit-scrollbar {
+    width: 4px;
+    /* Set the width of the scrollbar */
+}
+
+.QuestionList::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Set the color of the thumb */
+    border-radius: 5px;
+    /* Set the border radius of the thumb */
+}
+
+.QuestionList::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+
+}
+
+.Question1 {
+    width: 288px;
+    height: 49px;
+    margin-left: 30px;
+
+    color: black;
+    font-size: 12px;
+    font-family: Inria Sans;
+    font-weight: 400;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+
+
+.Line34 {
+    width: 288.01px;
+    height: 0px;
+    margin-left: 30px;
+    /* left: 40px;
+    top: 57px; */
+
+    /* position: absolute; */
+    border: 1px #7c7c7c solid;
+}

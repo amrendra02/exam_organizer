@@ -1,0 +1,57 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body th:fragment="view">
+<link rel="stylesheet" th:href="@{/css/exam_popup.css}"/>
+<div class="ExamPopup" id="ExamPopup" style="display:none;">
+    <div class="Frame8">
+        <div class="Rectangle107"></div>
+        <div class="Download Rectangle67 Create-1">Download</div>
+        <div class="Cancel Rectangle67 Create-1">Cancel</div>
+        <div class="Delete Rectangle67 Create-1">Delete</div>
+        <div class="Edit Rectangle67 Create-1">Edit</div>
+        <div class="Cadidate Rectangle67 Create-1">Candidate</div>
+        <div class="Question Rectangle67 Create-1">Question</div>
+    </div>
+    <div class="Frame7">
+        <div class="Rectangle108"></div>
+        <div class="ExamName">Exam Name</div>
+        <div class="Date">Date</div>
+        <div class="Time">Time</div>
+        <div class="Marks">Marks</div>
+        <div class="Duration">Duration</div>
+        <div class="TotalQuestion">Total Question</div>
+        <div class="TotalCandidate">Total Candidate</div>
+        <div class="ExamIcon">
+        </div>
+        <div class="UiwDate">
+        </div>
+        <div class="IonTimeOutline">
+
+        </div>
+        <div class="ArcticonsNextcloudbookmarks">
+        </div>
+        <div class="GameIconsDuration">
+
+        </div>
+        <div class="PhQuestion">
+            <div class="Vector10"></div>
+        </div>
+        <div class="Icons8Student">
+
+        </div>
+    </div>
+    <div id="QuestionList" class="QuestionList"></div>
+    <script th:src="@{/js/exam_view.js}"></script>
+</div>
+</body>
+<script>
+    const questionListContainer = document.getElementById("QuestionList");
+    questionListContainer.innerHTML = "";
+
+    for (let i = 1; i <= 15; i++) {
+        questionListContainer.innerHTML += `
+            <div class="Question1">Question ${i}.....</div>
+            <div class="Line34"></div>
+        `;
+    }
+</script>
+</html>

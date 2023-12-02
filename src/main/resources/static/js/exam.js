@@ -7,9 +7,18 @@ function openPopup() {
     popup.style.display = "block";
 
 }
-
 function closePopup() {
     var popup = document.getElementById("popup");
+    popup.style.display = "none";
+}
+
+function openView(){
+    var popup = document.getElementById("ExamPopup");
+    popup.style.display = "block";
+}
+
+function closeView(){
+    var popup = document.getElementById("ExamPopup");
     popup.style.display = "none";
 }
 
