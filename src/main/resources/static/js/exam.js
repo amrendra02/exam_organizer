@@ -20,6 +20,9 @@ function openView(){
 function closeView(){
     var popup = document.getElementById("ExamPopup");
     popup.style.display = "none";
+
+    const questionListContainer = document.getElementById("QuestionList");
+    questionListContainer.innerHTML =`<p class="water-1">Exam View</p>`;
 }
 
 var page = 0;
@@ -40,6 +43,9 @@ function fetchExams() {
                 const examList = document.getElementById("examList");
 
                 data.forEach((exam) => {
+//                    console.log(exam)
+                    const ob={id:exam.examId,
+                    name:exam.examName}
                     const tbody = document.getElementById("examList");
                     const tr = document.createElement("tr");
                     tr.setAttribute("th:each", "exam: ${exams}");
@@ -89,7 +95,9 @@ function fetchExams() {
                                 <div style="width:100%;height:100%; display: flex; align-items: center;justify-content: space-around;">
 
                                 <!-- view -->
-                                 <div  onclick="viewExam(${exam.examId})" style="cursor: pointer">
+                                 <div onclick="viewExam([${exam.examId}, '${exam.examName}',
+                                  '${exam.startTime}', '${exam.examDate}',
+                                   '${exam.status}', ${exam.totalMarks}, ${exam.duration}])" style="cursor: pointer">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
                                         fill="none">
                                         <path d="M4.16667 9.99992C4.16667 9.99992 6.2875 5.83325 10 5.83325C13.7117 5.83325 15.8333 9.99992 15.8333 9.99992C15.8333 9.99992 13.7117 14.1666 10 14.1666C6.2875 14.1666 4.16667 9.99992 4.16667 9.99992Z"
@@ -181,7 +189,6 @@ document.getElementById("examList")
         fetchExams();
     }
 });
-
 fetchExams();
 
 function deleteExam(id) {
@@ -215,7 +222,6 @@ function deleteExam(id) {
     });
 }
 
-
 function cancelExam(id) {
     console.log(`Cancel Exam Id: ${id}`);
     var csrfToken_ = window.csrfToken;
@@ -248,8 +254,14 @@ function cancelExam(id) {
 
 }
 
-function viewExam(id) {
-    console.log(`View Exam Id: ${id}`);
+function viewExam(ob) {
+    openView();
+    document.getElementById("ex1").innerHTML=ob[1];
+    document.getElementById("ex2").innerHTML=ob[3];
+    document.getElementById("ex3").innerHTML=ob[2];
+    document.getElementById("ex4").innerHTML=ob[5]+" Marks";
+    document.getElementById("ex5").innerHTML=ob[6]+" min";
+    Qlist(ob[0]);
 }
 
 function downloadExam(id) {

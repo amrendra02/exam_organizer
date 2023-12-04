@@ -31,6 +31,17 @@
     border: 1px black solid;
 }
 
+.close{
+    position:absolute;
+    right:1;
+    background-image:url('/drawer/carbon_close-outline.svg');
+    cursor:pointer;
+}
+.close:hover{
+    background-color:red;
+}
+
+
 .Download {
     width: 73px;
     height: 29px;
@@ -173,7 +184,7 @@
     width: 272px;
     height: 50px;
     left: 97px;
-    top: 125px;
+    top: 116px;
     position: absolute;
     color: black;
     font-size: 19px;
@@ -356,6 +367,7 @@
     word-wrap: break-word;
     display: flex;
     align-items: center;
+    overflow:hidden;
 }
 
 
@@ -368,4 +380,19 @@
 
     /* position: absolute; */
     border: 1px #7c7c7c solid;
+}
+
+.water-1{
+    display:flex;
+    text-align:center;
+    width:100%;
+    color:gray;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    margin: 0px;
+
+    font-size:30px;
+    font-family: Inria Sans;
+    font-weight: 700;
 }

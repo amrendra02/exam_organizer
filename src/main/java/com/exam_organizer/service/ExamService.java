@@ -63,7 +63,7 @@ public class ExamService {
     }
 
     public Optional<ExamModel> examData(Long id) {
-        System.out.println("from EXAM Service...");
+        System.out.println("from EXAM Service..."+ id);
         Optional<ExamModel> exam;
         Long organizerId = 0L;
         try {
@@ -77,6 +77,9 @@ public class ExamService {
                 }
             }
             exam = Optional.ofNullable(examRepository.findByExamIdAndOrganizer_OrganizerId(id, organizerId));
+            exam.get().setOrganizer(null);
+            exam.get().setQuestions(null);
+            System.out.println("..3");
         } catch (Exception ex) {
             return null;
         }

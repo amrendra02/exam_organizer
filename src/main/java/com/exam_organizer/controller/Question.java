@@ -62,25 +62,12 @@ public class Question {
         Optional<ExamModel> exam;
         try {
             id = Long.parseLong(input);
-           /* SecurityContext context = SecurityContextHolder.getContext();
-            Authentication authentication = context.getAuthentication();
-            if (authentication != null && authentication.isAuthenticated()) {
-                Object principal = authentication.getPrincipal();
-                if (principal instanceof ExamOrganizer) {
-                    ExamOrganizer examOrganizer = (ExamOrganizer) principal;
-                     organizerId = examOrganizer.getOrganizerId();
-                }
-            }
-
-              exam = Optional.ofNullable(examRepository.findByExamIdAndOrganizer_OrganizerId(id, organizerId));
-*/
-//            ExamModel ex = exam.get();
-
             exam= examService.examData(id);
             ExamModel ex = exam.get();
-
+            System.out.println("...2  "+ex);
 
             ex.setOrganizer(null);
+
             if (exam.isPresent()) {
                 return ResponseEntity.ok(exam.get());
             } else {
