@@ -3,6 +3,8 @@ package com.exam_organizer.controller;
 import com.exam_organizer.model.ExamModel;
 import com.exam_organizer.model.ExamOrganizer;
 import com.exam_organizer.repository.ExamRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,6 +20,8 @@ public class Profile {
 
     private final ExamRepository examRepository;
 
+    private Logger log = LoggerFactory.getLogger(Profile.class);
+
 
     public Profile(ExamRepository examRepository) {
         this.examRepository = examRepository;
@@ -25,7 +29,7 @@ public class Profile {
 
     @RequestMapping("/profile")
     public String profile(Model model){
-        System.out.println("from profile...");
+        log.info("from profile...");
         SecurityContext context = SecurityContextHolder.getContext();
         Authentication authentication = context.getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {
@@ -34,8 +38,8 @@ public class Profile {
                 ExamOrganizer examOrganizer = (ExamOrganizer) principal;
                 Long organizerId = examOrganizer.getOrganizerId();
                 String name = examOrganizer.getFirstName()+" "+examOrganizer.getLastName();
-                System.out.println("Organizer Id: " + organizerId);
-                System.out.println(name);
+                log.info("Organizer Id: {}",organizerId);
+                log.info(name);
                 int total=0;
                 int cancel=0;
                 int active=0;
@@ -56,10 +60,10 @@ public class Profile {
                         }
 
                     }
-                    System.out.println(active);
-                    System.out.println(cancel);
-                    System.out.println(live);
-                    System.out.println(total);
+                    log.info("{}",active);
+                    log.info("{}",cancel);
+                    log.info("{}",live);
+                    log.info("{}",total);
                 }catch (Exception ex){
                     System.out.println("error while total count exam: "+ex);
                 }
@@ -74,10 +78,10 @@ public class Profile {
 
 
             } else {
-                System.out.println("Principal is not of type ExamOrganizer");
+                log.info("Principal is not of type ExamOrganizer");
             }
         } else {
-            System.out.println("User not authenticated");
+            log.info("User not authenticated");
         }
         return "profile";
     }

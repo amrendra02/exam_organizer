@@ -3,6 +3,8 @@ package com.exam_organizer.controller;
 import com.exam_organizer.model.QuestionModel;
 import com.exam_organizer.repository.ExamRepository;
 import com.exam_organizer.repository.QuestionRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ public class Welcome {
 
     private final ExamRepository examRepository;
 
+    private Logger log = LoggerFactory.getLogger(Welcome.class);
     private  final QuestionRepository questionRepository;
     public Welcome(ExamRepository examRepository, QuestionRepository questionRepository) {
         this.examRepository = examRepository;
@@ -25,7 +28,7 @@ public class Welcome {
 
     @RequestMapping("/")
     public String welcome(){
-        System.out.println("from welcome");
+        log.info("Welcome to Admin.");
         return "welcome";
     }
 
@@ -60,9 +63,9 @@ public class Welcome {
     }*/
     @PostMapping("/upload")
     public ResponseEntity<String> handleOptionsUpload(@RequestParam("options") List<String> options) {
-        System.out.println("Received Options:"+options);
+        log.info("Received Options: {}",options);
         for (String option : options) {
-            System.out.println(option);
+            log.info("Request data: {}",option);
         }
         return ResponseEntity.ok("ok");
     }

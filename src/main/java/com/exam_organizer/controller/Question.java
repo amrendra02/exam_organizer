@@ -9,6 +9,8 @@ import com.exam_organizer.repository.QuestionRepository;
 import com.exam_organizer.service.ExamService;
 import com.exam_organizer.service.QuestionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -36,6 +38,9 @@ public class Question {
     private final QuestionService questionService;
 
     private final ExamService examService;
+
+    private Logger log = LoggerFactory.getLogger(Question.class);
+
 
     public Question(ObjectMapper objectMapper, ExamRepository examRepository, QuestionRepository questionRepository, OptionRepository optionRepository, QuestionService questionService, ExamService examService) {
         this.objectMapper = objectMapper;
@@ -86,7 +91,7 @@ public class Question {
                                              @RequestParam("correctOption") String correctOption) {
 
         Long exId = Long.valueOf(examId);
-        System.out.println("from question save...");
+       log.info("from question save...");
 //        System.out.println(question);
 //        System.out.println(image.getOriginalFilename());
 
@@ -169,7 +174,7 @@ public class Question {
     @GetMapping(value = "/question-list/{examId}")
     @ResponseBody
     public List<QuestionModel> getQuestionsByExamId(@PathVariable Long examId, Model model) {
-        System.out.println("from question list... : " + examId);
+        log.info("from question list... : {}",examId);
         try {
             System.out.println("getting from database..");
             List<QuestionModel> questions = questionService.getQuestionsByExamId(examId);

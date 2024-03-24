@@ -31,6 +31,8 @@ public class CandidateModel implements UserDetails {
 
     private String role;
 
+    private String status;
+
     @ManyToOne
     @JoinColumn(name = "exam_id")
     private ExamModel examModel;

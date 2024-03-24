@@ -1,11 +1,15 @@
 package com.exam_organizer.service;
 
+import com.exam_organizer.candidate_Repository.CandidateRepository;
 import com.exam_organizer.dto.ExamDto;
 import com.exam_organizer.exception.ResourceNotFoundException;
+import com.exam_organizer.model.CandidateModel;
 import com.exam_organizer.model.ExamModel;
 import com.exam_organizer.model.ExamOrganizer;
 import com.exam_organizer.repository.ExamOrganizerRepository;
 import com.exam_organizer.repository.ExamRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -24,9 +28,15 @@ public class ExamService {
     private final ExamOrganizerRepository examOrganizerRepository;
     private final ExamRepository examRepository;
 
-    public ExamService(ExamOrganizerRepository examOrganizerRepository, ExamRepository examRepository) {
+    private Logger log = LoggerFactory.getLogger(ExamService.class);
+
+
+    private final CandidateRepository candidateRepository;
+
+    public ExamService(ExamOrganizerRepository examOrganizerRepository, ExamRepository examRepository, CandidateRepository candidateRepository) {
         this.examOrganizerRepository = examOrganizerRepository;
         this.examRepository = examRepository;
+        this.candidateRepository = candidateRepository;
     }
 
     public String CreateExam(ExamModel exam) {
@@ -106,5 +116,21 @@ public class ExamService {
             if (examDto.getStatus()== ExamDto.Status.LIVE) exam.setStatus(ExamModel.Status.LIVE);
         }
         this.examRepository.save(exam);
+    }
+
+    // get registered candidate list
+    public Page<CandidateModel> candidateList(Long examId, int page) {
+        int pageSize = 10; // Define the page size
+        Pageable pageable = PageRequest.of(page, pageSize, Sort.by("candidateId").descending());
+        try {
+            Optional<ExamModel> examModel = this.examRepository.findById(examId);
+            if(examModel.isPresent()){
+                return candidateRepository.findByExamModel(examModel.get(), pageable);
+            }
+            return null;
+        } catch (Exception ex) {
+            log.info("Error retrieving exams: " + ex.getMessage());
+            return null;
+        }
     }
 }
