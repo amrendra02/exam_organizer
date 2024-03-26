@@ -20,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +46,8 @@ public class Exam {
 
     private final ExamRepository examRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
     public Exam(ExamRepository examRepository) {
         this.examRepository = examRepository;
     }
@@ -54,7 +57,6 @@ public class Exam {
     public String exam(Model model) {
         return "exam";
     }
-
 
     // get exam list
     @GetMapping("/exam-list")
@@ -143,6 +145,7 @@ public class Exam {
             Page<CandidateModel> examPage = examService.candidateList(examId,page);
             candidate = examPage.getContent();
             res = candidate.stream().map((x) -> this.modelMapper.map(x, CandidateDto.class)).collect(Collectors.toList());
+
         } catch (Exception ex) {
             log.info("Error retrieving exams: {}",ex.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -27,7 +27,7 @@ public class QuestionModel {
     private String questionText;
 
     @Lob
-    @Column(name = "image", columnDefinition = "BLOB")
+    @Column(name = "image", columnDefinition = "LONGBLOB")
     private byte[] image;
 
     @OneToMany(mappedBy = "questionModel", cascade = CascadeType.ALL)

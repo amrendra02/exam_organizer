@@ -1,29 +1,28 @@
-
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-  <head>
+<head>
     <title>CBT</title>
     <link rel="stylesheet" th:href="@{/css/candidate.css}"/>
 
-  </head>
-  <body style="width: 100%; height: 720px; margin: 0; background: #000c2d">
-  <input type="hidden" id="csrfHeader" data-th-value="${_csrf.headerName}"/>
-  <input type="hidden" id="csrfToken" data-th-value="${_csrf.token}"/>
+</head>
+<body style="width: 100%; height: 720px; margin: 0; background: #000c2d">
+<input type="hidden" id="csrfHeader" data-th-value="${_csrf.headerName}"/>
+<input type="hidden" id="csrfToken" data-th-value="${_csrf.token}"/>
 
-  <div th:replace="~{header :: header1}"></div>
-    <table style="width: 100%; height: 100%; border-collapse: collapse">
-      <tr style="background: #bae2ff">
+<div th:replace="~{header :: header1}"></div>
+<table style="width: 100%; height: 100%; border-collapse: collapse">
+    <tr style="background: #bae2ff">
         <td style="width: 200px; vertical-align: baseline; padding: 0px">
-          <div th:replace="~{navbar :: navbar1}"></div>
+            <div th:replace="~{navbar :: navbar1}"></div>
         </td>
         <td style="vertical-align: top">
-          <div class="candidate_root">
-            <div class="candidate_block_a">
-<!--              <div class="candidate_exam_search">-->
-                <form id="search_form" th:action="@{/admin/exam-data}" method="post" class="candidate_exam_search">
+            <div class="candidate_root">
+                <div class="candidate_block_a">
+                    <!--              <div class="candidate_exam_search">-->
+                    <form id="search_form" th:action="@{/admin/exam-data}" method="post" class="candidate_exam_search">
 
-                <p
-                  style="
+                        <p
+                                style="
                     width: 120px;
                     height: 50px;
                     margin: 0;
@@ -35,19 +34,19 @@
                     font-weight: 400;
                     line-height: normal;
                   "
-                >
-                  Exam id:
-                </p>
-                <div
-                  style="
+                        >
+                            Exam id:
+                        </p>
+                        <div
+                                style="
                     display: flex;
                     flex-direction: column;
                     width: 330px;
                     height: 50px;
                     margin-top: 14px;
                   "
-                >
-                  <input id="examId" style="
+                        >
+                            <input id="examId" style="
                       width: 297px;
                       height: 35px;
                       flex-shrink: 0;
@@ -58,8 +57,8 @@
                       background: #f6f6f6;
                     " type="text" name="examId"/>
 
-                  <p id="warning_exam_search_candidate"
-                    style="
+                            <p id="warning_exam_search_candidate"
+                               style="
                       margin: 0;
                       margin-top: 2px;
                       color: #f00;
@@ -71,11 +70,11 @@
                       line-height: normal;
                       letter-spacing: 0.39px;
                     "
-                  >
-                    Please enter valid
-                  </p>
-                </div>
-                <button type="button" onclick="searchExam()" style="
+                            >
+                                Please enter valid
+                            </p>
+                        </div>
+                        <button type="button" onclick="searchExam()" style="
                     width: 100px;
                     height: 45px;
                     flex-shrink: 0;
@@ -93,16 +92,16 @@
                     line-height: normal;
                     cursor: pointer;
                   ">
-                  Search
-                </button>
-                </form>
-<!--              </div>-->
+                            Search
+                        </button>
+                    </form>
+                    <!--              </div>-->
 
 
-              <div class="candidate_upload">
-                <div class="candidate_upload_input">
-                  <p
-                    style="
+                    <div class="candidate_upload">
+                        <div class="candidate_upload_input">
+                            <p
+                                    style="
                       margin: 0;
                       color: #000;
                       text-align: center;
@@ -113,13 +112,13 @@
                       line-height: normal;
                       letter-spacing: 0.36px;
                     "
-                  >
-                    Upload Candidate Detail :
-                  </p>
+                            >
+                                Upload Candidate Detail :
+                            </p>
 
-                  <input
-                    type="file"
-                    style="
+                            <input
+                                    type="file"
+                                    style="
                       margin-top: 5px;
                       width: 250px;
                       height: 22px;
@@ -127,10 +126,10 @@
                       border-bottom-right-radius: 4px;
                       background-color: #fff;
                     "
-                  />
+                            />
 
-                  <p
-                    style="
+                            <p
+                                    style="
                       margin: 0;
                       color: #f00;
                       text-align: center;
@@ -141,12 +140,12 @@
                       line-height: normal;
                       letter-spacing: 0.36px;
                     "
-                  >
-                    * Please upload .csv, .xml file
-                  </p>
-                </div>
-                <button
-                  style="
+                            >
+                                * Please upload .csv, .xml file
+                            </p>
+                        </div>
+                        <button
+                                style="
                     margin-right: 20px;
                     margin-top: 14px;
                     margin-left: 20px;
@@ -164,15 +163,15 @@
                     font-weight: 400;
                     line-height: normal;
                   "
-                >
-                  Upload
-                </button>
-              </div>
-            </div>
-            <div id="candidate_exam_search" class="candidate_block_b">
-              <div   class="flex">
-                <div id="can_exam_name_a"
-                  style="
+                        >
+                            Upload
+                        </button>
+                    </div>
+                </div>
+                <div id="candidate_exam_search" class="candidate_block_b">
+                    <div class="flex">
+                        <div id="can_exam_name_a"
+                             style="
                     width: 200px;
                     height: 47px;
                     color: #000;
@@ -188,15 +187,15 @@
                     justify-content: center;
                     background: #d0d0d0;
                   "
-                >
-                  <p>
-                  Mega Contest 2023
-                  <br />
-                  id:788357684
-                  </p>
-                </div>
-                <div id="can_exam_schedule"
-                  style="
+                        >
+                            <p>
+                                Mega Contest 2023
+                                <br/>
+                                id:788357684
+                            </p>
+                        </div>
+                        <div id="can_exam_schedule"
+                             style="
                     width: 220px;
                     height: 47px;
                     color: #000;
@@ -212,11 +211,11 @@
                     justify-content: center;
                     background: #d0d0d0;
                   "
-                >
-                  23 Oct 2023 / 23:00 / 1:45 Hour
-                </div>
-                <div id="can_exam_status"
-                  style="
+                        >
+                            23 Oct 2023 / 23:00 / 1:45 Hour
+                        </div>
+                        <div id="can_exam_status"
+                             style="
                     width: 80px;
                     height: 47px;
                     color: #000;
@@ -232,11 +231,11 @@
                     justify-content: center;
                     background: #d0d0d0;
                   "
-                >
-                  Live
-                </div>
-                <div id="can_total"
-                  style="
+                        >
+                            Live
+                        </div>
+                        <div id="can_total"
+                             style="
                     width: 100px;
                     height: 47px;
                     color: #000;
@@ -252,55 +251,116 @@
                     justify-content: center;
                     background: #d0d0d0;
                   "
-                >
-                  Total:<br />
-                  10,00,000
+                        >
+                            Total:<br/>
+                            10,00,000
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <div class="candidate_block_c">
-              <!------ candidate_table head ---------------->
-              <div class="flex_table">
-                <div class="candidate_table_head" style="width: 150px">
-                  ID/Password
-                </div>
-                <div class="candidate_table_head" style="width: 260px">
-                  Candidate detail
-                </div>
-                <div class="candidate_table_head" style="width: 80px">
-                  Status
-                </div>
-                <div class="candidate_table_head" style="width: 254px">
-                  Options
-                </div>
-              </div>
-              <div id="candidate_list_show"
-                class="candidate_row_scroll"
-                style="height: 570px; overflow: auto"
-              >
-                <!-- Candidate details -------------------------- -->
-                <!-- DUmmy_data-- -->
+                <div class="candidate_block_c">
+                    <!------ candidate_table head ---------------->
+                    <div class="flex_table">
+                        <div class="candidate_table_head" style="width: 150px">
+                            ID/Password
+                        </div>
+                        <div class="candidate_table_head" style="width: 260px">
+                            Candidate detail
+                        </div>
+                        <div class="candidate_table_head" style="width: 80px">
+                            Status
+                        </div>
+                        <div class="candidate_table_head" style="width: 254px">
+                            Options
+                        </div>
+                    </div>
+                    <div id="candidate_list_show"
+                         class="candidate_row_scroll"
+                         style="height: 570px; overflow: auto"
+                    >
+                        <!-- Candidate details -------------------------- -->
+                        <!-- DUmmy_data-- -->
 
-                <!-- end of candidate table ------------->
-              </div>
-            </div>
+                        <!-- end of candidate table ------------->
+                    </div>
+                </div>
 
-            <!-- footer candidate download candidate list in  csv formate  -->
+                <!-- footer candidate download candidate list in  csv formate  -->
 
-            <div class="candidate_block_d">
-              <p style="" class="candidate_download_info">
-                Download candidate detail in .csv file
-              </p>
-              <button class="candidate_download_btn">Download</button>
+                <div class="candidate_block_d">
+                    <p style="" class="candidate_download_info">
+                        Download candidate detail in .csv file
+                    </p>
+                    <button class="candidate_download_btn">Download</button>
+                    <button class="candidate_download_btn" th:onclick="'openPopup()'">Add</button>
+                </div>
             </div>
-          </div>
         </td>
-      </tr>
-    </table>
-  <script th:src="@{/js/candidate.js}" type="text/javascript"></script>
-  <script th:inline="javascript">
+    </tr>
+</table>
+
+<div class="popup" id="popup">
+    <div class="popup-content" id="popupContainer">
+        <button style="margin: 4px; height: 30px; width: 30px; position: absolute; right: 2px; font-size: 24px; border: none; border: 2px solid rgb(191, 191, 191); padding: 0px 0.5px 2px 0px; border-radius: 30px; background-color: #ff0000; color: rgb(255, 255, 255); font-weight: 500; cursor: pointer;"
+                onclick="closePopup()" type="reset">X
+        </button>
+        <h1 style="font-family: sans-serif; margin-bottom: 0px;margin-top:4px;">Add Candidate</h1>
+        <div class="exam_create_box">
+            <div class="exam_create_input">
+                <p style="margin: 0">Name :</p>
+                <input type="text" id="candidateName" name="candidateName" required/>
+            </div>
+            <div class="exam_create_input">
+                <p style="margin: 0">Photo :</p>
+                <input type="file" id="imageInput" style="height:20px;" name="image">
+            </div>
+            <div class="exam_create_input">
+                <p style="margin: 0">Exam ID :</p>
+                <input type="text" id="examNumber" name="examId" required/>
+            </div>
+
+            <div class="exam_create_input">
+                <p style="margin: 0">DOB :</p>
+                <input type="date" id="dateOfBirth" name="dateOfBirth" required/>
+            </div>
+            <div class="exam_create_input">
+                <p style="margin: 0">Username :</p>
+                <input type="text" id="username" name="username" required/>
+            </div>
+            <div class="exam_create_input">
+                <p style="margin: 0">Phone no:</p>
+                <input type="text" id="phoneNumber" name="phoneNumber" required/>
+            </div>
+            <div class="exam_create_input">
+                <p style="margin: 0">Password:</p>
+                <input type="password" id="password" name="password" required/>
+            </div>
+            <div class="exam_create_input">
+                <p style="margin: 0">Email:</p>
+                <input type="email" id="email" name="email" required/>
+            </div>
+<!--            <div class="exam_create_input">-->
+<!--                <p style="margin: 0">Role:</p>-->
+<!--                <input type="text" id="role" name="role" required/>-->
+<!--            </div>-->
+            <div class="exam_create_input">
+                <p style="margin: 0">Status:</p>
+                <input type="text" id="status" name="status" required/>
+            </div>
+            <!-- If you have an input field for image, you can add it here -->
+        </div>
+        <div>
+            <button class="exam_create_test_btn" onclick="createCandidate()">Create</button>
+            <p style="margin-bottom: 10px; font-family: 'Inter', sans-serif; font-size: 12px; width: 100%; text-align: center; color: #00ce2d; font-weight: 700;">
+                You can edit after create</p>
+        </div>
+    </div>
+</div>
+
+
+<script th:src="@{/js/candidate.js}" type="text/javascript"></script>
+<script th:inline="javascript">
     var csrfToken = /*[[${_csrf.token}]]*/ '';
     var csrfHeader = /*[[${_csrf.headerName}]]*/ '';
-  </script>
-  </body>
+</script>
+</body>
 </html>

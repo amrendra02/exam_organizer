@@ -32,6 +32,9 @@ public class CandidateModel implements UserDetails {
     private String role;
 
     private String status;
+    @Lob
+    @Column(name = "image", columnDefinition = "LONGBLOB")
+    private byte[] image;
 
     @ManyToOne
     @JoinColumn(name = "exam_id")

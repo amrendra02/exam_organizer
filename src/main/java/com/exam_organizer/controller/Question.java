@@ -27,7 +27,6 @@ import java.util.Optional;
 @RequestMapping("/admin")
 public class Question {
 
-
     private final ObjectMapper objectMapper;
 
     private final ExamRepository examRepository;
@@ -53,7 +52,7 @@ public class Question {
 
     @RequestMapping("/question")
     public String question() {
-        System.out.println("from question...A");
+        log.info("from question...A");
         return "question";
     }
 
@@ -61,7 +60,7 @@ public class Question {
     //individually get exam data....
     @PostMapping("/exam-data")
     public ResponseEntity<ExamModel> getExam(@RequestParam("examId") String input) {
-        System.out.println("from exam ---------- individual exam data... "+input);
+        log.info("from exam ---------- individual exam data: {}",input);
         Long id;
         Long organizerId=0L;
         Optional<ExamModel> exam;
@@ -69,7 +68,7 @@ public class Question {
             id = Long.parseLong(input);
             exam= examService.examData(id);
             ExamModel ex = exam.get();
-            System.out.println("...2  "+ex);
+            log.info("...2  {}",ex);
 
             ex.setOrganizer(null);
 
@@ -92,20 +91,20 @@ public class Question {
 
         Long exId = Long.valueOf(examId);
        log.info("from question save...");
-//        System.out.println(question);
-//        System.out.println(image.getOriginalFilename());
+//        log.info(question);
+//        log.info(image.getOriginalFilename());
 
         try {
             if (question.length() == 0 && image.isEmpty()) {
                 // No Content
-                System.out.println("No content found to sav!...");
+                log.info("No content found to sav!...");
                 return ResponseEntity.noContent().build();
             }
             QuestionModel q = new QuestionModel(); // Create a new instance of QuestionModel
             q.setQuestionText(question); // Set the question text
             q.setCorrectOption(correctOption);//-----------------
 
-            System.out.println(correctOption);
+            log.info(correctOption);
             if (!image.isEmpty()) {
                 q.setImage(image.getBytes()); // Set the image bytes
             }
@@ -116,7 +115,7 @@ public class Question {
                 q.setExamModel(examModel);
                 QuestionModel qt = questionRepository.save(q);
                 // OK
-                System.out.println("Question Saved...");
+                log.info("Question Saved...");
                 return ResponseEntity.ok(qt.getQuestionId());
             } else {
                 // Not Found
@@ -124,7 +123,7 @@ public class Question {
             }
         } catch (Exception ex) {
             // Internal Server Error
-            System.out.println("Error While Saving in dataBase!...");
+            log.info("Error While Saving in dataBase!...");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -141,7 +140,7 @@ public class Question {
         try {
             List<Map<String, String>> optionList = objectMapper.readValue(options, List.class);
 
-            System.out.println(id);
+            log.info(id);
 
             QuestionModel qt = questionRepository.findByQuestionId(Math.toIntExact(qId));
             Optional<ExamModel> ex= examRepository.findById(eId);
@@ -149,8 +148,8 @@ public class Question {
             List<OptionModel> op = new ArrayList<>();
 
             for (Map<String, String> option : optionList) {
-                System.out.println("Received Option: " + option.toString());
-                System.out.println("Received Option: " + option.get("number"));
+                log.info("Received Option: {} ",option.toString());
+                log.info("Received Option: {}", option.get("number"));
                 OptionModel optemp = new OptionModel();
                 optemp.setNumber(option.get("number"));
                 optemp.setText(option.get("text"));
@@ -161,11 +160,11 @@ public class Question {
             }
             qt.setOptionModels(op);
             // Return a response if required
-            // System.out.println(qt.getOptionModels());
+            // log.info(qt.getOptionModels());
             String response = "{\"status\": \"success\"}";
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
-            System.out.println("failed to save options");
+            log.info("failed to save options");
             e.printStackTrace();
             return ResponseEntity.ok("failed");
         }
@@ -176,16 +175,16 @@ public class Question {
     public List<QuestionModel> getQuestionsByExamId(@PathVariable Long examId, Model model) {
         log.info("from question list... : {}",examId);
         try {
-            System.out.println("getting from database..");
+            log.info("getting from database..");
             List<QuestionModel> questions = questionService.getQuestionsByExamId(examId);
             for (QuestionModel q : questions) {
-//                System.out.println(q.getQuestionText());
+//                log.info(q.getQuestionText());
                 q.setExamModel(null);
                 q.setOptionModels(null);
             }
             return questions;
         } catch (Exception ex) {
-            System.out.println("failed to get all questions");
+            log.info("failed to get all questions");
         }
         return null;
     }

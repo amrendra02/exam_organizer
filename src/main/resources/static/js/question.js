@@ -21,6 +21,7 @@ if(!eId){
     q_save.style.display = "none";
     opt_save.style.display = "none";
 }
+
 function searchExam() {
     const form = document.getElementById('search_form');
     const formData = new FormData(form);

@@ -18,12 +18,85 @@ var isLoading = false;
 var loadMore = true;
 
 function test(){
-console.log("from candidate.. Javascript")
+    console.log("from candidate.. Javascript")
     if(!eId){
         block_b.style.display="none";
     }
 }
 test();
+
+function openPopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "block";
+
+}
+function closePopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "none";
+}
+
+function getBase64FromFile(file, callback) {
+    const reader = new FileReader();
+
+    // Event listener for when FileReader finishes reading the file
+    reader.onload = function(event) {
+        callback(event.target.result.split(',')[1]); // Invoke callback with base64 string
+    };
+
+    // Read the file as Data URL (base64 format)
+    reader.readAsDataURL(file);
+}
+
+function createCandidate() {
+    console.log("from create Candidate..");
+    var csrfToken_ = window.csrfToken;
+    var csrfHeader_ = window.csrfHeader;
+
+    const fileInput = document.getElementById("imageInput");
+    const imageFile = fileInput.files[0];
+
+    if (!imageFile) {
+        console.error("No image file selected.");
+        return;
+    }
+
+    // Call getBase64FromFile to retrieve base64 encoded image string
+    getBase64FromFile(imageFile, function(base64String) {
+        // Create candidateData object inside the callback
+        const candidateData = {
+            candidateName: document.getElementById("candidateName").value,
+            image: base64String,
+            dateOfBirth: document.getElementById('dateOfBirth').value,
+            username: document.getElementById('username').value,
+            phoneNumber: document.getElementById('phoneNumber').value,
+            password: document.getElementById('password').value,
+            email: document.getElementById('email').value,
+            role: "Candidate",
+            status: document.getElementById('status').value,
+            examId: document.getElementById('examNumber').value,
+        };
+
+        // Send candidateData to the API
+        fetch('/admin/candidate', {
+            method: 'POST',
+            headers: {
+                [csrfHeader_]: csrfToken_,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(candidateData)
+        }).then(response => response.json())
+            .then(data => {
+            // set ExamId globally variable eId = data.examId
+            console.log(data);
+            eId = data.examId;
+            closePopup(0);
+            document.getElementById("candidate_list_show").innerText = '';
+            fetchCandidate();
+        }).catch(error => {
+            console.error('Error submitting Candidate data:', error);
+        });
+    });
+}
 
 function searchExam() {
     const form = document.getElementById('search_form');
@@ -60,8 +133,8 @@ function searchExam() {
 }
 
 function fetchCandidate() {
-console.log("from fetching candidate.")
-//    console.log(page+" "+isLoading+" "+loadMore);
+    //console.log("from fetching candidate.")
+    //    console.log(page+" "+isLoading+" "+loadMore);
     console.log("from fetching candidate list...")
     const url = `/admin/exam/${eId}/candidates/${page}`;
     if (!isLoading && loadMore) {
@@ -78,6 +151,7 @@ console.log("from fetching candidate.")
 
                 data.forEach((candidate) => {
                     console.log(candidate)
+
 
                     const listContainer = document.getElementById("candidate_list_show");
                     const row = document.createElement("div");
@@ -167,12 +241,13 @@ console.log("from fetching candidate.")
 
                     row.innerHTML = `
                  <div class="flex_table_row">
-                  <div class="candidate_table_row" style="width: 150px">
+                  <div class="candidate_table_row" style="width: 150px; text-align: center; flex-direction:column;">
                     Candidate id: ${candidate.candidateId} <br>
-                    Password: ${candidate.password}
+                    Password:
+                    <p style=" width:150px;margin:0px; overflow:auto;">${candidate.password}</p>
                   </div>
                   <div class="candidate_table_row" style="width: 260px">
-                    <img style="width: 80px; height: 60px; background-color: #000" src="" alt="">
+                    <img id="candidatePhoto" style="width: 80px; height: 60px; background-color: #000" src="data:image/png;base64,${candidate.image}" alt="">
                     <div style="
                         margin-left: 20px;
                         text-align: start;
@@ -271,6 +346,10 @@ console.log("from fetching candidate.")
                   </div>
                 </div>
                             `;
+
+//                    const imgElement = document.getElementById("candidatePhoto");
+//                    imgElement.src = `data:image/png;base64, ${candidate.image}`;
+
                     listContainer.append(row);
 
                 });
