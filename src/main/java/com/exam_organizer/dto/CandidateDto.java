@@ -13,7 +13,8 @@ public class CandidateDto {
     private Long candidateId;
     @NotBlank(message = "Candidate not be blank")
     private String candidateName;
-    private Date dateOfBirth;
+//    private Date dateOfBirth;
+    private String dateOfBirth;
 
     @NotBlank(message = "Username not be blank")
     private String username;

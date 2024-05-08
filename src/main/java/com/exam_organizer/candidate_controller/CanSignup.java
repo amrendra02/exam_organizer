@@ -2,8 +2,10 @@ package com.exam_organizer.candidate_controller;
 
 import com.exam_organizer.candidate_Repository.CandidateRepository;
 import com.exam_organizer.candidate_service.CanSignupService;
+import com.exam_organizer.dto.CandidateDto;
 import com.exam_organizer.model.CandidateModel;
 import com.exam_organizer.model.ExamOrganizer;
+import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ public class CanSignup {
     @Autowired
     private CandidateRepository candidateRepository;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     private Logger log = LoggerFactory.getLogger(CanSignup.class);
     @GetMapping("/signup")
     public String signup() {
@@ -34,10 +39,12 @@ public class CanSignup {
     }
 
     @PostMapping("/signup")
-    public String singupPost(@ModelAttribute CandidateModel user, RedirectAttributes redirectAttributes) {
+    public String singupPost(@ModelAttribute CandidateDto req, RedirectAttributes redirectAttributes) {
 
         log.info("Candidate Signup controller...");
-        log.debug("{}",user);
+        log.debug("{}",req);
+
+        CandidateModel user = modelMapper.map(req,CandidateModel.class);
         // Save user data in database
         String resp = signupService.CreateUser(user);
         if (resp == "success") {
