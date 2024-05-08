@@ -10,4 +10,6 @@ public interface ExamOrganizerRepository extends JpaRepository<ExamOrganizer, Lo
 
     ExamOrganizer findByUsername(String username);
 
+    Boolean existsByUsername(String username);
+
 }

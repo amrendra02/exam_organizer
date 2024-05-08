@@ -142,8 +142,9 @@ public class Exam {
         List<CandidateModel> candidate = new ArrayList<>();
         List<CandidateDto> res = new ArrayList<>();
         try {
-            Page<CandidateModel> examPage = examService.candidateList(examId,page);
-            candidate = examPage.getContent();
+//            Page<CandidateModel> examPage
+                    candidate= examService.candidateList(examId,page);
+//            candidate = examPage.getContent();
             res = candidate.stream().map((x) -> this.modelMapper.map(x, CandidateDto.class)).collect(Collectors.toList());
 
         } catch (Exception ex) {

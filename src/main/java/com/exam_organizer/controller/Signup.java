@@ -1,14 +1,20 @@
 package com.exam_organizer.controller;
 
+import com.exam_organizer.candidate_controller.CandidateHome;
 import com.exam_organizer.model.ExamOrganizer;
+import com.exam_organizer.repository.ExamOrganizerRepository;
 import com.exam_organizer.service.SignupService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/admin")
@@ -16,30 +22,52 @@ public class Signup {
 
     @Autowired
     private SignupService signupService;
+    private Logger log = LoggerFactory.getLogger(Signup.class);
+
+    @Autowired
+    private ExamOrganizerRepository examOrganizerRepository;
+
 
     @RequestMapping("/signup")
     public String signup() {
-        System.out.println("from Singup...");
+       log.info("from Admin Signup page");
         return "signup";
     }
 
     @PostMapping("/signup")
-    public String singupPost(@ModelAttribute ExamOrganizer user, RedirectAttributes redirectAttributes) {
+    public String signupPost(@ModelAttribute ExamOrganizer user, RedirectAttributes redirectAttributes) {
 
-        System.out.println("Signup controller post...");
-        System.out.println(user);
+        log.info("Admin Signup controller post...");
+        log.info("{}",user);
         // Save user data in database
         String resp = signupService.CreateUser(user);
         if (resp == "success") {
-            System.out.println(resp);
+            log.info("{}",resp);
             redirectAttributes.addFlashAttribute("signup",true);
             return "redirect:/admin/login";
         }else{
-            System.out.println(resp);
+            log.info("{}",resp);
             redirectAttributes.addFlashAttribute("signup",false);
             return "redirect:/admin/signup";
         }
 
 
     }
+
+    @GetMapping("/check-username")
+    public ResponseEntity<Map<String, Boolean>> checkUsernameExists(@RequestParam("username") String username) {
+        try {
+            log.info("Checking the username.");
+            Boolean exists = examOrganizerRepository.existsByUsername(username);
+            Map<String, Boolean> response = new HashMap<>();
+            response.put("exists", exists);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception ex) {
+            log.error("Error checking username", ex);
+            Map<String, Boolean> errorResponse = new HashMap<>();
+            errorResponse.put("exists", false); // Default to false if there's an error
+            return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

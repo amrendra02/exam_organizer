@@ -1,0 +1,243 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Candidate</title>
+
+    <style>
+        .logout-button {
+            background: none;
+            border: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        .logout-form {
+            display: flex;
+            flex-direction: row;
+            width: 150px;
+            background-color: red;
+            text-align: center;
+            align-items: center;
+            justify-content: space-around;
+            height: 100%;
+        }
+
+        .exam-list-button {
+            background: none;
+        }
+    </style>
+
+    <!-- Include the header from a Thymeleaf fragment -->
+    <div th:replace="~{candidate/header :: header1}"></div>
+</head>
+<body>
+
+<div style="display:flex; flex-direction:row; width:100%; height: 100vh">
+
+
+    <!-- Include the navbar from a Thymeleaf fragment -->
+    <div style="width: 25%;">
+        <div style="height:250px; width:100%; display:flex;flex-direction:column;align-items:center;justify-content:center; color:white; font-family: 'Inter', sans-serif;font-weight: 800;">
+            <div style="width:100px; height:100px; background-color:white; border-radius:4rem;"></div>
+            <p style="margin:0;" th:text="${model}"></p>
+            <p style="margin:0; margin-top:10px; font-size: 18px;"><span th:text="${username}"></span></p>
+            <p style="margin:0; margin-top:4px; font-size: 12px;"><span th:text="${email}"></span></p>
+            <p style="margin:0; margin-top:4px;font-size: 12px;">Phone: <span style="font-size: 12px;"
+                                                                              th:text="${phone}"></span></p>
+            <p style="margin:0; margin-top:4px; font-size: 12px;">Role: <span th:text="${role}"></span></p>
+        </div>
+        <div style="" class="navbar" th:replace="~{candidate/navbar :: navbar2}"></div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; background-color:white; width: 75%;">
+
+
+        <style>
+            .settings-container {
+                display: flex;
+                flex-direction: column;
+                width: 95%;
+                height:500px;
+                margin: 0 2% 0 2%;
+
+                padding-left: 10px; /* Padding around the content */
+                border: 1px solid #ccc; /* Border around the container */
+                background-color: #f9f9f9; /* Background color */
+                border-radius: 10px; /* Rounded corners */
+                font-family: 'Inter', sans-serif;
+            }
+            .row-container {
+                max-height: 100%; /* Set a fixed height for the scrollable area */
+                overflow-y: auto;  /* Enable vertical scrolling */
+                padding-right: 0px;
+                width:100%;
+
+                /* Add padding for scrollbar */
+            }
+
+            .row-container::-webkit-scrollbar {
+                width: 8px; /* Narrow scrollbar */
+            }
+
+            .row-container::-webkit-scrollbar-thumb {
+                background-color: #888; /* Color of the scrollbar thumb */
+                border-radius: 4px;
+                /* Rounded corners for a smoother look */
+            }
+
+            .row-container::-webkit-scrollbar-track {
+                background-color: #f1f1f1; /* Color of the scrollbar track */
+                display:none;
+                border-radius:2rem;
+            }
+
+            /* For Firefox */
+/*            .row-container {*/
+/*                scrollbar-width: thin; *//* Narrow scrollbar */
+/*                scrollbar-color: #888 #f1f1f1; *//* Custom thumb and track color */
+/*            }*/
+
+
+            /* Section styling */
+            .settings-section {
+                margin-bottom: 20px; /* Space between sections */
+            }
+
+            /* Section heading styling */
+            .settings-section h3 {
+                font-weight: bold; /* Bold font for headings */
+                font-size: 18px; /* Heading font size */
+                margin-bottom: 10px; /* Space below heading */
+            }
+
+            /* Style for individual settings */
+            .setting-option {
+                display: flex; /* Flex layout to align items */
+                align-items: center; /* Align items vertically */
+                justify-content: space-between; /* Space between label and control */
+                padding: 10px; /* Padding for each setting */
+                border-bottom: 1px solid #ddd; /* Separator line */
+            }
+
+            /* Style for input fields */
+            input[type="text"],
+            input[type="email"],
+            input[type="password"],
+            input[type="file"] {
+                padding: 10px; /* Padding for input fields */
+                border: 1px solid #ccc; /* Border around input fields */
+                border-radius: 5px; /* Rounded corners */
+                width: 200px; /* Default width */
+            }
+
+            /* Style for buttons */
+            button {
+                padding: 10px 20px; /* Padding for buttons */
+                background: #4CAF50; /* Green background */
+                color: white; /* White text */
+                border: none; /* No border */
+                border-radius: 5px; /* Rounded corners */
+                cursor: pointer; /* Pointer cursor */
+            }
+
+            button:hover {
+                background: #45a049; /* Darker green on hover */
+            }
+        </style>
+        <!-- Candidate information -->
+        <div style="margin-left:2%; margin-right:2%; display:flex; flex-direction:row; justify-content:space-between; align-items:center;">
+            <h1 style="font-family: math;
+            font-size: 24px;
+            font-weight: 900;">Setting</h1>
+     </div>
+
+        <div class="settings-container">
+            <!-- Personal Information Section -->
+            <div class="row-container">
+
+            <div class="settings-section">
+                <h3>Personal Information</h3>
+
+                <!-- Change Name -->
+                <div class="setting-option">
+                    <span>Name:</span>
+                    <input type="text" placeholder="Enter your name" />
+                </div>
+
+                <!-- Change Email -->
+                <div class="setting-option">
+                    <span>Email:</span>
+                    <input type="email" placeholder="Enter your email" />
+                </div>
+
+                <!-- Change Phone Number -->
+                <div class="setting-option">
+                    <span>Phone Number:</span>
+                    <input type="text" placeholder="Enter your phone number" />
+                </div>
+            </div>
+
+            <!-- Profile Section -->
+            <div class="settings-section">
+                <h3>Profile</h3>
+
+                <!-- Change Profile Photo -->
+                <div class="setting-option">
+                    <span>Profile Photo:</span>
+                    <input type="file" accept="image/*" />
+                </div>
+            </div>
+
+            <!-- Security Section -->
+            <div class="settings-section">
+                <h3>Security</h3>
+
+                <!-- Change Password -->
+                <div class="setting-option">
+                    <span>New Password:</span>
+                    <input type="password" placeholder="Enter new password" />
+                </div>
+
+                <div class="setting-option">
+                    <span>Confirm Password:</span>
+                    <input type="password" placeholder="Confirm new password" />
+                </div>
+            </div>
+
+            <!-- Save Changes Button -->
+            <div class="setting-option">
+                <button>Save Changes</button> <!-- Button to save changes -->
+            </div>
+            </div>
+        </div>
+        <!-- Button for fetching the exam list -->
+    </div>
+</div>
+<script>
+    var csrfToken_ = window.csrfToken;
+    var csrfHeader_ = window.csrfHeader;
+
+    function getExamList(candidateId = 34, page = 0) {
+        fetch(`/candidate/${candidateId}/exams/page/${page}`, {
+            headers: {
+                'X-CSRF-Token': csrfToken_,
+                'X-CSRF-Header': csrfHeader_
+            }
+        })
+            .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+            .then(data => {
+            console.log(data);
+            // Process the data here
+        })
+            .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+    }
+</script>
+</body>
+</html>

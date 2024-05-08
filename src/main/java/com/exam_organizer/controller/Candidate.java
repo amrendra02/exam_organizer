@@ -33,7 +33,10 @@ public class Candidate {
 
     @PostMapping("/candidate")
     public ResponseEntity<?>createCandidate(@RequestBody CandidateDto req){
+        log.info("Requesting to create the Candidate");
         CandidateDto res =  candidateService.create(req);
+        log.info("Successfully registered candidate");
+        res.setExamId(req.getExamId());
         return new ResponseEntity<>(res,HttpStatus.OK);
     }
 

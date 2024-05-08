@@ -1,6 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+
     <title>Signup Page</title>
     <!--    <link rel="stylesheet" type="text/css" th:href="@{/signup.css}"/>-->
     <style>
@@ -8,396 +9,473 @@
 
 
 
-:root {
-    background: linear-gradient(180deg, #011A5D 14.06%, rgba(0, 10, 173, 0.91) 100%);
-}
+        :root {
+            background: linear-gradient(180deg, #011A5D 14.06%, rgba(0, 10, 173, 0.91) 100%);
+        }
 
-body {
-    margin: 0;
-}
+        body {
+            margin: 0;
+        }
 
-a {
-    text-decoration: none;
-}
+        a {
+            text-decoration: none;
+        }
 
-.signup_page {
-    /* width: 1280px; */
-    width: 100%;
-    height: 780px;
-}
+        .signup_page {
+            width: 100%;
+            /*            height: 100vh;*/
+        }
 
-.sgnup_header {
-    width: 100%;
-    height: 51px;
-    flex-shrink: 0;
+        .sgnup_header {
+            width: 100%;
+            height: 51px;
+            flex-shrink: 0;
 
-    border-bottom: 0.5px solid #E4E4E4;
-    background: #000C2D;
+            border-bottom: 0.5px solid #E4E4E4;
+            background: #000C2D;
+            display: flex;
+            flex-direction: row;
+            align-items:center;
 
-}
+        }
 
-.signup_logo {
-    display: flex;
-    margin-left: 40px;
-    width: 138px;
-    height: 51px;
-    flex-direction: column;
-    justify-content: center;
-    flex-shrink: 0;
+        .signup_logo {
+            display: flex;
+            align-items: center;
+            margin-left: 40px;
 
-    /* typography  */
-    color: #FFF;
-    font-family: 'Inter', sans-serif;
-    font-size: 30px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+            font-size: 40px;
+            color: aliceblue;
+            font-family: fantasy;
+            font-weight:100;
+        }
 
-}
+        .signup_container_root {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-self: center;
+        }
 
-.signup_container_root {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-self: center;
-}
+        .signup_container {
 
-.signup_container {
-
-    margin-top: 40px;
-    padding: 30px 0px 0px 0px;
-    width: 680px;
-    height: 610px;
-    flex-shrink: 0;
+            margin-top: 40px;
+            padding: 30px 0px 0px 0px;
+            width: 680px;
+            height: 610px;
+            flex-shrink: 0;
 
 
-    border-radius: 10px;
-    background: #D9F6FF;
+            border-radius: 10px;
+            background: #D9F6FF;
 
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
 
 
 
-.signup_tr {
-    width: 650px;
-    height: 50px;
-    text-align: center;
-    display: flex;
+        .signup_tr {
+            width: 650px;
+            height: 50px;
+            text-align: center;
+            display: flex;
 
-}
+        }
 
-.signup_tr_td_1 {
+        .signup_tr_td_1 {
 
-    width: 203px;
-    margin-left: 30px;
-    margin-right: 30px;
-    padding-top: 10px;
-    font-weight: 600;
-}
+            width: 203px;
+            margin-left: 30px;
+            margin-right: 30px;
+            padding-top: 10px;
+            font-weight: 600;
+        }
 
-.signup_tr_td_2 {
-    display: flex;
-    width: 402px;
-    padding-bottom: 4px;
-}
+        .signup_tr_td_2 {
+            display: flex;
+            width: 402px;
+            padding-bottom: 4px;
+        }
 
-.signup_tr_td_label {
-    /* height: 40px; */
+        .signup_tr_td_label {
+        /* height: 40px; */
 
-    color: #404040;
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 900;
-    line-height: normal;
-    letter-spacing: 1px;
-}
+            color: #404040;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 900;
+            line-height: normal;
+            letter-spacing: 1px;
+        }
 
-.signup_tr_td_input {
+        .signup_tr_td_input {
 
-    width: 75%;
-    height: 30px;
-    border: none;
-    outline: none;
-    background-color: #40404000;
-
-
-
-    border-bottom: solid #767676 2px;
-
-    text-align: center;
-    color: #404040;
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: 1px;
-}
-
-.signup_phone {
-    width: 100%;
-    display: flex;
-}
-
-.signup_tr_td_phone_input {
-    width: 75%;
-    height: 30px;
-    margin-right: 20px;
-    border: none;
-    outline: none;
-
-    padding: 0;
-
-    background-color: #40404000;
-    border-bottom: solid #767676 2px;
-
-    color: #404040;
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: 1px;
-}
-
-.signup_phone_button {
+            width: 75%;
+            height: 30px;
+            border: none;
+            outline: none;
+            background-color: #40404000;
 
 
-    margin-top: 0px;
-    width: 70px;
-    height: 30px;
-    flex-shrink: 0;
 
-    border-radius: 4px;
-    background: #00932f;
+            border-bottom: solid #767676 2px;
 
-    border: none;
+            text-align: center;
+            color: #404040;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            letter-spacing: 1px;
+        }
 
-    color: #F9F9F9;
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+        .signup_phone {
+            width: 100%;
+            display: flex;
+        }
 
-    cursor: pointer;
+        .signup_tr_td_phone_input {
+            width: 75%;
+            height: 30px;
+            margin-right: 20px;
+            border: none;
+            outline: none;
 
-}
+            padding: 0;
 
-.signup_password {
-    height: 120px;
-    width: 650px;
-    padding-bottom: 4px;
-    display: flex;
+            background-color: #40404000;
+            border-bottom: solid #767676 2px;
 
-    text-align: center;
-    flex-direction: row;
-}
+            color: #404040;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            letter-spacing: 1px;
+        }
 
-.signup_tr_td_password {
-    width: 400px;
-    display: flex;
+        .signup_phone_button {
 
-    flex-direction: column;
-}
 
-.password_required {
-    margin: 0;
-    font-size: 12px;
-    text-align: left;
+            margin-top: 0px;
+            width: 70px;
+            height: 30px;
+            flex-shrink: 0;
 
-    color: #FF5B27;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: 0.48px;
-}
+            border-radius: 4px;
+            background: #00932f;
 
-.signup_btn {
-    margin-top: 20px;
-    width: 120px;
-    height: 45px;
-    flex-shrink: 0;
+            border: none;
 
-    border-radius: 12px;
-    background: #001E6F;
+            color: #F9F9F9;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
 
-    border: none;
+            cursor: pointer;
 
-    color: #F9F9F9;
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+        }
 
-    cursor: pointer;
-}
+        .signup_password {
+            height: 120px;
+            width: 650px;
+            padding-bottom: 4px;
+            display: flex;
 
-.signup_btn:hover {
-    margin-top: 19px;
-    width: 148px;
-    height: 53px;
-    background: #0044ff;
-    color: #f6f6f6;
+            text-align: center;
+            flex-direction: row;
+        }
 
-    box-shadow: 0px 0px 8px 2px #00113f;
-}
+        .signup_tr_td_password {
+            width: 400px;
+            display: flex;
 
-.signup_login_btn {
-    margin-left: 60px;
-    color: #323232;
-    text-align: center;
-    font-family: Inter;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: normal;
-}
+            flex-direction: column;
+        }
 
-.signup_login_btn:hover {
-    color: #78DFFF;
+        .password_required {
+            margin: 0;
+            font-size: 12px;
+            text-align: left;
 
-}
+            color: #FF5B27;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            letter-spacing: 0.48px;
+        }
+
+        .signup_btn {
+            margin-top: 20px;
+            width: 120px;
+            height: 45px;
+            flex-shrink: 0;
+
+            border-radius: 12px;
+            background: #001E6F;
+
+            border: none;
+
+            color: #F9F9F9;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+
+            cursor: pointer;
+        }
+
+        .signup_btn:hover {
+            margin-top: 19px;
+            width: 148px;
+            height: 53px;
+            background: #0044ff;
+            color: #f6f6f6;
+
+            box-shadow: 0px 0px 8px 2px #00113f;
+        }
+
+        .signup_login_btn {
+            margin-left: 60px;
+            color: #323232;
+            text-align: center;
+            font-family: Inter;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 800;
+            line-height: normal;
+        }
+
+        .signup_login_btn:hover {
+            color: #78DFFF;
+
+        }
 
     </style>
 </head>
 <body>
 <div class="signup_page">
     <div class="sgnup_header">
-        <h1 class="signup_logo">CBT</h1>
+        <h1 class="signup_logo">CBT </h1>
+        <!--        <div style="font-size:20px; font-family:inter; font-weight:600;color:white;">Admin</div>-->
     </div>
+    <style>
+        /* Main container for the signup form */
+        .signup-container {
+            width: 100%;
+            max-width: 600px; /* Maximum width for the form */
+            margin: 20px auto; /* Center the form */
+            padding: 20px; /* Padding around the content */
+            border: 1px solid #ccc; /* Border around the container */
+            background-color: #f9f9f9; /* Background color */
+            border-radius: 10px; /* Rounded corners */
+            font-family: 'Inter', sans-serif; /* Default font */
+        }
 
-    <div class="signup_container_root">
-        <form  th:action="@{/admin/signup}" method="post" class="signup_container">
-            <table>
-                <tr class="signup_tr">
-                    <td class="signup_tr_td_1">
-                        <label class="signup_tr_td_label">First Name :</label>
-                    </td>
-                    <td class="signup_tr_td_2">
-                        <input type="text" name="firstName" class="signup_tr_td_input"/>
-                    </td>
-                </tr>
+        /* Section heading */
+        .signup-container h2 {
+            font-weight: bold; /* Bold font for the heading */
+            font-size: 24px; /* Heading font size */
+            margin-bottom: 20px; /* Space below the heading */
+            margin-top:0;
+        }
 
-                <tr class="signup_tr">
-                    <td class="signup_tr_td_1">
-                        <label class="signup_tr_td_label">Last Name :</label>
-                    </td>
-                    <td class="signup_tr_td_2">
-                        <input type="text"  name="lastName"  class="signup_tr_td_input"/>
-                    </td>
-                </tr>
-                <tr class="signup_tr">
-                    <td class="signup_tr_td_1">
-                        <label class="signup_tr_td_label">Username :</label>
-                    </td>
-                    <td class="signup_tr_td_2">
-                        <input type="text"  name="username"  class="signup_tr_td_input"/>
-                    </td>
-                </tr>
-                <tr class="signup_tr">
-                    <td class="signup_tr_td_1">
-                        <label class="signup_tr_td_label">Phone no :</label>
-                    </td>
-                    <td class="signup_tr_td_2">
-                        <div class="signup_phone">
-                            <input type="text"   name="phoneNumber" class="signup_tr_td_phone_input"/>
-                            <button class="signup_phone_button">verify</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr class="signup_tr">
-                    <td class="signup_tr_td_1">
-                        <label class="signup_tr_td_label">OTP :</label>
-                    </td>
-                    <td class="signup_tr_td_2">
-                        <input type="number" name="otp" class="signup_tr_td_input"/>
-                    </td>
-                </tr>
-                <tr class="signup_tr">
-                    <td class="signup_tr_td_1">
-                        <label class="signup_tr_td_label">Email :</label>
-                    </td>
-                    <td class="signup_tr_td_2">
-                        <input type="text" name="email" class="signup_tr_td_input"/>
-                    </td>
-                </tr>
-                <tr class="signup_password">
-                    <td class="signup_tr_td_1">
-                        <label class="signup_tr_td_label">Password :</label>
-                    </td>
-                    <td class="signup_tr_td_password">
-                        <input type="password" name="password" class="signup_tr_td_input"/>
-                        <div class="password_required">
-                            <div>Must Contains equal or above 8 char</div>
-                            <ul style="margin: 0px; padding-left: 20px">
-                                <li>Uppercase</li>
-                                <li>Lower Case</li>
-                                <li>Special Character</li>
-                                <li>Numeric Value</li>
-                                <li>Latter</li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr class="signup_tr">
-                    <td class="signup_tr_td_1">
-                        <label class="signup_tr_td_label">Confirm Password :</label>
-                    </td>
-                    <td
-                            class="signup_tr_td_2"
-                            style="display: flex; flex-direction: column"
-                    >
-                        <input type="text"  name="confirm_password"  class="signup_tr_td_input"/>
-                        <div
-                                style="
-                text-align: left;
-                color: #f00;
-                font-family: Inter;
-                font-size: 12px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: normal;
-                letter-spacing: 0.48px;
-                display: none;
-              "
-                        >
-                            Matched
-                        </div>
-                        <div
-                                style="
-                text-align: left;
-                color: #f00;
-                font-family: Inter;
-                font-size: 12px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: normal;
-                letter-spacing: 0.48px;
-              "
-                        >
-                            Not Matched to the password
-                        </div>
-                    </td>
-                </tr>
-            </table>
-            <div style="margin-top: 30px">
-                <button type="submit" class="signup_btn">Signup</button>
-                <a th:href="@{/admin/login}" class="signup_login_btn">Login </a>
-            </div>
+        /* Styling for the form */
+        form {
+            display: flex; /* Flex layout to align items */
+            flex-direction: column; /* Column layout */
+            margin-bottom:0;
+        }
+
+        /* Style for input fields */
+        input[type="text"],
+        input[type="email"],
+        /*        input[type="username"]*/
+        input[type="password"]
+        /*        input[type="number"]*/
+        {
+            padding: 10px; /* Padding for input fields */
+            border: 1px solid #ccc; /* Border for input fields */
+            border-radius: 5px; /* Rounded corners */
+            margin-bottom: 15px; /* Space below each field */
+            width: 100%; /* Full width */
+        }
+
+        /* Checkbox styling */
+        .checkbox-label {
+            display: flex; /* Flex layout to align items */
+            align-items: center; /* Align items vertically */
+            font-size: 14px; /* Smaller font size */
+        }
+
+        .checkbox-label input {
+            margin-right: 10px; /* Space between checkbox and label */
+        }
+
+        /* Styling for the submit button */
+        button {
+            padding: 10px 20px; /* Padding for the button */
+            background: #4CAF50; /* Green background */
+            color: white; /* White text */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+            text-transform: uppercase; /* Uppercase text */
+            margin-top: 5px;
+        }
+
+        button:hover {
+            background: #45a049; /* Darker green on hover */
+        }
+
+        /* Style for anchor tag (styled like a button) */
+        .signup_login_btn2 {
+            margin-top:10px;
+            display: inline-block; /* Inline-block for button-like behavior */
+            padding: 10px 20px; /* Padding for the anchor tag */
+            background: #2196F3; /* Blue background */
+            color: white; /* White text */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+            text-transform: uppercase;
+            text-align:center;/* Smooth transition */
+        }
+
+        /* Hover effect for the anchor tag */
+        .signup_login_btn2:hover {
+            background: #1976D2; /* Darker blue on hover */
+        }
+    </style>
+    <div class="signup-container">
+        <!-- Signup heading -->
+        <h2>Sign Up (Admin)</h2>
+
+        <!-- Signup form -->
+        <form th:action="@{/admin/signup}" method="post">
+            <!-- First Name input field -->
+            <input type="text" name="firstName" placeholder="First Name" required/> <!-- Required field -->
+
+            <!-- Last Name input field -->
+            <input type="text" name="lastName" placeholder="Last Name" required/> <!-- Required field -->
+
+            <!-- Username input field -->
+            <input type="text" name="username" style="margin-bottom:0;" placeholder="Username (Unique)" required/>
+            <!-- Required field -->
+
+            <div id="usernameError" style="color: red; margin:2px 0 15px 4px;  font-size:12px; font-weight:600;"></div>
+
+            <input type="email" name="email" placeholder="Email Address" required/> <!-- Required field -->
+
+            <!-- Password input field -->
+            <input type="password" name="password" placeholder="Password" required/> <!-- Required field -->
+
+            <input type="text" name="confirmPassword" placeholder="Confirm Password" required/> <!-- Required field -->
+
+            <!-- Phone number input field (optional) -->
+            <input type="text" name="phoneNumber" placeholder="Phone Number (optional)"/>
+
+            <!-- Checkbox for terms of service -->
+            <label class="checkbox-label">
+                <input type="checkbox" name="tos" required/> <!-- Required field -->
+                I agree to the <a href="/tos">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.
+            </label>
+
+            <!-- Signup button -->
+            <button type="submit" id="signupButton">Sign Up</button> <!-- Submit button -->
+            <a th:href="@{/admin/login}" class="signup_login_btn2">Login </a>
         </form>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+
+                const form = document.querySelector("form");
+                const emailField = document.querySelector("input[name='email']");
+                const passwordField = document.querySelector("input[name='password']");
+                const confirmPasswordField = document.querySelector("input[name='confirmPassword']");
+                const usernameField = document.querySelector("input[name='username']");
+                const usernameError = document.getElementById("usernameError");
+                const signupButton = document.getElementById("signupButton");
+
+                form.addEventListener("submit", function (e) {
+                    // Validate email
+                    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+                    if (!emailRegex.test(emailField.value)) {
+                        alert("Please enter a valid email address.");
+                        e.preventDefault(); // Prevent form submission
+                        return;
+                    }
+
+                    // Validate password (min length, contains a number, etc.)
+                    const password = passwordField.value;
+                    if (password.length < 8) {
+                        alert("Password must be at least 8 characters long.");
+                        e.preventDefault();
+                        return;
+                    }
+
+                    if (!/[0-9]/.test(password)) {
+                        alert("Password must contain at least one number.");
+                        e.preventDefault();
+                        return;
+                    }
+
+                    // Check if passwords match
+                    if (confirmPasswordField && password !== confirmPasswordField.value) {
+                        alert("Passwords do not match.");
+                        e.preventDefault();
+                        return;
+                    }
+                });
+
+                // Check if username already exists (asynchronous check)
+                usernameField.addEventListener("blur", async function () {
+                    const username = this.value.trim();
+                    //                    console.log("username is change...");
+
+                    if (username.trim() === "") {
+                        usernameError.textContent = "";
+                        signupButton.disabled = false;
+                        return;
+                    }
+                    const encodedUsername = encodeURIComponent(username);
+                    const requestUrl = `/admin/check-username?username=${encodedUsername}`;
+
+                    await fetch(requestUrl,{
+                        method: "GET",
+                    }) // Check the username asynchronously
+                        .then(response => response.json())
+                        .then(data => {
+                        if (data.exists) {
+                            usernameError.textContent = "Username already exists. Please choose another.";
+                            signupButton.disabled = true; // Disable the signup button
+                        } else {
+                            usernameError.textContent = "";
+                            signupButton.disabled = false; // Enable the signup button if the username is unique
+                        }
+                    }).catch(error => {
+                        console.log("Error checking username:", error);
+                        usernameError.textContent = "An error occurred. Please try again later.";
+                        signupButton.disabled = true; // Disable the signup button to prevent invalid submissions
+                    });
+                });
+            });
+
+        </script>
     </div>
 </div>
 

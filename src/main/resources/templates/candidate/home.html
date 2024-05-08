@@ -1,10 +1,206 @@
-<!DOCTYPE html>
-<html lang="en" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Candidate</title>
+
+    <style>
+        .logout-button {
+            background: none;
+            border: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        .logout-form {
+            display: flex;
+            flex-direction: row;
+            width: 150px;
+            background-color: red;
+            text-align: center;
+            align-items: center;
+            justify-content: space-around;
+            height: 100%;
+        }
+
+        .exam-list-button {
+            background: none;
+        }
+    </style>
+
+    <!-- Include the header from a Thymeleaf fragment -->
+    <div th:replace="~{candidate/header :: header1}"></div>
 </head>
 <body>
-<h1>Candidate home</h1>
+
+<div style="display:flex; flex-direction:row; width:100%; height: 100vh">
+
+
+    <!-- Include the navbar from a Thymeleaf fragment -->
+    <div style="width: 25%;">
+        <div style="height:250px; width:100%; display:flex;flex-direction:column;align-items:center;justify-content:center; color:white; font-family: 'Inter', sans-serif;font-weight: 800;">
+            <div style="width:100px; height:100px; background-color:white; border-radius:4rem;"></div>
+            <p style="margin:0;" th:text="${model}"></p>
+            <p style="margin:0; margin-top:10px; font-size: 18px;"><span th:text="${username}"></span></p>
+            <p style="margin:0; margin-top:4px; font-size: 12px;"><span th:text="${email}"></span></p>
+            <p style="margin:0; margin-top:4px;font-size: 12px;">Phone: <span style="font-size: 12px;"
+                                                                              th:text="${phone}"></span></p>
+            <p style="margin:0; margin-top:4px; font-size: 12px;">Role: <span th:text="${role}"></span></p>
+        </div>
+        <div style="" class="navbar" th:replace="~{candidate/navbar :: navbar2}"></div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; background-color:white; width: 75%;">
+
+
+        <style>
+            .table {
+                display: flex;
+                flex-direction: column;
+                border: 1px solid #000;
+                width: 96%;
+                height:500px;
+                margin: 0 2% 0 2%;
+
+            }
+
+            .table-header, .table-row {
+                display: flex;
+                justify-content: space-between;
+                /*                padding: 10px;*/
+                border-bottom: 1px solid #000;
+                text-align: center;
+                padding:5px 0  5px 0;
+
+            }
+            .table-row {
+                font-family: 'Inter',
+                sans-serif;font-weight: 800;
+                font-size:14px;
+                width:100%;
+                padding:8px 0  8px 0;
+                display:flex;
+                align-items:center;
+            }
+
+
+            .table-header {
+                background-color: #c0c0c0;
+                font-weight: bold;
+                width:100%;
+            }
+
+            .table-row:nth-child(even) {
+                background-color: #e5e5e5;
+            }
+            .row-container {
+                max-height: 100%; /* Set a fixed height for the scrollable area */
+                overflow-y: auto;  /* Enable vertical scrolling */
+                padding-right: 0px;
+                width:100%;
+
+                /* Add padding for scrollbar */
+            }
+
+            .row-container::-webkit-scrollbar {
+                width: 8px; /* Narrow scrollbar */
+            }
+
+            .row-container::-webkit-scrollbar-thumb {
+                background-color: #888; /* Color of the scrollbar thumb */
+                border-radius: 4px; /* Rounded corners for a smoother look */
+            }
+
+            .row-container::-webkit-scrollbar-track {
+                background-color: #f1f1f1; /* Color of the scrollbar track */
+            }
+
+            /* For Firefox */
+            .row-container {
+                scrollbar-width: thin; /* Narrow scrollbar */
+                scrollbar-color: #888 #f1f1f1; /* Custom thumb and track color */
+            }
+
+            .start-btn:hover{
+                background:#00a2ff;
+                cursor:pointer;
+                color: white;
+            }
+        </style>
+        <!-- Candidate information -->
+        <div style="margin-left:2%; margin-right:2%; display:flex; flex-direction:row; justify-content:space-between; align-items:center;">
+            <h1 style="font-family: math;
+            font-size: 24px;
+            font-weight: 900;">Exam List</h1>
+
+            <button style=" width:100px; height:35px; cursor:pointer;  ">Participate</button>
+        </div>
+
+        <div class="table">
+            <!-- Table Header -->
+            <div class="table-header">
+                <div style="width:34%">Name</div>
+                <div style="width:22%">Date</div>
+                <div style="width:22%">Status</div>
+                <div style="width:22%">Option</div>
+            </div>
+
+            <div class="row-container" id="candidate-exam-container">
+                <!-- Table Rows Dynamic fetching-->
+            </div>
+
+        </div>
+        <!-- Button for fetching the exam list -->
+    </div>
+</div>
+<script>
+    var csrfToken_ = window.csrfToken;
+    var csrfHeader_ = window.csrfHeader;
+
+    function getExamList(candidateId = 34, page = 0) {
+        fetch(`/candidate/${candidateId}/exams/page/${page}`, {
+            headers: {
+                'X-CSRF-Token': csrfToken_,
+                'X-CSRF-Header': csrfHeader_
+            }
+        })
+            .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+            .then(data => {
+//            console.log(data);
+            data.forEach((item) => {
+                console.log(item)
+
+                const listContainer = document.getElementById("candidate-exam-container");
+                const row = document.createElement("div");
+                row.className = 'table-row';
+
+                row.innerHTML= `
+                    <div style="width:34%">${item.examName}</div>
+                    <div style="width:22%">${item.examDate} / ${item.startTime}</div>
+                    <div style="width:22%">${item.status}</div>
+                    <div style="width:22%">
+                    ${item.status=='ACTIVE'?`<button style=" width:80px; height:35px; font-size:16px; border-radius: 4px; border: 2px solid #636363;" class="start-btn" onclick="startTest()">Start</button>
+                    `:`Close`}
+                    </div>`;
+
+                console.log(row);
+                listContainer.append(row);
+            });
+            // Process the data here
+        })
+            .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+    }
+    getExamList();
+
+    function startTest(){
+        window.location.href = '/candidate/exam-test';
+    }
+</script>
 </body>
 </html>

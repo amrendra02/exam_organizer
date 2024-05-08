@@ -55,10 +55,10 @@ function createCandidate() {
     const fileInput = document.getElementById("imageInput");
     const imageFile = fileInput.files[0];
 
-    if (!imageFile) {
-        console.error("No image file selected.");
-        return;
-    }
+//    if (!imageFile) {
+//        console.error("No image file selected.");
+//        return;
+//    }
 
     // Call getBase64FromFile to retrieve base64 encoded image string
     getBase64FromFile(imageFile, function(base64String) {
@@ -89,6 +89,7 @@ function createCandidate() {
             // set ExamId globally variable eId = data.examId
             console.log(data);
             eId = data.examId;
+            console.log(eId);
             closePopup(0);
             document.getElementById("candidate_list_show").innerText = '';
             fetchCandidate();
@@ -135,10 +136,12 @@ function searchExam() {
 function fetchCandidate() {
     //console.log("from fetching candidate.")
     //    console.log(page+" "+isLoading+" "+loadMore);
+    console.log(eId);
     console.log("from fetching candidate list...")
     const url = `/admin/exam/${eId}/candidates/${page}`;
     if (!isLoading && loadMore) {
         isLoading = true;
+
         fetch(url)
             .then((response) => response.json())
             .then((data) => {

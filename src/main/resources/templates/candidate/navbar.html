@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body th:fragment="navbar2">
+<div  class="nav-container">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+
+        body {
+            height: 100vh;
+            margin: 0;
+            background: #000C2D;
+        }
+
+        .nav-container {
+            background: #000C2D;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding: 10px;
+        }
+
+        .nav-item {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            color: #FFF;
+            text-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: background 0.3s;
+
+            border: 1px solid blue;
+            margin-bottom:8px;
+            border-radius:8px;
+            box-shadow:0px 2px 4px rgba(0, 118, 255, 1);
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: #00a2ff;
+        }
+
+        .footer {
+            text-align: center;
+            color: #FFF;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+        .active{
+            background: #00a2ff;
+        }
+    </style>
+
+        <a class="nav-item" th:href="@{/candidate/home}" id="home">Exam</a>
+        <a class="nav-item" th:href="@{/candidate/setting}" id="setting">Setting</a>
+        <a class="nav-item" th:href="@{/candidate/help}" id="help">Help</a>
+
+</div>
+<div class="footer">
+    Copyright reserved <br/>
+    version 1.0.0.1
+</div>
+
+<script th:inline="javascript">
+
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach((item) => {
+        item.addEventListener('click', (event) => {
+            // Remove 'active' class from all items
+            navItems.forEach((item) => item.classList.remove('active'));
+            // Add 'active' class to the clicked item
+            event.target.classList.add('active');
+        });
+    });
+
+    const currentPath = window.location.pathname;
+    const nav = {
+        '/candidate/home': 'home',
+        '/candidate/setting': 'setting',
+        '/candidate/help': 'help'
+    };
+
+    if (nav[currentPath]) {
+        document.getElementById(nav[currentPath]).classList.add('active');
+    }
+</script>
+</body>
+</html>

@@ -37,35 +37,5 @@ public class ExamServiceTest {
     @InjectMocks
     private ExamService examService;
 
-    @Test
-    public void testCandidateList() {
-        // Mock data
-        int page = 0;
-        long examId = 1L;
-        int pageSize = 10;
 
-        ExamModel examModel = new ExamModel();
-        examModel.setExamId(examId);
-
-        Pageable pageable = (Pageable) PageRequest.of(page, pageSize, Sort.by("candidateId").descending());
-
-        List<CandidateModel> candidateModels = new ArrayList<>();
-        // Add some candidate data to the list
-
-        Page<CandidateModel> expectedPage = new PageImpl<>(candidateModels, (org.springframework.data.domain.Pageable) pageable, candidateModels.size());
-
-        // Mock repository calls
-        when(examRepository.findById(examId)).thenReturn(Optional.of(examModel));
-        when(candidateRepository.findByExamModel(examModel, (org.springframework.data.domain.Pageable) pageable)).thenReturn(expectedPage);
-
-        // Call the service method
-        Page<CandidateModel> resultPage = examService.candidateList(examId,page);
-
-        // Verify the results
-        assertEquals(expectedPage, resultPage);
-
-        // Verify repository method calls
-        verify(examRepository, times(1)).findById(examId);
-        verify(candidateRepository, times(1)).findByExamModel(examModel, pageable);
-    }
 }

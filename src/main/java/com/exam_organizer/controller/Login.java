@@ -29,7 +29,7 @@ public class Login {
 
     @RequestMapping("/failed")
     public String failed(){
-        System.out.println("from failed...");
+        log.info("from failed...");
         return "failed";
     }
 }

@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebSecurity
@@ -44,6 +45,7 @@ public class GlobalConfig {
         http.securityMatcher("/admin/**")
                 .authorizeHttpRequests(auth-> auth
                         .requestMatchers("/admin/signup").permitAll()
+                        .requestMatchers("/admin/check-username").permitAll()
                         .requestMatchers("/").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form->form
@@ -74,6 +76,7 @@ public class GlobalConfig {
                 .authorizeHttpRequests(auth-> auth
                         .requestMatchers("/candidate/signup")
                         .permitAll()
+                        .requestMatchers("/candidate/check-username").permitAll()
                         .anyRequest()
                         .authenticated())
                 .formLogin(form->form

@@ -22,6 +22,7 @@ public class CanSignupService {
     public String CreateUser(CandidateModel user){
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setRole("candidate");
         if (candidateRepository.findByUsername(user.getUsername()) == null) {
             candidateRepository.save(user);
             return "success";

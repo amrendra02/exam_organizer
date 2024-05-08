@@ -11,8 +11,10 @@ import org.springframework.stereotype.Repository;
 public interface CandidateRepository extends JpaRepository<CandidateModel,Long> {
 
     CandidateModel findByUsername(String email);
-    Page<CandidateModel> findByExamModel(ExamModel examModel, Pageable pageable);
-    long countByExamModelExamId(Long examId);
+//    Page<CandidateModel> findByExamModel(ExamModel examModel, Pageable pageable);
+//    long countByExamModelExamId(Long examId);
+
+    Boolean existsByUsername(String username);
 
 
 }

@@ -1,8 +1,10 @@
 package com.exam_organizer.service;
 
+import com.exam_organizer.candidate_Repository.CandidateExamRegisteredRepo;
 import com.exam_organizer.candidate_Repository.CandidateRepository;
 import com.exam_organizer.dto.ExamDto;
 import com.exam_organizer.exception.ResourceNotFoundException;
+import com.exam_organizer.model.CandidateExamRegisteredModel;
 import com.exam_organizer.model.CandidateModel;
 import com.exam_organizer.model.ExamModel;
 import com.exam_organizer.model.ExamOrganizer;
@@ -19,6 +21,8 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -33,10 +37,13 @@ public class ExamService {
 
     private final CandidateRepository candidateRepository;
 
-    public ExamService(ExamOrganizerRepository examOrganizerRepository, ExamRepository examRepository, CandidateRepository candidateRepository) {
+    private final CandidateExamRegisteredRepo candidateExamRegisteredRepo;
+
+    public ExamService(ExamOrganizerRepository examOrganizerRepository, ExamRepository examRepository, CandidateRepository candidateRepository, CandidateExamRegisteredRepo candidateExamRegisteredRepo) {
         this.examOrganizerRepository = examOrganizerRepository;
         this.examRepository = examRepository;
         this.candidateRepository = candidateRepository;
+        this.candidateExamRegisteredRepo = candidateExamRegisteredRepo;
     }
 
     public String CreateExam(ExamModel exam) {
@@ -67,13 +74,13 @@ public class ExamService {
             }
             return null;
         } catch (Exception ex) {
-            System.out.println("Error retrieving exams: " + ex.getMessage());
+            log.debug("Error retrieving exams: {}",ex.getMessage());
             return null;
         }
     }
 
     public Optional<ExamModel> examData(Long id) {
-        System.out.println("from EXAM Service..."+ id);
+        log.info("from EXAM Service: {}",id);
         Optional<ExamModel> exam;
         Long organizerId = 0L;
         try {
@@ -89,7 +96,7 @@ public class ExamService {
             exam = Optional.ofNullable(examRepository.findByExamIdAndOrganizer_OrganizerId(id, organizerId));
             exam.get().setOrganizer(null);
             exam.get().setQuestions(null);
-            System.out.println("..3");
+            log.info("..3");
         } catch (Exception ex) {
             return null;
         }
@@ -119,18 +126,39 @@ public class ExamService {
     }
 
     // get registered candidate list
-    public Page<CandidateModel> candidateList(Long examId, int page) {
+    public List<CandidateModel> candidateList(Long examId, int page) {
         int pageSize = 10; // Define the page size
         Pageable pageable = PageRequest.of(page, pageSize, Sort.by("candidateId").descending());
         try {
             Optional<ExamModel> examModel = this.examRepository.findById(examId);
             if(examModel.isPresent()){
-                return candidateRepository.findByExamModel(examModel.get(), pageable);
+
+                Page<CandidateExamRegisteredModel> res = this.findCandidateByExam(examModel.get(),page);
+
+//                log.info("{}",res.getSize());
+                List<CandidateModel> can = new ArrayList<>();
+                for(CandidateExamRegisteredModel i: res){
+                    log.info("res");
+                    log.info("candidate id: {} and exam id: {}",i.getCandidateModel().getCandidateId(),i.getExamModel().getExamId());
+                    can.add(i.getCandidateModel());
+                }
+
+                log.info("Successfully get candidate list.");
+
+                return can;
+//               return candidateRepository.findByExamModel(examModel.get(), pageable);
             }
             return null;
         } catch (Exception ex) {
             log.info("Error retrieving exams: " + ex.getMessage());
             return null;
         }
+    }
+
+    public  Page<CandidateExamRegisteredModel> findCandidateByExam(ExamModel req,int page){
+        int pageSize = 10;
+        Pageable pageable = PageRequest.of(page, pageSize, Sort.by("id").descending());
+        Page<CandidateExamRegisteredModel> res = candidateExamRegisteredRepo.findByExamModel(req,pageable);
+        return res;
     }
 }

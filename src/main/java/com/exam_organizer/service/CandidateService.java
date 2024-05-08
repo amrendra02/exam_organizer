@@ -1,8 +1,10 @@
 package com.exam_organizer.service;
 
+import com.exam_organizer.candidate_Repository.CandidateExamRegisteredRepo;
 import com.exam_organizer.candidate_Repository.CandidateRepository;
 import com.exam_organizer.dto.CandidateDto;
 import com.exam_organizer.exception.ResourceNotFoundException;
+import com.exam_organizer.model.CandidateExamRegisteredModel;
 import com.exam_organizer.model.CandidateModel;
 import com.exam_organizer.model.ExamModel;
 import com.exam_organizer.repository.ExamRepository;
@@ -30,6 +32,8 @@ public class CandidateService {
     private ModelMapper modelMapper;
 
     @Autowired
+    private CandidateExamRegisteredRepo candidateExamRegisteredRepo;
+    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public CandidateDto create(CandidateDto candidateDto) {
@@ -42,8 +46,13 @@ public class CandidateService {
 
             Optional<ExamModel> exam = examRepository.findById(candidateDto.getExamId());
             if (exam.isPresent()) {
-                res.setExamModel(exam.get());
+//                res.setExamModel(exam.get());
+                res.setRole("candidate");
                 res = candidateRepository.save(res);
+                CandidateExamRegisteredModel register = new CandidateExamRegisteredModel();
+                register.setCandidateModel(res);
+                register.setExamModel(exam.get());
+                candidateExamRegisteredRepo.save(register);
                 log.info("Successfully created the student data: {}", res.getCandidateId());
                 return modelMapper.map(res, CandidateDto.class);
             }else{

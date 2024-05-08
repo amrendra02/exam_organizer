@@ -5,8 +5,10 @@ import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 
 @Getter
@@ -14,7 +16,6 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-
 @Entity
 @Table(name = "candidates")
 public class CandidateModel implements UserDetails {
@@ -36,9 +37,13 @@ public class CandidateModel implements UserDetails {
     @Column(name = "image", columnDefinition = "LONGBLOB")
     private byte[] image;
 
-    @ManyToOne
-    @JoinColumn(name = "exam_id")
-    private ExamModel examModel;
+//    @ManyToOne
+//    @JoinColumn(name = "exam_id")
+//    private ExamModel examModel;
+
+    @OneToMany(mappedBy = "candidateModel", cascade = CascadeType.ALL)
+    private List<CandidateExamRegisteredModel> registeredExams = new ArrayList<>();
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
