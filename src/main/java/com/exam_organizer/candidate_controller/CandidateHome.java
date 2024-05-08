@@ -142,10 +142,10 @@ public class CandidateHome {
 
 
 
-    @GetMapping("/{candidateId}/exams/page/{page}")
-    public ResponseEntity<?> getAllCandidates(@PathVariable Long candidateId, @PathVariable int page) {
+    @GetMapping("/{username}/exams/page/{page}")
+    public ResponseEntity<?> getAllCandidates(@PathVariable String username, @PathVariable int page) {
         log.info("Requesting the exam list ");
-        List<ExamModel> res = candidateExamList.getExamList(candidateId, page);
+        List<ExamModel> res = candidateExamList.getExamList(username, page);
         log.info("Successfully get the exam list");
         List<ExamDto> exam = new ArrayList<>();
 

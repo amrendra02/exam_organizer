@@ -33,12 +33,12 @@ public class CandidateExamList {
     @Autowired
     private CandidateRepository candidateRepository;
 
-    public List<ExamModel> getExamList(Long candidateId, int page) {
+    public List<ExamModel> getExamList(String username, int page) {
         try {
-            Optional<CandidateModel> candidateModel = this.candidateRepository.findById(candidateId);
-            if (candidateModel.isPresent()) {
+            CandidateModel candidateModel = this.candidateRepository.findByUsername(username);
+            if (candidateModel!=null) {
 
-                Page<CandidateExamRegisteredModel> res = this.findExamByCandidate(candidateModel.get(), page);
+                Page<CandidateExamRegisteredModel> res = this.findExamByCandidate(candidateModel, page);
 
                 log.info("Response");
                 List<ExamModel> exam = new ArrayList<>();

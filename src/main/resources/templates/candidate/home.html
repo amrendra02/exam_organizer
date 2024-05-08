@@ -40,7 +40,7 @@
         <div style="height:250px; width:100%; display:flex;flex-direction:column;align-items:center;justify-content:center; color:white; font-family: 'Inter', sans-serif;font-weight: 800;">
             <div style="width:100px; height:100px; background-color:white; border-radius:4rem;"></div>
             <p style="margin:0;" th:text="${model}"></p>
-            <p style="margin:0; margin-top:10px; font-size: 18px;"><span th:text="${username}"></span></p>
+            <p id="username" style="margin:0; margin-top:10px; font-size: 18px;"><span th:text="${username}"></span></p>
             <p style="margin:0; margin-top:4px; font-size: 12px;"><span th:text="${email}"></span></p>
             <p style="margin:0; margin-top:4px;font-size: 12px;">Phone: <span style="font-size: 12px;"
                                                                               th:text="${phone}"></span></p>
@@ -155,9 +155,14 @@
 <script>
     var csrfToken_ = window.csrfToken;
     var csrfHeader_ = window.csrfHeader;
+    var page=0;
+    function getExamList(candidateId = 34) {
+        const paragraph = document.getElementById("username");
 
-    function getExamList(candidateId = 34, page = 0) {
-        fetch(`/candidate/${candidateId}/exams/page/${page}`, {
+        const username = paragraph.querySelector("span").innerText;
+//        console.log("Username:", username);
+
+        fetch(`/candidate/${username}/exams/page/${page}`, {
             headers: {
                 'X-CSRF-Token': csrfToken_,
                 'X-CSRF-Header': csrfHeader_
@@ -170,9 +175,9 @@
             return response.json();
         })
             .then(data => {
-//            console.log(data);
+            //            console.log(data);
             data.forEach((item) => {
-                console.log(item)
+//                console.log(item)
 
                 const listContainer = document.getElementById("candidate-exam-container");
                 const row = document.createElement("div");
@@ -187,9 +192,10 @@
                     `:`Close`}
                     </div>`;
 
-                console.log(row);
+//                console.log(row);
                 listContainer.append(row);
             });
+            page++;
             // Process the data here
         })
             .catch(error => {
@@ -197,6 +203,13 @@
         });
     }
     getExamList();
+
+    document.getElementById("candidate-exam-container")
+        .addEventListener("scroll", function () {
+        if (this.scrollTop + this.clientHeight >= this.scrollHeight) {
+            getExamList();
+        }
+    });
 
     function startTest(){
         window.location.href = '/candidate/exam-test';
