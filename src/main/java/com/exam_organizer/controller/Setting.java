@@ -10,7 +10,7 @@ public class Setting {
 
     @RequestMapping("/setting")
     public String setting(){
-        System.out.println("from setting...");
+
         return "setting";
     }
 }

@@ -18,6 +18,8 @@ public class CandidateExamRegisteredModel {
     @JoinColumn(name = "exam_id")
     private ExamModel examModel;
 
+    private String status;
+
     // Other fields related to the exam registration
 
     // Constructors, getters, and setters

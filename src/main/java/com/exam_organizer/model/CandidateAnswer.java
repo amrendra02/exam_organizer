@@ -36,6 +36,8 @@ public class CandidateAnswer {
     @JoinColumn(name = "option_id")
     private OptionModel option;
 
+    private String status;
+
     // Constructors, getters, and setters
 
 }

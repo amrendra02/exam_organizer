@@ -3,12 +3,10 @@ package com.exam_organizer.model;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 
 @Getter
@@ -37,19 +35,21 @@ public class CandidateModel implements UserDetails {
     @Column(name = "image", columnDefinition = "LONGBLOB")
     private byte[] image;
 
-//    @ManyToOne
-//    @JoinColumn(name = "exam_id")
-//    private ExamModel examModel;
 
     @OneToMany(mappedBy = "candidateModel", cascade = CascadeType.ALL)
     private List<CandidateExamRegisteredModel> registeredExams = new ArrayList<>();
 
 
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        return null;
+//    }
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return Collections.singletonList(new SimpleGrantedAuthority(role));
     }
-
     @Override
     public String getUsername() {
         return this.username;

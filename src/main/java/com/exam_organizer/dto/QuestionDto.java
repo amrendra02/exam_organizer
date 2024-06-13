@@ -9,10 +9,7 @@ import java.util.List;
 @Data
 public class QuestionDto {
     private Long questionId;
-    private ExamModel examModel;
     private String questionText;
     private byte[] image;
-//    private List<OptionModel> optionModels;
-
     private String correctOption;
 }

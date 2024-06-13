@@ -1,8 +1,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" th:content="${_csrf.token}"/>
     <title>Candidate</title>
-
     <style>
         .logout-button {
             background: none;
@@ -26,31 +26,32 @@
             background: none;
         }
     </style>
-
     <!-- Include the header from a Thymeleaf fragment -->
     <div th:replace="~{candidate/header :: header1}"></div>
+    <script th:src="@{/js/candidate_home.js}" defer></script>
 </head>
 <body>
 
-<div style="display:flex; flex-direction:row; width:100%; height: 100vh">
-
-
+<div id="candidate-profile" style="display:flex; flex-direction:row; width:100%; height: 100vh">
     <!-- Include the navbar from a Thymeleaf fragment -->
     <div style="width: 25%;">
         <div style="height:250px; width:100%; display:flex;flex-direction:column;align-items:center;justify-content:center; color:white; font-family: 'Inter', sans-serif;font-weight: 800;">
-            <div style="width:100px; height:100px; background-color:white; border-radius:4rem;"></div>
-            <p style="margin:0;" th:text="${model}"></p>
-            <p id="username" style="margin:0; margin-top:10px; font-size: 18px;"><span th:text="${username}"></span></p>
+
+            <img style="width:100px;height:100px; border-radius: 5rem;" th:if="${image != null}"
+                 th:src="'data:image/jpeg;base64,' + ${image}" alt="Candidate Image">
+            <p th:if="${image == null}">No image available</p>
+<!--            <p style="margin:0;" th:text="${model}"></p>-->
+            <p style="margin:0; margin-top:10px; font-size: 18px;"><span th:text="${name}"></span></p>
+            <p id="username" style="margin:0; margin-top:4px; font-size: 12px;"><span th:text="${username}"></span></p>
             <p style="margin:0; margin-top:4px; font-size: 12px;"><span th:text="${email}"></span></p>
             <p style="margin:0; margin-top:4px;font-size: 12px;">Phone: <span style="font-size: 12px;"
                                                                               th:text="${phone}"></span></p>
-            <p style="margin:0; margin-top:4px; font-size: 12px;">Role: <span th:text="${role}"></span></p>
+            <p style="margin:0; margin-top:4px; font-size: 12px;">ID: <span th:text="${id}"></span></p>
         </div>
         <div style="" class="navbar" th:replace="~{candidate/navbar :: navbar2}"></div>
     </div>
 
     <div style="display:flex; flex-direction:column; background-color:white; width: 75%;">
-
 
         <style>
             .table {
@@ -132,7 +133,7 @@
             font-size: 24px;
             font-weight: 900;">Exam List</h1>
 
-            <button style=" width:100px; height:35px; cursor:pointer;  ">Participate</button>
+            <button id="openFormBtn" style=" width:100px; height:35px; cursor:pointer;  ">Participate</button>
         </div>
 
         <div class="table">
@@ -152,68 +153,150 @@
         <!-- Button for fetching the exam list -->
     </div>
 </div>
-<script>
-    var csrfToken_ = window.csrfToken;
-    var csrfHeader_ = window.csrfHeader;
-    var page=0;
-    function getExamList(candidateId = 34) {
-        const paragraph = document.getElementById("username");
 
-        const username = paragraph.querySelector("span").innerText;
-//        console.log("Username:", username);
+<!--pop- up Window for exam parcipate-->
 
-        fetch(`/candidate/${username}/exams/page/${page}`, {
-            headers: {
-                'X-CSRF-Token': csrfToken_,
-                'X-CSRF-Header': csrfHeader_
-            }
-        })
-            .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-            .then(data => {
-            //            console.log(data);
-            data.forEach((item) => {
-//                console.log(item)
+<style>
 
-                const listContainer = document.getElementById("candidate-exam-container");
-                const row = document.createElement("div");
-                row.className = 'table-row';
-
-                row.innerHTML= `
-                    <div style="width:34%">${item.examName}</div>
-                    <div style="width:22%">${item.examDate} / ${item.startTime}</div>
-                    <div style="width:22%">${item.status}</div>
-                    <div style="width:22%">
-                    ${item.status=='ACTIVE'?`<button style=" width:80px; height:35px; font-size:16px; border-radius: 4px; border: 2px solid #636363;" class="start-btn" onclick="startTest()">Start</button>
-                    `:`Close`}
-                    </div>`;
-
-//                console.log(row);
-                listContainer.append(row);
-            });
-            page++;
-            // Process the data here
-        })
-            .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-        });
+    .blur {
+        filter: blur(5px);
     }
-    getExamList();
 
-    document.getElementById("candidate-exam-container")
-        .addEventListener("scroll", function () {
-        if (this.scrollTop + this.clientHeight >= this.scrollHeight) {
-            getExamList();
-        }
-    });
-
-    function startTest(){
-        window.location.href = '/candidate/exam-test';
+    .form-popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid #0288d1;
+        z-index: 9;
+        background-color: white;
+        padding: 20px 30px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        max-width: 350px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
     }
-</script>
+
+    .form-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: -8px;
+        right: 5px;
+        background: none;
+        border: none;
+        font-size: 36px;
+        cursor: pointer;
+        color: #f30023;
+        transition: color 0.3s ease;
+    }
+
+    .close-btn:hover {
+        color: #d32f2f;
+    }
+
+    .form-container h2 {
+        text-align: center;
+        color: #0288d1;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    .form-container label {
+        color: #0288d1;
+        font-size: 14px;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="email"],
+    .form-container input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #0288d1;
+        border-radius: 5px;
+        background: #f1f1f1;
+        transition: background-color 0.3s ease, border 0.3s ease;
+        font-size: 14px;
+    }
+
+    .form-container input[type="text"]:focus,
+    .form-container input[type="email"]:focus,
+    .form-container input[type="password"]:focus {
+        background-color: #e1f5fe;
+        border: 1px solid #0288d1;
+        outline: none;
+    }
+
+    .form-container .btn {
+        background-color: #0288d1;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        font-size: 16px;
+    }
+
+    .form-container .btn:hover {
+        background-color: #0277bd;
+    }
+
+    .form-container .cancel:hover {
+        background-color: #c62828;
+    }
+
+</style>
+
+<div style="font-family:'Inter';">
+    <div id="popupForm" class="form-popup">
+        <div class="form-container">
+            <div style="width:100%; display:flex; flex-direction:row; align-items:center;">
+                <h2 style="margin:0; font-weight:600;">Candidate Information</h2>
+                <button type="button" class="close-btn" id="closeFormBtn">&times;</button>
+            </div>
+
+            <div style="width:100%;">
+                <label for="examId"><b>Exam ID</b></label>
+                <input type="text" id="examId" placeholder="Enter Exam ID" name="examId" style="margin-top:4px;">
+            </div>
+            <div style="width:100%;">
+                <label for="candidateId"><b>Candidate ID</b></label>
+                <input type="text" id="candidateId" placeholder="Enter Candidate ID" name="candidateId"
+                       style="margin-top:4px;">
+            </div>
+
+            <div style="width:100%;">
+                <label for="name"><b>Name</b></label>
+                <input type="text" id="name" placeholder="Enter Name" name="name" style="margin-top:4px;">
+
+            </div>
+            <div style="width:100%;">
+                <label for="username"><b>Username</b></label>
+                <input type="text" id="user-name" placeholder="Enter Username" name="email" style="margin-top:4px;">
+            </div>
+            <div style="width:100%;">
+                <label for="password"><b>Password</b></label>
+                <input type="password" id="password" placeholder="Enter Password" name="password"
+                       style="margin-top:4px;">
+            </div>
+
+            <p style="font-size:12px; margin:0; display:none; color:red; font-weight:600;" id="warning-message">
+                message</p>
+
+            <button type="submit" onclick="participate()" class="btn">Submit</button>
+        </div>
+    </div>
+</div>
+
+<!--main container wondow script-->
 </body>
 </html>

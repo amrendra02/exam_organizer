@@ -1,8 +1,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" th:content="${_csrf.token}"/>
     <title>Candidate</title>
-
     <style>
         .logout-button {
             background: none;
@@ -29,6 +29,8 @@
 
     <!-- Include the header from a Thymeleaf fragment -->
     <div th:replace="~{candidate/header :: header1}"></div>
+    <script th:src="@{/js/exam-test.js}" defer></script>
+
 </head>
 <body style="background-color:#000C2D; margin:0px;">
 
@@ -119,7 +121,7 @@
 
             /* Question text */
             .question-text {
-                font-weight: 600; /* Bold font */
+            /*                font-weight: 600; *//* Bold font */
                 font-size: 16px; /* Font size */
                 margin-bottom: 4px; /* Space below the text */
                 font-family:sans-serif;
@@ -128,12 +130,12 @@
             }
 
             .question-image {
-                width: 90%; /* Width of the image */
+            /*                width: 90%; *//* Width of the image */
                 height: auto; /* Maintain aspect ratio */
                 display: block; /* Display as block element */
-/*                margin: 10px auto; *//* Center the image */
-                border: 1px solid #ccc;
-                width: 98%;/* Border around the image */
+                /*                margin: 10px auto; *//* Center the image */
+                /*                border: 1px solid #ccc;*/
+                width: 98%;
             }
 
             /* Scrollable options container */
@@ -166,68 +168,61 @@
 
             /* Hide the actual radio button and use label to style */
             input[type="radio"] {
-/*                appearance: none; *//* Hide the default radio button */
+            /*                appearance: none; *//* Hide the default radio button */
                 margin-right: 10px; /* Space between radio button and label */
+            }
+
+            .question-container-text-image{
+                width:100%;
+                height:300px;
+                overflow-x:hidden;
+            }
+            .question-container-text-image::-webkit-scrollbar {
+                width: 8px; /* Narrow scrollbar */
+            }
+
+            .question-container-text-image::-webkit-scrollbar-thumb {
+                background-color: #888; /* Color of the scrollbar thumb */
+                border-radius: 4px; /* Rounded corners for a smoother look */
+            }
+
+            .question-container-text-image::-webkit-scrollbar-track {
+                background-color: #f1f1f1; /* Color of the scrollbar track */
             }
         </style>
         <div class="table">
-
             <div class="row-container">
                 <!-- Question text -->
-                <div class="question-text">What is the capital of France?</div>
 
-                 <img src="example.jpg" alt="Question Image" class="question-image" />
+                <div class="question-container-text-image">
+                    <div id="question-view" class="question-text"></div>
+
+                    <img id="image-view" src="" alt="Question Image" class="question-image"/>
+                </div>
 
                 <!-- Scrollable container for the options -->
-                <div class="scrollable-options">
+                <div id="option-view" class="scrollable-options">
                     <!-- List of radio buttons for each option -->
-                    <label class="option">
-                        <input type="radio" name="capital" value="A" />
-                        A. Paris
-                    </label>
-                    <label class="option">
-                        <input type="radio" name="capital" value="B" />
-
-                        B. Berlin
-                    </label>
-                    <label class="option">
-                        <input type="radio" name="capital" value="C" />
-
-                        C. Madrid
-                    </label>
-                    <label class="option">
-                        <input type="radio" name="capital" value="D" />
-
-                        D. Rome
-                    </label>
-                    <label class="option">
-                        <input type="radio" name="capital" value="E" />
-
-                        E. Lisbon
-                    </label>
-                    <label class="option">
-                        <input type="radio" name="capital" value="F" />
-
-                        F. Amsterdam
-                    </label>
-                    <label class="option">
-                        <input type="radio" name="capital" value="G" />
-
-                        G. Brussels
-                    </label>
+                    <!--                    <label class="option">-->
+                    <!--                        <input type="radio" name="capital" value="A" />-->
+                    <!--                        A. Paris-->
+                    <!--                    </label>-->
+                    <!--                   -->
                 </div>
             </div>
-
         </div>
         <div style=" margin: 0 2% 0 2%; width:96%; display:flex;flex-direction:row; justify-content:space-between; align-items:center;">
-            <button style="margin:4px; width:80px;height:30px;background-color:#1aebff; border-radius:4px; cursor:pointer;">
+            <button onclick="submitAnswer()"
+                    style="margin:4px; width:80px;height:30px;background-color:#1aebff; border-radius:4px; cursor:pointer;">
                 Submit
             </button>
             <div>
-                <button style="margin:4px; width:80px;height:30px;background-color:#1aebff; border-radius:4px; cursor:pointer;">
+                <button style="margin:4px; width:80px;height:30px;background-color:#1aebff; border-radius:4px; cursor:pointer;"
+                        onclick="previousQuestion()">
                     < Previous
                 </button>
-                <button style="margin:4px; width:80px;height:30px; background-color:#1aebff; border-radius:4px; cursor:pointer;">
+                <button style="margin:4px; width:80px;height:30px; background-color:#1aebff; border-radius:4px; cursor:pointer;"
+                        onclick="nextQuestion()">
                     Next >
                 </button>
             </div>
@@ -246,13 +241,12 @@
          color:white;
          font-family: 'Inter', sans-serif;
          font-weight: 800;">
-            <div style="width:100px; height:100px; background-color:white; border-radius:4rem;"></div>
-            <p style="margin:0;" th:text="${model}"></p>
-            <p style="margin:0; margin-top:10px; font-size: 18px;"><span th:text="${username}"></span></p>
-            <p style="margin:0; margin-top:4px; font-size: 12px;"><span th:text="${email}"></span></p>
-            <p style="margin:0; margin-top:4px;font-size: 12px;">Phone: <span style="font-size: 12px;"
-                                                                              th:text="${phone}"></span></p>
-            <p style="margin:0; margin-top:4px; font-size: 12px;">Role: <span th:text="${role}"></span></p>
+            <img style="width:100px;height:100px;" th:if="${image != null}" th:src="'data:image/jpeg;base64,' + ${image}" alt="Candidate Image">
+            <p th:if="${image == null}">No image available</p>
+            <p id="user-name" style="margin:0; margin-top:10px; font-size: 18px;"><span th:text="${username}"></span></p>
+            <p id="user-email" style="margin:0; margin-top:4px; font-size: 12px;"><span th:text="${email}"></span></p>
+            <p style="margin:0; margin-top:4px;font-size: 12px;">Phone: <span style="font-size: 12px;" th:text="${phone}"></span></p>
+            <p style="margin:0; margin-top:4px; font-size: 12px;">ID: <span th:text="${id}"></span></p>
         </div>
         <style>
             .main-container { /* Adjust this width as needed */
@@ -314,9 +308,6 @@
         <div class="main-container">
             <!-- Scrollable sub-container -->
             <div class="scrollable-container grid">
-                <!-- Grid layout with small square boxes
-                <div class="grid">-->
-                <!-- 20 small square boxes numbered 1 through 20 -->
                 <div class="grid-item">1</div>
                 <div class="grid-item">2</div>
                 <div class="grid-item">3</div>
@@ -359,31 +350,5 @@
     </div>
 
 </div>
-<script>
-    var csrfToken_ = window.csrfToken;
-    var csrfHeader_ = window.csrfHeader;
-
-    function getExamList(candidateId = 34, page = 0) {
-        fetch(`/candidate/${candidateId}/exams/page/${page}`, {
-            headers: {
-                'X-CSRF-Token': csrfToken_,
-                'X-CSRF-Header': csrfHeader_
-            }
-        })
-            .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-            .then(data => {
-            console.log(data);
-            // Process the data here
-        })
-            .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-        });
-    }
-</script>
 </body>
 </html>

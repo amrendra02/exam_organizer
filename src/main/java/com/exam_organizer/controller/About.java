@@ -10,7 +10,7 @@ public class About {
 
     @RequestMapping("/about")
     public String about(){
-        System.out.println("from about...");
+
         return "about";
     }
 

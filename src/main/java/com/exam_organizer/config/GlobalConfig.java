@@ -43,11 +43,11 @@ public class GlobalConfig {
     public SecurityFilterChain adminSecurityFilterChain(HttpSecurity http) throws Exception{
 
         http.securityMatcher("/admin/**")
-                .authorizeHttpRequests(auth-> auth
-                        .requestMatchers("/admin/signup").permitAll()
-                        .requestMatchers("/admin/check-username").permitAll()
-                        .requestMatchers("/").permitAll()
-                        .anyRequest().authenticated())
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/admin/signup", "/admin/check-username", "/").permitAll()
+                        .requestMatchers("/admin/**").hasAuthority("ADMIN")
+                        .anyRequest().authenticated()
+                )
                 .formLogin(form->form
                         .loginPage("/admin/login")
                         .defaultSuccessUrl("/admin/profile")
@@ -62,27 +62,21 @@ public class GlobalConfig {
         return http.build();
     }
 
-    @Bean
-    public AuthenticationFailureHandler authenticationFailureHandler() {
-        return ((request, response, exception) -> {
-            response.sendRedirect("/failed");
-        });
-    }
+
 
     @Bean
     public SecurityFilterChain candidateSecurityFilterChain(HttpSecurity http) throws Exception{
 
         http.securityMatcher("/candidate/**")
-                .authorizeHttpRequests(auth-> auth
-                        .requestMatchers("/candidate/signup")
-                        .permitAll()
-                        .requestMatchers("/candidate/check-username").permitAll()
-                        .anyRequest()
-                        .authenticated())
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/candidate/signup", "/candidate/check-username").permitAll()
+                        .requestMatchers("/candidate/**").hasAuthority("CANDIDATE")
+                        .anyRequest().authenticated()
+                )
                 .formLogin(form->form
                         .loginPage("/candidate/login")
                         .defaultSuccessUrl("/candidate/home")
-                        .failureHandler(candidateAuthenticationFailureHandler())
+                        .failureHandler(authenticationFailureHandler())
                         .permitAll())
                 .logout(logout->
                         logout.logoutUrl("/candidate/logout")
@@ -94,11 +88,10 @@ public class GlobalConfig {
     }
 
     @Bean
-    public AuthenticationFailureHandler candidateAuthenticationFailureHandler() {
-        return ((request, response, exception) -> {
-            response.sendRedirect("/failed");
-        });
+    public AuthenticationFailureHandler authenticationFailureHandler() {
+        return (request, response, exception) -> response.sendRedirect("/failed");
     }
+
 
 
 

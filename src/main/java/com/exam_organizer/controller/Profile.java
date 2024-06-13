@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Base64;
 import java.util.List;
 
 @Controller
@@ -39,7 +40,7 @@ public class Profile {
                 Long organizerId = examOrganizer.getOrganizerId();
                 String name = examOrganizer.getFirstName()+" "+examOrganizer.getLastName();
                 log.info("Organizer Id: {}",organizerId);
-                log.info(name);
+//                log.info(name);
                 int total=0;
                 int cancel=0;
                 int active=0;
@@ -75,6 +76,12 @@ public class Profile {
                 model.addAttribute("cancel",cancel);
                 model.addAttribute("active",active);
                 model.addAttribute("live",live);
+                if(examOrganizer.getImage()!=null){
+                    String base64Image = Base64.getEncoder().encodeToString(examOrganizer.getImage());
+                    model.addAttribute("image",base64Image);
+                }else{
+                    model.addAttribute("image",null);
+                }
 
 
             } else {

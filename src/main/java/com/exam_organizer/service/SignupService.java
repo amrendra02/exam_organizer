@@ -24,7 +24,7 @@ public class SignupService {
 
     public String CreateUser(ExamOrganizer user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setRole("admin");
+        user.setRole("ADMIN");
         if (examOrganizerRepository.findByUsername(user.getUsername()) == null) {
             examOrganizerRepository.save(user);
             log.info("Username not found creating new user.");

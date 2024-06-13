@@ -10,4 +10,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface CandidateExamRegisteredRepo extends JpaRepository<CandidateExamRegisteredModel,Long> {
     Page<CandidateExamRegisteredModel> findByExamModel(ExamModel examModel, Pageable pageable);
     Page<CandidateExamRegisteredModel> findByCandidateModel(CandidateModel candidateModel, Pageable pageable);
+
+    CandidateExamRegisteredModel findByCandidateModelAndExamModel(CandidateModel candidateModel,ExamModel examModel);
 }

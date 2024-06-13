@@ -33,21 +33,16 @@ import java.util.stream.Collectors;
 @RequestMapping("/admin")
 public class Exam {
 
+    private final ExamRepository examRepository;
     @Autowired
     private ExamService examService;
-
-
     @Autowired
     private ModelMapper modelMapper;
-
     private User user = new User();
-
     private Logger log = LoggerFactory.getLogger(Exam.class);
-
-    private final ExamRepository examRepository;
-
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     public Exam(ExamRepository examRepository) {
         this.examRepository = examRepository;
     }
@@ -55,13 +50,65 @@ public class Exam {
     // get exam page
     @RequestMapping(value = "/exam", method = RequestMethod.GET)
     public String exam(Model model) {
+        SecurityContext context = SecurityContextHolder.getContext();
+        Authentication authentication = context.getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            Object principal = authentication.getPrincipal();
+            if (principal instanceof ExamOrganizer) {
+                ExamOrganizer examOrganizer = (ExamOrganizer) principal;
+                Long organizerId = examOrganizer.getOrganizerId();
+                String name = examOrganizer.getFirstName()+" "+examOrganizer.getLastName();
+                log.info("Organizer Id: {}",organizerId);
+//                log.info(name);
+                int total=0;
+                int cancel=0;
+                int active=0;
+                int live=0;
+                try{
+                    List<ExamModel> exam = examRepository.findAllExamsByOrganizerId(organizerId);
+                    for(ExamModel i: exam){
+//                        System.out.println(i.getExamId());
+                        total+=1;
+                        String s = String.valueOf(i.getStatus());
+
+                        if("ACTIVE" == s){
+                            active+=1;
+                        }else if("CANCELLED"==s){
+                            cancel+=1;
+                        }else{
+                            live+=1;
+                        }
+
+                    }
+                    log.info("{}",active);
+                    log.info("{}",cancel);
+                    log.info("{}",live);
+                    log.info("{}",total);
+                }catch (Exception ex){
+                    System.out.println("error while total count exam: "+ex);
+                }
+
+
+                model.addAttribute("name", name);
+                model.addAttribute("id", organizerId);
+                model.addAttribute("exam", total);
+                model.addAttribute("cancel", cancel);
+                model.addAttribute("active", active);
+                model.addAttribute("live", live);
+
+            } else {
+                log.info("Principal is not of type ExamOrganizer");
+            }
+        } else {
+            log.info("User not authenticated");
+        }
         return "exam";
     }
 
     // get exam list
     @GetMapping("/exam-list")
     public ResponseEntity<?> getExamsList(@RequestParam(defaultValue = "0") int page) {
-       log.info("from Login get...");
+        log.info("from Login get...");
         List<ExamModel> exams = new ArrayList<>();
         List<ExamDto> examR = new ArrayList<>();
         try {
@@ -69,7 +116,7 @@ public class Exam {
             exams = examPage.getContent();
             examR = exams.stream().map((x) -> this.modelMapper.map(x, ExamDto.class)).collect(Collectors.toList());
         } catch (Exception ex) {
-           log.info("Error retrieving exams: {}",ex.getMessage());
+            log.info("Error retrieving exams: {}", ex.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<>(examR, HttpStatus.OK);
@@ -94,7 +141,7 @@ public class Exam {
 //                System.out.println("exam status: " + resp);
 
                 map.put("Success", "Exam Create");
-                return new ResponseEntity<>(map,HttpStatus.OK);
+                return new ResponseEntity<>(map, HttpStatus.OK);
             } else {
                 System.out.println("Principal is not of type ExamOrganizer");
             }
@@ -102,7 +149,7 @@ public class Exam {
             System.out.println("User not authenticated");
         }
         map.put("Failed", "Exam Create");
-        return new ResponseEntity<>(map,HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
     }
 
     // delete exam
@@ -135,25 +182,24 @@ public class Exam {
     }
 
     @GetMapping("/exam/{examId}/candidates/{page}")
-    public ResponseEntity<?> getAllCandidates(@PathVariable Long examId,@PathVariable int page){
-        log.info("Request to get candidates list: {}",examId);
+    public ResponseEntity<?> getAllCandidates(@PathVariable Long examId, @PathVariable int page) {
+        log.info("Request to get candidates list: {}", examId);
 
         log.info("Candidate list request...");
         List<CandidateModel> candidate = new ArrayList<>();
         List<CandidateDto> res = new ArrayList<>();
         try {
 //            Page<CandidateModel> examPage
-                    candidate= examService.candidateList(examId,page);
+            candidate = examService.candidateList(examId, page);
 //            candidate = examPage.getContent();
             res = candidate.stream().map((x) -> this.modelMapper.map(x, CandidateDto.class)).collect(Collectors.toList());
 
         } catch (Exception ex) {
-            log.info("Error retrieving exams: {}",ex.getMessage());
+            log.info("Error retrieving exams: {}", ex.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
-
 
 
 }

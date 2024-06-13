@@ -1,8 +1,11 @@
 package com.exam_organizer.candidate_controller;
 
+import com.exam_organizer.candidate_service.CandidateExamHandleService;
 import com.exam_organizer.candidate_service.CandidateExamList;
+import com.exam_organizer.constant.ApiResponse;
 import com.exam_organizer.dto.CandidateDto;
 import com.exam_organizer.dto.ExamDto;
+import com.exam_organizer.exception.ResourceNotFoundException;
 import com.exam_organizer.model.CandidateModel;
 import com.exam_organizer.model.ExamModel;
 import com.exam_organizer.model.ExamOrganizer;
@@ -23,7 +26,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.naming.AuthenticationException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,6 +42,8 @@ public class CandidateHome {
     private ModelMapper modelMapper;
     @Autowired
     private CandidateExamList candidateExamList;
+    @Autowired
+    private CandidateExamHandleService candidateExamHandleService;
 
     @GetMapping("/home")
     public String home(Model model) {
@@ -52,8 +59,14 @@ public class CandidateHome {
                 model.addAttribute("username", candidateModel.getUsername());
                 model.addAttribute("email", candidateModel.getEmail());
                 model.addAttribute("phone", candidateModel.getPhoneNumber());
-
-                log.info("{}", model);
+                model.addAttribute("id", candidateModel.getCandidateId());
+                if(candidateModel.getImage()!=null){
+                    String base64Image = Base64.getEncoder().encodeToString(candidateModel.getImage());
+                    model.addAttribute("image",base64Image);
+                }else{
+                    model.addAttribute("image",null);
+                }
+//                log.info("{}", model);
             } else {
                 log.warn("Principle is not type of Candidate");
             }
@@ -62,8 +75,9 @@ public class CandidateHome {
         }
         return "/candidate/home";
     }
+
     @GetMapping("/setting")
-    public String setting (Model model){
+    public String setting(Model model) {
         log.info("Candidate setting page.");
         log.info("From Candidate Home");
         SecurityContext context = SecurityContextHolder.getContext();
@@ -77,8 +91,14 @@ public class CandidateHome {
                 model.addAttribute("username", candidateModel.getUsername());
                 model.addAttribute("email", candidateModel.getEmail());
                 model.addAttribute("phone", candidateModel.getPhoneNumber());
-
+                model.addAttribute("id", candidateModel.getCandidateId());
                 log.info("{}", model);
+                if(candidateModel.getImage()!=null){
+                    String base64Image = Base64.getEncoder().encodeToString(candidateModel.getImage());
+                    model.addAttribute("image",base64Image);
+                }else{
+                    model.addAttribute("image",null);
+                }
             } else {
                 log.warn("Principle is not type of Candidate");
             }
@@ -87,8 +107,9 @@ public class CandidateHome {
         }
         return "/candidate/setting";
     }
+
     @GetMapping("/help")
-    public String help (Model model){
+    public String help(Model model) {
         log.info("Candidate help page.");
         log.info("From Candidate Home");
         SecurityContext context = SecurityContextHolder.getContext();
@@ -102,7 +123,14 @@ public class CandidateHome {
                 model.addAttribute("username", candidateModel.getUsername());
                 model.addAttribute("email", candidateModel.getEmail());
                 model.addAttribute("phone", candidateModel.getPhoneNumber());
+                model.addAttribute("id", candidateModel.getCandidateId());
 
+                if(candidateModel.getImage()!=null){
+                    String base64Image = Base64.getEncoder().encodeToString(candidateModel.getImage());
+                    model.addAttribute("image",base64Image);
+                }else{
+                    model.addAttribute("image",null);
+                }
                 log.info("{}", model);
             } else {
                 log.warn("Principle is not type of Candidate");
@@ -113,8 +141,8 @@ public class CandidateHome {
         return "/candidate/help";
     }
 
-    @GetMapping("/exam-test")
-    public String examTest (Model model){
+    @GetMapping("/exam-test/{examId}")
+    public String examTest(Model model, @PathVariable Long examId) {
         log.info("Candidate test  page.");
         log.info("From Candidate Home");
         SecurityContext context = SecurityContextHolder.getContext();
@@ -128,18 +156,52 @@ public class CandidateHome {
                 model.addAttribute("username", candidateModel.getUsername());
                 model.addAttribute("email", candidateModel.getEmail());
                 model.addAttribute("phone", candidateModel.getPhoneNumber());
+                model.addAttribute("id", candidateModel.getCandidateId());
+                if(candidateModel.getImage()!=null){
+                    String base64Image = Base64.getEncoder().encodeToString(candidateModel.getImage());
+                    model.addAttribute("image",base64Image);
+                }else{
+                    model.addAttribute("image",null);
+                }
 
-                log.info("{}", model);
+                ApiResponse res = candidateExamHandleService.checkRegistration(candidateModel, examId);
+                if (!res.isStatus()) {
+                    return res.getMessage();
+                }
             } else {
                 log.warn("Principle is not type of Candidate");
             }
         } else {
             log.warn("Not authenticated!!");
+            throw new ResourceNotFoundException("User not authenticated", "User", 0L);
         }
         return "/candidate/test";
     }
 
 
+    @GetMapping("/exam-register-check/{examId}")
+    public ResponseEntity<?> examRegisterCheck(@PathVariable Long examId) {
+        log.info("Candidate exam register check.");
+        log.info("From Candidate Home");
+        SecurityContext context = SecurityContextHolder.getContext();
+        Authentication authentication = context.getAuthentication();
+        ApiResponse res = null;
+        if (authentication != null && authentication.isAuthenticated()) {
+            log.info("Candidate authenticated");
+            Object principal = authentication.getPrincipal();
+            if (principal instanceof CandidateModel) {
+                CandidateModel candidateModel = (CandidateModel) principal;
+                res = candidateExamHandleService.checkRegistration(candidateModel, examId);
+
+            } else {
+                log.warn("Principle is not type of Candidate");
+            }
+        } else {
+            log.warn("Not authenticated!!");
+            throw new ResourceNotFoundException("User not authenticated", "User", 0L);
+        }
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
 
 
     @GetMapping("/{username}/exams/page/{page}")
@@ -153,7 +215,6 @@ public class CandidateHome {
 
         return new ResponseEntity<>(exam, HttpStatus.OK);
     }
-
 
 
 }

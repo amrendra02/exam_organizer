@@ -38,13 +38,15 @@
     <!-- Include the navbar from a Thymeleaf fragment -->
     <div style="width: 25%;">
         <div style="height:250px; width:100%; display:flex;flex-direction:column;align-items:center;justify-content:center; color:white; font-family: 'Inter', sans-serif;font-weight: 800;">
-            <div style="width:100px; height:100px; background-color:white; border-radius:4rem;"></div>
-            <p style="margin:0;" th:text="${model}"></p>
-            <p style="margin:0; margin-top:10px; font-size: 18px;"><span th:text="${username}"></span></p>
+<!--            <div style="width:100px; height:100px; background-color:white; border-radius:4rem;">-->
+                <img style="width:100px;height:100px;" th:if="${image != null}" th:src="'data:image/jpeg;base64,' + ${image}" alt="Candidate Image">
+                <p th:if="${image == null}">No image available</p>
+<!--            </div>-->
+            <p style="margin:0; margin-top:10px; font-size: 18px;"><span th:text="${name}"></span></p>
+            <p id="username" style="margin:0; margin-top:4px; font-size: 12px;"><span th:text="${username}"></span></p>
             <p style="margin:0; margin-top:4px; font-size: 12px;"><span th:text="${email}"></span></p>
-            <p style="margin:0; margin-top:4px;font-size: 12px;">Phone: <span style="font-size: 12px;"
-                                                                              th:text="${phone}"></span></p>
-            <p style="margin:0; margin-top:4px; font-size: 12px;">Role: <span th:text="${role}"></span></p>
+            <p style="margin:0; margin-top:4px;font-size: 12px;">Phone: <span style="font-size: 12px;" th:text="${phone}"></span></p>
+            <p style="margin:0; margin-top:4px; font-size: 12px;">ID: <span th:text="${id}"></span></p>
         </div>
         <div style="" class="navbar" th:replace="~{candidate/navbar :: navbar2}"></div>
     </div>
@@ -92,10 +94,10 @@
             }
 
             /* For Firefox */
-/*            .row-container {*/
-/*                scrollbar-width: thin; *//* Narrow scrollbar */
-/*                scrollbar-color: #888 #f1f1f1; *//* Custom thumb and track color */
-/*            }*/
+            /*            .row-container {*/
+            /*                scrollbar-width: thin; *//* Narrow scrollbar */
+            /*                scrollbar-color: #888 #f1f1f1; *//* Custom thumb and track color */
+            /*            }*/
 
 
             /* Section styling */
@@ -149,65 +151,65 @@
             <h1 style="font-family: math;
             font-size: 24px;
             font-weight: 900;">Setting</h1>
-     </div>
+        </div>
 
         <div class="settings-container">
             <!-- Personal Information Section -->
             <div class="row-container">
 
-            <div class="settings-section">
-                <h3>Personal Information</h3>
+                <div class="settings-section">
+                    <h3>Personal Information</h3>
 
-                <!-- Change Name -->
-                <div class="setting-option">
-                    <span>Name:</span>
-                    <input type="text" placeholder="Enter your name" />
+                    <!-- Change Name -->
+                    <div class="setting-option">
+                        <span>Name:</span>
+                        <input type="text" placeholder="Enter your name"/>
+                    </div>
+
+                    <!-- Change Email -->
+                    <div class="setting-option">
+                        <span>Email:</span>
+                        <input type="email" placeholder="Enter your email"/>
+                    </div>
+
+                    <!-- Change Phone Number -->
+                    <div class="setting-option">
+                        <span>Phone Number:</span>
+                        <input type="text" placeholder="Enter your phone number"/>
+                    </div>
                 </div>
 
-                <!-- Change Email -->
-                <div class="setting-option">
-                    <span>Email:</span>
-                    <input type="email" placeholder="Enter your email" />
+                <!-- Profile Section -->
+                <div class="settings-section">
+                    <h3>Profile</h3>
+
+                    <!-- Change Profile Photo -->
+                    <div class="setting-option">
+                        <span>Profile Photo:</span>
+                        <input type="file" accept="image/*"/>
+                    </div>
                 </div>
 
-                <!-- Change Phone Number -->
-                <div class="setting-option">
-                    <span>Phone Number:</span>
-                    <input type="text" placeholder="Enter your phone number" />
-                </div>
-            </div>
+                <!-- Security Section -->
+                <div class="settings-section">
+                    <h3>Security</h3>
 
-            <!-- Profile Section -->
-            <div class="settings-section">
-                <h3>Profile</h3>
+                    <!-- Change Password -->
+                    <div class="setting-option">
+                        <span>New Password:</span>
+                        <input type="password" placeholder="Enter new password"/>
+                    </div>
 
-                <!-- Change Profile Photo -->
-                <div class="setting-option">
-                    <span>Profile Photo:</span>
-                    <input type="file" accept="image/*" />
-                </div>
-            </div>
-
-            <!-- Security Section -->
-            <div class="settings-section">
-                <h3>Security</h3>
-
-                <!-- Change Password -->
-                <div class="setting-option">
-                    <span>New Password:</span>
-                    <input type="password" placeholder="Enter new password" />
+                    <div class="setting-option">
+                        <span>Confirm Password:</span>
+                        <input type="password" placeholder="Confirm new password"/>
+                    </div>
                 </div>
 
+                <!-- Save Changes Button -->
                 <div class="setting-option">
-                    <span>Confirm Password:</span>
-                    <input type="password" placeholder="Confirm new password" />
+                    <button>Save Changes</button> <!-- Button to save changes -->
                 </div>
-            </div>
-
-            <!-- Save Changes Button -->
-            <div class="setting-option">
-                <button>Save Changes</button> <!-- Button to save changes -->
-            </div>
             </div>
         </div>
         <!-- Button for fetching the exam list -->

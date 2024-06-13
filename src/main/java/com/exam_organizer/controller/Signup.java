@@ -11,8 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,10 +37,21 @@ public class Signup {
     }
 
     @PostMapping("/signup")
-    public String signupPost(@ModelAttribute ExamOrganizer user, RedirectAttributes redirectAttributes) {
+    public String signupPost(@ModelAttribute ExamOrganizer user, @RequestParam("imageFile") MultipartFile imageFile, RedirectAttributes redirectAttributes) {
 
         log.info("Admin Signup controller post...");
-        log.info("{}",user);
+//        log.info("{}",user);
+        if (imageFile != null && !imageFile.isEmpty()) {
+            log.info("proccessing the image file");
+            try {
+                user.setImage(imageFile.getBytes()); // Convert image file to byte array and set it in the DTO
+                log.info("completed");
+            } catch (IOException e) {
+                log.error("Error processing image file", e);
+                redirectAttributes.addFlashAttribute("signup", false);
+                return "redirect:/admin/signup";
+            }
+        }
         // Save user data in database
         String resp = signupService.CreateUser(user);
         if (resp == "success") {

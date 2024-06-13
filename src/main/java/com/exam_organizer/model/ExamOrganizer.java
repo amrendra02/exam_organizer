@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Getter
@@ -31,7 +32,9 @@ public class ExamOrganizer implements UserDetails {
     private String email;
     private String phoneNumber;
     private String password;
-
+    @Lob
+    @Column(name = "image", columnDefinition = "LONGBLOB")
+    private byte[] image;
 
     private String role;
 
@@ -39,9 +42,14 @@ public class ExamOrganizer implements UserDetails {
     private List<ExamModel> exams;
 
     // Methods for the UserDetails store and use by Spring Security
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        return null;
+//    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return Collections.singletonList(new SimpleGrantedAuthority(role));
     }
 
     @Override

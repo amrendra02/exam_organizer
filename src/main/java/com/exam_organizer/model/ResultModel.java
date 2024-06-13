@@ -30,6 +30,8 @@ public class ResultModel {
     private int marksObtained;
     private Date examDate;
 
+    private String ratio;
+
     @ElementCollection
     @CollectionTable(name = "result_options", joinColumns = @JoinColumn(name = "result_id"))
     @MapKeyColumn(name = "option_id")

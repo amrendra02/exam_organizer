@@ -74,12 +74,12 @@
             display: flex;
             justify-content: center;
             /*            align-items: center;*/
-            height: 700px; /* Account for navbar height */
+            height: 740px; /* Account for navbar height */
         }
 
         .form-block {
             background: white;
-            padding: 6%;
+            padding: 4%;
             border-radius: 10px;
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); /* Add depth with shadow */
             width: 80%;
@@ -187,7 +187,7 @@
         <!-- Login Heading -->
         <h2><span style="font-size:16px;">(Candidate)</span> <br/> Sign Up </h2>
 
-        <form th:action="@{/candidate/signup}" method="post">
+        <form th:action="@{/candidate/signup}" method="post" enctype="multipart/form-data">
 
             <!-- Candidate full Name-->
             <input type="text" name="candidateName" placeholder="Full Name" required/> <!-- Required field -->
@@ -198,7 +198,7 @@
             <input type="date" id="dob" name="dateOfBirth" style="margin-bottom:0;" required>
             <!-- HTML5 date input field -->
             <!-- Placeholder for error message -->
-            <div id="dobError" style="color: red; margin:2px 0 8px 4px;  font-size:12px; font-weight:600;"></div>
+            <div id="dobError" style="color: red; margin:2px 0 2px 4px;  font-size:12px; font-weight:600;"></div>
 
             <!-- Username input field -->
             <input type="text" name="username" style="margin-bottom:0;" placeholder="Username (Unique)" required/>
@@ -215,6 +215,9 @@
 
             <!-- Phone number input field (optional) -->
             <input type="text" name="phoneNumber" placeholder="Phone Number (optional)"/>
+
+            <input type="file" id="imageFile" name="imageFile"><br> <!-- New file input field -->
+
 
             <!-- Checkbox for terms of service -->
             <label class="checkbox-label">

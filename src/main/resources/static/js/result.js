@@ -105,7 +105,7 @@ function fetchResult() {
                       background-color: #ffffff;
                     ">
                     Candidate id:${result.candidateModel.candidateId}<br>
-                    Password: ${result.candidateModel.password}
+
                   </div>
                   <div class="res_table_row" style="
                       width: 260px;

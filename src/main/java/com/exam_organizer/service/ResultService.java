@@ -41,14 +41,13 @@ public class ResultService {
         try {
 
             Optional<ExamModel> exam = this.examRepository.findById(examId);
-            log.info("Exam found: {}",exam.isPresent());
-            if(exam.isPresent())
-            {
-                     Page<ExamResultModel> res=examResultRepository.findAllByExamId(examId, pageable);
-                     log.info("page: {}",res.toString());
+            log.info("Exam found: {}", exam.isPresent());
+            if (exam.isPresent()) {
+                Page<ExamResultModel> res = examResultRepository.findAllByExamId(examId, pageable);
+                log.info("page: {}", res.toString());
                 return res;
-            }else{
-                throw new ResourceNotFoundException("Exam not found","Exam ID: ",examId);
+            } else {
+                throw new ResourceNotFoundException("Exam not found", "Exam ID: ", examId);
             }
 
         } catch (Exception ex) {
@@ -56,8 +55,6 @@ public class ResultService {
             return null;
         }
     }
-
-
 
 
 }

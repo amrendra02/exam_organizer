@@ -2,12 +2,12 @@ package com.exam_organizer.dto;
 
 import com.exam_organizer.model.QuestionModel;
 import jakarta.persistence.*;
+import lombok.*;
 
+@Data
 public class OptionDto {
 
     private Long optionId;
-
-//    private QuestionModel questionModel;
 
     private Long exam_id;
 

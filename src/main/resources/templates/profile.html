@@ -10,24 +10,7 @@
          display: flex;
          flex-direction: column;
          align-items: center;
-         justify-content: center;
-     }
-
-     .profile_root p {
-
-         margin: 0px;
-         margin-bottom: 20px;
-         width: 400px;
-         height: auto;
-
-
-
-         color: #000;
-         text-align: center;
-         font-family: sans-serif;
-         font-size: 27px;
-         font-style: normal;
-         font-weight: 600;
+/*         justify-content: center;*/
 
      }
 
@@ -42,7 +25,7 @@
      }
     </style>
 </head>
-<body style="width: 100%; height: 720px; margin: 0; background: #000c2d">
+<body style="width: 100%; height: 100vh; margin: 0; background: #000c2d">
 
     <div th:replace="~{header :: header1}"></div>
 
@@ -54,20 +37,22 @@
         border-collapse: collapse;
       "
 >
-    <tr style="background: #bae2ff">
+    <tr style="background: #ffffff">
         <td style="width: 200px; vertical-align: baseline; padding: 0px">
 
             <div th:replace="~{navbar :: navbar1}"></div>
         </td>
         <td style="vertical-align: top">
             <div class="profile_root">
-                <img class="profile_img"  alt="img"/>
-                <p style="margin-top: 20px" th:text="${name}">Amrendra Yadav</p>
-                <p>Registration no: <span th:text="${id}" style="margin-left:10px"></span></p>
-                <p>Total Exam test:<span th:text="${exam}" style="margin-left:10px"></span></p>
-                <p>Cancelled:<span th:text="${cancel}" style="margin-left:10px"></span></p>
-                <p>Active:<span th:text="${active}" style="margin-left:10px"></span></p>
-                <p>Live:<span th:text="${live}" style="margin-left:10px"></span></p>
+                <img class="profile_img" style="width:100px;height:100px; border-radius: 5rem; margin-top:40px;" th:if="${image != null}"
+                     th:src="'data:image/jpeg;base64,' + ${image}" alt="Candidate Image">
+                <p th:if="${image == null}">No image available</p>
+                <p style="margin:0; margin-top:10px; font-size: 24px; font-weight:600;" th:text="${name}"></p>
+                <p style="margin:0; margin-top:10px; font-size: 20px;">Registration no: <span th:text="${id}" style="margin-left:10px"></span></p>
+                <p style="margin:0; margin-top:10px; font-size: 20px;">Total Exam test:<span th:text="${exam}" style="margin-left:10px"></span></p>
+                <p style="margin:0; margin-top:10px; font-size: 20px;">Cancelled:<span th:text="${cancel}" style="margin-left:10px"></span></p>
+                <p style="margin:0; margin-top:10px; font-size: 20px;">Active:<span th:text="${active}" style="margin-left:10px"></span></p>
+                <p style="margin:0; margin-top:10px; font-size: 20px;">Live:<span th:text="${live}" style="margin-left:10px"></span></p>
             </div>
         </td>
     </tr>
