@@ -5,7 +5,7 @@ function getCsrfToken() {
     return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 }
 
-function getExamList(candidateId = 34) {
+function getExamList() {
     const paragraph = document.getElementById("username");
 
     const username = paragraph.querySelector("span").innerText;
