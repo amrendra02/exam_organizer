@@ -23,8 +23,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: 'exam_organizer'
-          environment_name: 'Examorganizer-env-1'
+          application_name: 'web-exam-app'
+          environment_name: 'Web-exam-app-env'
           version_label: ${{ github.sha }}
           region: us-east-1
           deployment_package: target/exam_organizer-0.0.1-SNAPSHOT.jar
