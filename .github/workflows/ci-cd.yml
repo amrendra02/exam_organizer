@@ -21,8 +21,8 @@ jobs:
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
         with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_I }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KE }}
           application_name: 'web-exam-app'
           environment_name: 'Web-exam-app-env'
           version_label: ${{ github.sha }}
