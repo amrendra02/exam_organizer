@@ -1,0 +1,813 @@
+12:46:52.356 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 9760 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+12:46:52.367 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+12:46:52.368 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+12:46:58.166 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 6.19 seconds (process running for 7.294)
+12:47:20.212 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Welcome - Welcome to Admin.
+12:47:23.722 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Login - from login...A
+12:47:25.902 [http-nio-8085-exec-6] INFO  com.exam_organizer.service.ExamOrganizerDetailService - user not found!
+12:47:25.979 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.CustomErrorController - Error Model: {status_code=500, message=Internal Server Error}
+12:47:31.531 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Login - from login...A
+12:47:35.866 [http-nio-8085-exec-2] INFO  com.exam_organizer.service.ExamOrganizerDetailService - user not found!
+12:47:35.946 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.CustomErrorController - Error Model: {status_code=500, message=Internal Server Error}
+12:47:47.832 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Login - from login...A
+12:47:48.490 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Login - from login...A
+12:47:49.451 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Login - from login...A
+12:47:51.448 [http-nio-8085-exec-1] INFO  com.exam_organizer.service.ExamOrganizerDetailService - user not found!
+12:47:51.522 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.CustomErrorController - Error Model: {status_code=500, message=Internal Server Error}
+12:47:54.273 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Login - from login...A
+12:47:57.996 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.ForgetPassword - Forget Password page.
+12:48:07.825 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Login - from login...A
+12:48:13.998 [http-nio-8085-exec-5] INFO  com.exam_organizer.service.ExamOrganizerDetailService - user not found!
+12:48:14.080 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.CustomErrorController - Error Model: {status_code=500, message=Internal Server Error}
+12:49:05.749 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Login - from login...A
+12:49:07.436 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Signup - from Admin Signup page
+12:49:08.406 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Signup - Checking the username.
+12:49:37.833 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Signup - Admin Signup controller post...
+12:49:38.030 [http-nio-8085-exec-4] INFO  com.exam_organizer.service.SignupService - Username not found creating new user.
+12:49:38.030 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Signup - success
+12:49:38.041 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Login - from login...A
+12:49:48.249 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Profile - from profile...
+12:49:48.249 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Profile - Organizer Id: 1
+12:49:48.275 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Profile - 0
+12:49:48.275 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Profile - 0
+12:49:48.275 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Profile - 0
+12:49:48.275 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Profile - 0
+12:50:32.934 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+12:50:32.940 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Exam - 0
+12:50:32.940 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Exam - 0
+12:50:32.940 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Exam - 0
+12:50:32.940 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Exam - 0
+12:50:33.338 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Exam - from Login get...
+12:50:34.428 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Candidate - from candidate...
+12:50:35.437 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Question - from question...A
+12:50:38.300 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Result - from result...
+12:50:42.093 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Result - from result...
+12:50:42.748 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Question - from question...A
+12:50:44.220 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Candidate - from candidate...
+12:50:44.690 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+12:50:44.693 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Exam - 0
+12:50:44.693 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Exam - 0
+12:50:44.693 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Exam - 0
+12:50:44.693 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Exam - 0
+12:50:44.767 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Exam - from Login get...
+12:50:45.371 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Profile - from profile...
+12:50:45.371 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Profile - Organizer Id: 1
+12:50:45.375 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Profile - 0
+12:50:45.375 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Profile - 0
+12:50:45.375 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Profile - 0
+12:50:45.375 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Profile - 0
+12:50:50.202 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+12:50:50.205 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Exam - 0
+12:50:50.205 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Exam - 0
+12:50:50.205 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Exam - 0
+12:50:50.205 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Exam - 0
+12:50:50.247 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Exam - from Login get...
+12:50:51.491 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Question - from question...A
+12:51:26.579 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Profile - from profile...
+12:51:26.579 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Profile - Organizer Id: 1
+12:51:26.582 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Profile - 0
+12:51:26.583 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Profile - 0
+12:51:26.583 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Profile - 0
+12:51:26.583 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Profile - 0
+13:07:25.139 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+13:07:25.145 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Exam - 0
+13:07:25.146 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Exam - 0
+13:07:25.146 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Exam - 0
+13:07:25.146 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Exam - 0
+13:07:25.190 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Exam - from Login get...
+13:07:25.843 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Candidate - from candidate...
+13:07:26.641 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Question - from question...A
+13:07:27.979 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Result - from result...
+13:07:31.683 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Login - from login...A
+13:07:35.340 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Welcome - Welcome to Admin.
+13:09:05.860 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Login - from login...A
+13:09:07.290 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Profile - from profile...
+13:09:07.290 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Profile - Organizer Id: 1
+13:09:07.292 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Profile - 0
+13:09:07.293 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Profile - 0
+13:09:07.293 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Profile - 0
+13:09:07.293 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Profile - 0
+13:09:10.745 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Candidate - from candidate...
+13:09:12.777 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Question - from question...A
+13:09:16.918 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Question - from exam ---------- individual exam data: 1
+13:09:16.918 [http-nio-8085-exec-10] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 1
+13:09:17.722 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - from exam ---------- individual exam data: 1
+13:09:17.722 [http-nio-8085-exec-1] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 1
+13:09:19.619 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - from exam ---------- individual exam data: 1
+13:09:19.619 [http-nio-8085-exec-6] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 1
+13:09:24.291 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Question - from exam ---------- individual exam data: 
+13:09:28.467 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Question - from exam ---------- individual exam data: 2
+13:09:28.468 [http-nio-8085-exec-4] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+13:10:02.596 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+13:10:02.599 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Exam - 0
+13:10:02.599 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Exam - 0
+13:10:02.599 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Exam - 0
+13:10:02.599 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Exam - 0
+13:10:02.632 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Exam - from Login get...
+13:10:22.371 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Exam - from Login get...
+13:10:25.266 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Question - from question list... : 1
+13:10:25.266 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Question - getting from database..
+13:11:13.724 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - from question...A
+13:11:15.955 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+13:11:15.961 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Exam - 1
+13:11:15.962 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Exam - 0
+13:11:15.962 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Exam - 0
+13:11:15.962 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Exam - 1
+13:11:15.995 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Exam - from Login get...
+13:11:17.604 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Question - from question...A
+13:11:20.924 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - from exam ---------- individual exam data: 1
+13:11:20.924 [http-nio-8085-exec-3] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 1
+13:11:20.930 [http-nio-8085-exec-3] INFO  com.exam_organizer.service.ExamService - ..3
+13:11:20.930 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=1, examName=Entrance Exam, status=ACTIVE, examDate=2024-11-24, startTime=00:00, duration=90, totalMarks=150, organizer=null, questions=null)
+13:11:20.941 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Question - from question list... : 1
+13:11:20.941 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Question - getting from database..
+13:11:32.520 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - from question save...
+13:11:32.520 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - A
+13:11:32.547 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - Question Saved...
+13:11:42.856 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Question - from question...A
+13:11:46.595 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - from exam ---------- individual exam data: 1
+13:11:46.595 [http-nio-8085-exec-6] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 1
+13:11:46.601 [http-nio-8085-exec-6] INFO  com.exam_organizer.service.ExamService - ..3
+13:11:46.601 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=1, examName=Entrance Exam, status=ACTIVE, examDate=2024-11-24, startTime=00:00, duration=90, totalMarks=150, organizer=null, questions=null)
+13:11:46.606 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Question - from question list... : 1
+13:11:46.606 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Question - getting from database..
+13:12:12.946 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - from question...A
+13:12:26.187 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Question - from exam ---------- individual exam data: 1
+13:12:26.187 [http-nio-8085-exec-7] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 1
+13:12:26.193 [http-nio-8085-exec-7] INFO  com.exam_organizer.service.ExamService - ..3
+13:12:26.193 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=1, examName=Entrance Exam, status=ACTIVE, examDate=2024-11-24, startTime=00:00, duration=90, totalMarks=150, organizer=null, questions=null)
+13:12:26.199 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Question - from question list... : 1
+13:12:26.199 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Question - getting from database..
+13:12:30.802 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+13:12:30.808 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Exam - 1
+13:12:30.808 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Exam - 0
+13:12:30.808 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Exam - 0
+13:12:30.808 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Exam - 1
+13:12:30.842 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Exam - from Login get...
+13:12:32.483 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Exam - from Login get...
+13:12:34.147 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+13:12:34.149 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Exam - 0
+13:12:34.149 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Exam - 0
+13:12:34.149 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Exam - 0
+13:12:34.149 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Exam - 0
+13:12:34.184 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Exam - from Login get...
+13:12:35.730 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Question - from question...A
+13:17:09.566 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Welcome - Welcome to Admin.
+13:17:21.766 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Login - from login...A
+13:17:53.694 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Profile - from profile...
+13:17:53.694 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Profile - Organizer Id: 1
+13:17:53.697 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Profile - 0
+13:17:53.697 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Profile - 0
+13:17:53.697 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Profile - 0
+13:17:53.697 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Profile - 0
+13:17:59.665 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+13:17:59.669 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Exam - 0
+13:17:59.669 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Exam - 0
+13:17:59.669 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Exam - 0
+13:17:59.669 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Exam - 0
+13:17:59.841 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Exam - from Login get...
+13:18:08.268 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+13:18:08.271 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - 0
+13:18:08.271 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - 0
+13:18:08.271 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - 0
+13:18:08.271 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - 0
+13:18:08.308 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Exam - from Login get...
+13:18:09.408 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Question - from question...A
+13:18:12.862 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - from question...A
+13:18:14.890 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+13:18:14.895 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Exam - 0
+13:18:14.895 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Exam - 0
+13:18:14.895 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Exam - 0
+13:18:14.895 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Exam - 0
+13:18:14.975 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Exam - from Login get...
+13:18:19.738 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+13:18:19.742 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Exam - 0
+13:18:19.742 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Exam - 0
+13:18:19.742 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Exam - 0
+13:18:19.742 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Exam - 0
+13:18:19.773 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Exam - from Login get...
+13:18:31.855 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Exam - from Login get...
+13:18:34.478 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+13:18:34.486 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Exam - 1
+13:18:34.486 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Exam - 0
+13:18:34.486 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Exam - 0
+13:18:34.486 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Exam - 1
+13:18:34.568 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Exam - from Login get...
+13:21:34.690 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - from question...A
+13:24:59.805 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 9760 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+13:24:59.805 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+13:24:59.806 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+13:25:01.234 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 1.491 seconds (process running for 2290.362)
+13:25:02.760 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 9760 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+13:25:02.760 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+13:25:02.760 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+13:25:03.583 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.856 seconds (process running for 2292.711)
+13:30:21.558 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 9760 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+13:30:21.558 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+13:30:21.558 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+13:30:22.474 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.947 seconds (process running for 2611.602)
+13:31:11.025 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 9760 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+13:31:11.025 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+13:31:11.026 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+13:31:12.024 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 1.041 seconds (process running for 2661.152)
+13:31:13.549 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 9760 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+13:31:13.550 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+13:31:13.550 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+13:31:14.491 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.972 seconds (process running for 2663.619)
+13:31:25.318 [http-nio-8085-exec-2] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 1
+13:31:26.643 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+13:31:26.651 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - 1
+13:31:26.651 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - 0
+13:31:26.651 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - 0
+13:31:26.651 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - 1
+13:31:26.750 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Exam - from Login get...
+13:31:30.138 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Result - from result...
+13:31:33.684 [http-nio-8085-exec-4] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+13:31:33.688 [http-nio-8085-exec-4] INFO  com.exam_organizer.service.ExamService - ..3
+13:31:33.688 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Entrance Exam, status=ACTIVE, examDate=2024-11-24, startTime=00:00, duration=90, totalMarks=80, organizer=null, questions=null)
+13:31:33.695 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Result - Processing to get all result of exam ID: 2
+13:31:33.695 [http-nio-8085-exec-6] INFO  com.exam_organizer.service.ResultService - Processing the request in service.
+13:31:33.702 [http-nio-8085-exec-6] INFO  com.exam_organizer.service.ResultService - Exam found: true
+13:31:33.717 [http-nio-8085-exec-6] INFO  com.exam_organizer.service.ResultService - page: Page 1 of 0 containing UNKNOWN instances
+13:31:42.209 [http-nio-8085-exec-2] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+13:31:42.212 [http-nio-8085-exec-2] INFO  com.exam_organizer.service.ExamService - ..3
+13:31:42.213 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Entrance Exam, status=ACTIVE, examDate=2024-11-24, startTime=00:00, duration=90, totalMarks=80, organizer=null, questions=null)
+13:31:56.747 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - from question save...
+13:31:56.747 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - A
+13:31:56.757 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - Question Saved...
+13:32:43.981 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Question - from question save...
+13:32:43.981 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Question - A
+13:32:43.993 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Question - Question Saved...
+13:33:02.044 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7064 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+13:33:02.051 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+13:33:02.052 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+13:33:07.677 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 5.959 seconds (process running for 6.752)
+13:33:12.279 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - from question save...
+13:33:12.279 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - A
+13:33:12.383 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - Question Saved...
+13:34:09.236 [http-nio-8085-exec-1] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+13:34:09.297 [http-nio-8085-exec-1] INFO  com.exam_organizer.service.ExamService - ..3
+13:34:09.297 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Entrance Exam, status=ACTIVE, examDate=2024-11-24, startTime=00:00, duration=90, totalMarks=80, organizer=null, questions=null)
+13:34:19.805 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - 4
+13:34:19.816 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - Received Option: {number=A, text=qw} 
+13:34:19.816 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - Received Option: A
+13:35:30.908 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 11284 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+13:35:30.917 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+13:35:30.919 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+13:35:36.583 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 6.013 seconds (process running for 6.796)
+13:35:41.432 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - from question save...
+13:35:41.432 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - A
+13:35:41.543 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Question Saved...
+13:35:51.597 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Profile - from profile...
+13:35:51.598 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Profile - Organizer Id: 1
+13:35:51.653 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Profile - 1
+13:35:51.653 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Profile - 0
+13:35:51.653 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Profile - 0
+13:35:51.653 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Profile - 1
+13:36:16.052 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Candidate - from candidate...
+13:36:23.521 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Profile - from profile...
+13:36:23.521 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Profile - Organizer Id: 1
+13:36:23.525 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Profile - 1
+13:36:23.526 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Profile - 0
+13:36:23.526 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Profile - 0
+13:36:23.526 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Profile - 1
+13:36:24.338 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+13:36:24.344 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - 1
+13:36:24.344 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - 0
+13:36:24.344 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - 0
+13:36:24.344 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - 1
+13:36:24.427 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Exam - from Login get...
+13:36:25.181 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Candidate - from candidate...
+13:36:39.854 [http-nio-8085-exec-5] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+13:36:39.858 [http-nio-8085-exec-5] INFO  com.exam_organizer.service.ExamService - ..3
+13:36:39.859 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Entrance Exam, status=ACTIVE, examDate=2024-11-24, startTime=00:00, duration=90, totalMarks=80, organizer=null, questions=null)
+13:36:53.076 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - from question save...
+13:36:53.077 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - F
+13:36:53.086 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - Question Saved...
+13:37:20.564 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 13036 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+13:37:20.577 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+13:37:20.579 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+13:37:27.268 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 7.259 seconds (process running for 9.199)
+13:37:41.382 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+13:37:41.392 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+13:37:41.394 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+13:37:48.019 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 6.996 seconds (process running for 7.807)
+13:37:56.568 [http-nio-8085-exec-1] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+13:37:56.657 [http-nio-8085-exec-1] INFO  com.exam_organizer.service.ExamService - ..3
+13:37:56.657 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Entrance Exam, status=ACTIVE, examDate=2024-11-24, startTime=00:00, duration=90, totalMarks=80, organizer=null, questions=null)
+13:38:51.294 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - from question save...
+13:38:51.294 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - Y
+13:38:51.353 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - Question Saved...
+13:40:33.985 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Question - 7
+13:40:33.992 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Question - Received Option: {number=E, text=Ty} 
+13:40:33.992 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Question - Received Option: E
+13:45:06.074 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+13:45:06.087 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Exam - 1
+13:45:06.087 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Exam - 0
+13:45:06.087 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Exam - 0
+13:45:06.087 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Exam - 1
+13:45:06.447 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Exam - from Login get...
+13:45:12.781 [http-nio-8085-exec-7] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 3
+13:45:14.412 [http-nio-8085-exec-10] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 3
+13:48:14.709 [http-nio-8085-exec-1] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+13:48:14.714 [http-nio-8085-exec-1] INFO  com.exam_organizer.service.ExamService - ..3
+13:48:14.714 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Entrance Exam, status=ACTIVE, examDate=2024-11-24, startTime=00:00, duration=90, totalMarks=80, organizer=null, questions=null)
+13:50:00.890 [http-nio-8085-exec-6] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+13:50:00.897 [http-nio-8085-exec-6] INFO  com.exam_organizer.service.ExamService - ..3
+13:50:00.897 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Entrance Exam, status=ACTIVE, examDate=2024-11-24, startTime=00:00, duration=90, totalMarks=80, organizer=null, questions=null)
+13:50:08.055 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - from question save...
+13:50:08.055 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - a
+13:50:08.068 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Question Saved...
+13:50:17.425 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - 8
+13:50:17.441 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - Received Option: {number=A, text=fg} 
+13:50:17.441 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - Received Option: A
+14:27:12.145 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+14:27:12.146 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+14:27:12.146 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+14:27:13.683 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 1.599 seconds (process running for 2973.47)
+14:59:41.270 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Login - from login...A
+14:59:55.997 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Login - from login...A
+15:00:06.659 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Profile - from profile...
+15:00:06.660 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Profile - Organizer Id: 1
+15:00:06.667 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Profile - 1
+15:00:06.668 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Profile - 0
+15:00:06.668 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Profile - 0
+15:00:06.668 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Profile - 1
+15:01:01.700 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:01:01.700 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:01:01.700 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+15:01:02.641 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.982 seconds (process running for 5002.428)
+15:01:04.249 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Profile - from profile...
+15:01:04.250 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Profile - Organizer Id: 1
+15:01:04.259 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Profile - 1
+15:01:04.259 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Profile - 0
+15:01:04.260 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Profile - 0
+15:01:04.260 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Profile - 1
+15:04:21.508 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Login - from login...A
+15:12:22.936 [http-nio-8085-exec-3] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+15:12:22.943 [http-nio-8085-exec-3] INFO  com.exam_organizer.service.ExamService - ..3
+15:12:22.943 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Entrance Exam, status=ACTIVE, examDate=2024-11-24, startTime=00:00, duration=90, totalMarks=80, organizer=null, questions=null)
+15:12:26.636 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Question - from question save...
+15:12:26.636 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Question - a
+15:12:26.671 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Question - Question Saved...
+15:12:30.561 [http-nio-8085-exec-7] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+15:12:30.566 [http-nio-8085-exec-7] INFO  com.exam_organizer.service.ExamService - ..3
+15:12:30.566 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Entrance Exam, status=ACTIVE, examDate=2024-11-24, startTime=00:00, duration=90, totalMarks=80, organizer=null, questions=null)
+15:12:43.234 [http-nio-8085-exec-6] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+15:12:43.239 [http-nio-8085-exec-6] INFO  com.exam_organizer.service.ExamService - ..3
+15:12:43.239 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Entrance Exam, status=ACTIVE, examDate=2024-11-24, startTime=00:00, duration=90, totalMarks=80, organizer=null, questions=null)
+15:12:43.907 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - from question save...
+15:12:43.907 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - vb
+15:12:43.920 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - Question Saved...
+15:27:14.491 [http-nio-8085-exec-5] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+15:27:14.496 [http-nio-8085-exec-5] INFO  com.exam_organizer.service.ExamService - ..3
+15:27:14.497 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Entrance Exam, status=ACTIVE, examDate=2024-11-24, startTime=00:00, duration=90, totalMarks=80, organizer=null, questions=null)
+15:27:35.832 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - from question save...
+15:27:35.832 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - A
+15:27:35.845 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Question Saved...
+15:29:21.759 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:29:21.759 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:29:21.759 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+15:29:22.760 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 1.038 seconds (process running for 6702.547)
+15:29:24.264 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:29:24.264 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:29:24.265 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+15:29:25.035 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.796 seconds (process running for 6704.823)
+15:29:27.855 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - from question save...
+15:29:27.855 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - [{"number":"B","text":"rgder"},{"number":"C","text":"dgdgr"}]
+15:29:27.855 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - A
+15:29:27.865 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Question Saved...
+15:30:53.917 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Question - from question save...
+15:30:53.917 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Question - [{"number":"B","text":"rgder"},{"number":"C","text":"dgdgr"}]
+15:30:53.917 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Question - A
+15:30:53.927 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Question - Question Saved...
+15:34:15.349 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:34:15.350 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:34:15.350 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+15:34:16.474 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 1.17 seconds (process running for 6996.262)
+15:34:17.989 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:34:17.989 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:34:17.990 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+15:34:18.622 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.66 seconds (process running for 6998.409)
+15:34:22.536 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - from question save...
+15:34:22.536 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - [{"number":"B","text":"rgder"},{"number":"C","text":"dgdgr"}]
+15:34:22.536 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - A
+15:34:22.550 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Question Saved...
+15:34:46.111 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Question - from question save...
+15:34:46.111 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Question - [{"number":"B","text":"rgder"},{"number":"C","text":"dgdgr"}]
+15:34:46.111 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Question - A
+15:34:46.118 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Question - Question Saved...
+15:34:47.830 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:34:47.831 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:34:47.831 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+15:34:48.777 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.977 seconds (process running for 7028.565)
+15:34:50.322 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:34:50.322 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:34:50.322 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+15:34:51.195 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.906 seconds (process running for 7030.982)
+15:34:55.515 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - from question save...
+15:34:55.516 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - [{"number":"B","text":"rgder"},{"number":"C","text":"dgdgr"}]
+15:34:55.516 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - A
+15:34:55.528 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Question Saved...
+15:39:14.183 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:39:14.184 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:39:14.184 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+15:39:15.092 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.95 seconds (process running for 7294.879)
+15:39:16.593 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:39:16.593 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:39:16.593 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+15:39:17.120 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.549 seconds (process running for 7296.908)
+15:42:25.918 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:42:25.918 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:42:25.918 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+15:42:26.422 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.524 seconds (process running for 7486.21)
+15:47:16.329 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Login - from login...A
+15:47:18.520 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Profile - from profile...
+15:47:18.522 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Profile - Organizer Id: 1
+15:47:18.528 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Profile - 1
+15:47:18.528 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Profile - 0
+15:47:18.528 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Profile - 0
+15:47:18.528 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Profile - 1
+15:48:02.754 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Profile - from profile...
+15:48:02.754 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Profile - Organizer Id: 1
+15:48:02.764 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Profile - 1
+15:48:02.764 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Profile - 0
+15:48:02.764 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Profile - 0
+15:48:02.764 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Profile - 1
+15:48:27.335 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Profile - from profile...
+15:48:27.335 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Profile - Organizer Id: 1
+15:48:27.339 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Profile - 1
+15:48:27.340 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Profile - 0
+15:48:27.340 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Profile - 0
+15:48:27.340 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Profile - 1
+15:48:28.639 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Profile - from profile...
+15:48:28.639 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Profile - Organizer Id: 1
+15:48:28.644 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Profile - 1
+15:48:28.644 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Profile - 0
+15:48:28.644 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Profile - 0
+15:48:28.644 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Profile - 1
+15:48:32.826 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+15:48:32.830 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Exam - 1
+15:48:32.830 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Exam - 0
+15:48:32.830 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Exam - 0
+15:48:32.830 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Exam - 1
+15:48:32.916 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Exam - from Login get...
+15:49:29.847 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+15:49:29.853 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Exam - 1
+15:49:29.853 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Exam - 0
+15:49:29.853 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Exam - 0
+15:49:29.853 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Exam - 1
+15:49:29.919 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Exam - from Login get...
+15:49:32.576 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:49:32.576 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:49:32.577 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+15:49:33.367 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.822 seconds (process running for 7913.154)
+15:50:55.757 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:50:55.757 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:50:55.757 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+15:50:56.391 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.666 seconds (process running for 7996.179)
+15:50:57.895 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:50:57.895 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:50:57.895 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+15:50:58.403 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.526 seconds (process running for 7998.19)
+15:51:01.344 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+15:51:01.352 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Exam - 1
+15:51:01.352 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Exam - 0
+15:51:01.352 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Exam - 0
+15:51:01.352 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Exam - 1
+15:51:01.429 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Exam - from Login get...
+15:51:03.055 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+15:51:03.060 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Exam - 1
+15:51:03.061 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Exam - 0
+15:51:03.061 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Exam - 0
+15:51:03.061 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Exam - 1
+15:51:03.121 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Exam - from Login get...
+15:51:22.126 [http-nio-8085-exec-6] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+15:51:22.129 [http-nio-8085-exec-6] INFO  com.exam_organizer.service.ExamService - ..3
+15:51:22.129 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Entrance Exam, status=ACTIVE, examDate=2024-11-24, startTime=00:00, duration=90, totalMarks=80, organizer=null, questions=null)
+15:51:38.821 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Question - from question save...
+15:51:38.822 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Question - [{"number":"A","text":"werht"},{"number":"B","text":"wegtw"}]
+15:51:38.822 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Question - q
+15:51:38.832 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Question - Question Saved...
+15:54:38.059 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:54:38.059 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:54:38.059 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+15:54:38.612 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.574 seconds (process running for 8218.4)
+15:54:40.130 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:54:40.132 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:54:40.132 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+15:54:40.655 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.543 seconds (process running for 8220.443)
+15:54:47.075 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - from question save...
+15:54:47.075 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - [{"number":"A","text":"werht"},{"number":"B","text":"wegtw"}]
+15:54:47.075 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - q
+15:54:47.088 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Question Saved...
+15:54:47.097 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: {number=A, text=werht} 
+15:54:47.097 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: A
+15:54:47.101 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: {number=B, text=wegtw} 
+15:54:47.101 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: B
+15:56:59.883 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - from question save...
+15:56:59.883 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - [{"number":"A","text":"werht"},{"number":"B","text":"wegtw"}]
+15:56:59.883 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - q
+15:56:59.895 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - Question Saved...
+15:56:59.900 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - Received Option: {number=A, text=werht} 
+15:56:59.900 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - Received Option: A
+15:56:59.904 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - Received Option: {number=B, text=wegtw} 
+15:56:59.904 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - Received Option: B
+15:57:00.437 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:57:00.438 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:57:00.438 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+15:57:01.361 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.969 seconds (process running for 8361.148)
+15:57:02.938 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:57:02.938 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:57:02.938 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+15:57:03.659 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.754 seconds (process running for 8363.447)
+15:57:16.471 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - from question save...
+15:57:16.471 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - [{"number":"A","text":"werht"},{"number":"B","text":"wegtw"}]
+15:57:16.471 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - q
+15:57:16.479 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Question Saved...
+15:57:16.484 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: {number=A, text=werht} 
+15:57:16.484 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: A
+15:57:16.490 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: {number=B, text=wegtw} 
+15:57:16.490 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: B
+15:59:50.494 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7668 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:59:50.495 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:59:50.495 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+15:59:51.086 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.614 seconds (process running for 8530.873)
+15:59:59.375 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 864 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+15:59:59.381 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+15:59:59.383 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:00:05.182 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 6.175 seconds (process running for 7.145)
+16:00:13.417 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+16:00:13.578 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Exam - 1
+16:00:13.578 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Exam - 1
+16:00:13.579 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Exam - 0
+16:00:13.579 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Exam - 2
+16:00:13.706 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Exam - from Login get...
+16:00:18.476 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Profile - from profile...
+16:00:18.477 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Profile - Organizer Id: 1
+16:00:18.485 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Profile - 1
+16:00:18.485 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Profile - 1
+16:00:18.486 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Profile - 0
+16:00:18.486 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Profile - 2
+16:00:19.402 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+16:00:19.410 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Exam - 1
+16:00:19.410 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Exam - 1
+16:00:19.410 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Exam - 0
+16:00:19.410 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Exam - 2
+16:00:19.518 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Exam - from Login get...
+16:00:20.161 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Candidate - from candidate...
+16:00:22.248 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - Organizer Id: 1
+16:00:22.254 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - 1
+16:00:22.255 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - 1
+16:00:22.255 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - 0
+16:00:22.255 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Exam - 2
+16:00:22.312 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Exam - from Login get...
+16:00:24.737 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Candidate - from candidate...
+16:00:27.440 [http-nio-8085-exec-8] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+16:00:27.448 [http-nio-8085-exec-8] INFO  com.exam_organizer.service.ExamService - ..3
+16:00:27.448 [http-nio-8085-exec-8] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Exam B, status=ACTIVE, examDate=2024-03-04, startTime=00:00, duration=20, totalMarks=2, organizer=null, questions=null)
+16:00:34.774 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Candidate - from candidate...
+16:00:36.919 [http-nio-8085-exec-7] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+16:00:36.925 [http-nio-8085-exec-7] INFO  com.exam_organizer.service.ExamService - ..3
+16:00:36.925 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Exam B, status=ACTIVE, examDate=2024-03-04, startTime=00:00, duration=20, totalMarks=2, organizer=null, questions=null)
+16:00:38.863 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Candidate - from candidate...
+16:00:40.444 [http-nio-8085-exec-10] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+16:00:40.449 [http-nio-8085-exec-10] INFO  com.exam_organizer.service.ExamService - ..3
+16:00:40.450 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Exam B, status=ACTIVE, examDate=2024-03-04, startTime=00:00, duration=20, totalMarks=2, organizer=null, questions=null)
+16:00:40.457 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Exam - Request to get candidates list: 2
+16:00:40.457 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Exam - Candidate list request...
+16:00:40.489 [http-nio-8085-exec-1] INFO  com.exam_organizer.service.ExamService - Successfully get candidate list.
+16:00:46.927 [http-nio-8085-exec-5] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+16:00:46.933 [http-nio-8085-exec-5] INFO  com.exam_organizer.service.ExamService - ..3
+16:00:46.934 [http-nio-8085-exec-5] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Exam B, status=ACTIVE, examDate=2024-03-04, startTime=00:00, duration=20, totalMarks=2, organizer=null, questions=null)
+16:09:24.720 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:09:24.728 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:09:24.730 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:09:31.174 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 6.831 seconds (process running for 7.719)
+16:09:33.816 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - from question save...
+16:09:33.816 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - [{"number":"A","text":"lij"}]
+16:09:33.816 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - A
+16:09:33.925 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Question Saved...
+16:09:34.015 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: {number=A, text=lij} 
+16:09:34.015 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: A
+16:11:23.096 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:11:23.096 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:11:23.096 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:11:24.390 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 1.338 seconds (process running for 120.935)
+16:11:25.918 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:11:25.919 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:11:25.919 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:11:26.739 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.85 seconds (process running for 123.284)
+16:11:31.372 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - from question save...
+16:11:31.372 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - [{"number":"A","text":"lij"}]
+16:11:31.372 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - A
+16:11:31.386 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Question Saved...
+16:11:31.395 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: {number=A, text=lij} 
+16:11:31.395 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: A
+16:12:05.127 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:12:05.128 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:12:05.128 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:12:06.219 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 1.133 seconds (process running for 162.763)
+16:12:07.734 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:12:07.734 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:12:07.735 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:12:08.562 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.86 seconds (process running for 165.107)
+16:12:11.430 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - from question save...
+16:12:11.430 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - [{"number":"A","text":"lij"}]
+16:12:11.430 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - A
+16:12:11.442 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Question Saved...
+16:12:11.448 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: {number=A, text=lij} 
+16:12:11.448 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: A
+16:12:11.453 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - 
+16:13:43.188 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:13:43.188 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:13:43.189 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:13:44.102 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.96 seconds (process running for 260.647)
+16:13:45.616 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:13:45.617 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:13:45.617 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:13:46.332 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.75 seconds (process running for 262.877)
+16:14:22.633 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:14:22.633 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:14:22.633 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:14:23.438 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.832 seconds (process running for 299.983)
+16:14:38.243 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:14:38.243 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:14:38.244 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:14:38.873 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.656 seconds (process running for 315.417)
+16:14:50.056 [http-nio-8085-exec-4] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+16:14:50.064 [http-nio-8085-exec-4] INFO  com.exam_organizer.service.ExamService - ..3
+16:14:50.064 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Exam B, status=ACTIVE, examDate=2024-03-04, startTime=00:00, duration=20, totalMarks=2, organizer=null, questions=null)
+16:15:08.043 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - from question save...
+16:15:08.044 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - [{"number":"A","text":"vj"}]
+16:15:08.044 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - A
+16:15:08.054 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - Question Saved...
+16:15:08.061 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - Received Option: {number=A, text=vj} 
+16:15:08.061 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - Received Option: A
+16:15:08.067 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - {option_id=[219]}
+16:15:08.067 [http-nio-8085-exec-6] INFO  com.exam_organizer.controller.Question - {option_id=[219]}
+16:15:48.785 [http-nio-8085-exec-9] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+16:15:48.791 [http-nio-8085-exec-9] INFO  com.exam_organizer.service.ExamService - ..3
+16:15:48.791 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Exam B, status=ACTIVE, examDate=2024-03-04, startTime=00:00, duration=20, totalMarks=2, organizer=null, questions=null)
+16:17:01.635 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - from question save...
+16:17:01.635 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - [{"number":"A","text":"vj"}]
+16:17:01.635 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - A
+16:17:01.645 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - Question Saved...
+16:17:01.649 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - Received Option: {number=A, text=vj} 
+16:17:01.649 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - Received Option: A
+16:17:01.654 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - {option_id=[220]}
+16:17:01.654 [http-nio-8085-exec-3] INFO  com.exam_organizer.controller.Question - {option_id=[220]}
+16:20:50.745 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:20:50.745 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:20:50.745 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:20:51.402 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.693 seconds (process running for 687.947)
+16:20:52.909 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:20:52.909 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:20:52.909 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:20:53.568 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.681 seconds (process running for 690.112)
+16:20:54.624 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - from question save...
+16:20:54.624 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - [{"number":"A","text":"vj"}]
+16:20:54.624 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - A
+16:20:54.634 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - Question Saved...
+16:20:54.639 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - Received Option: {number=A, text=vj} 
+16:20:54.639 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - Received Option: A
+16:20:54.642 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - {option_id=[221]}
+16:20:54.642 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - {option_id=[221]}
+16:21:24.898 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:21:24.899 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:21:24.899 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:21:25.933 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 1.061 seconds (process running for 722.477)
+16:21:27.435 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:21:27.436 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:21:27.436 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:21:28.127 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.717 seconds (process running for 724.671)
+16:21:39.217 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - from question save...
+16:21:39.217 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - [{"number":"A","text":"vj"}]
+16:21:39.217 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - A
+16:21:39.228 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Question Saved...
+16:21:39.233 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: {number=A, text=vj} 
+16:21:39.233 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: A
+16:21:39.238 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - 222
+16:21:39.238 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - {option_id=[222]}
+16:21:39.238 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - {option_id=[222]}
+16:24:25.795 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:24:25.795 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:24:25.795 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:24:26.457 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.684 seconds (process running for 903.001)
+16:24:27.988 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:24:27.989 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:24:27.989 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:24:28.520 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.552 seconds (process running for 905.065)
+16:24:28.743 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - from question save...
+16:24:28.744 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - [{"number":"A","text":"vj"}]
+16:24:28.744 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - A
+16:24:28.751 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Question Saved...
+16:24:28.756 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: {number=A, text=vj} 
+16:24:28.756 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: A
+16:24:28.761 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - {option_id=[223]}
+16:24:28.761 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - {option_id=[223]}
+16:28:33.226 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:28:33.227 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:28:33.227 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:28:33.981 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.782 seconds (process running for 1150.525)
+16:28:35.543 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:28:35.544 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:28:35.544 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:28:36.631 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 1.115 seconds (process running for 1153.176)
+16:28:40.351 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - from question save...
+16:28:40.351 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - [{"number":"A","text":"vj"}]
+16:28:40.351 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - A
+16:28:40.364 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Question Saved...
+16:28:40.370 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: {number=A, text=vj} 
+16:28:40.370 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - Received Option: A
+16:28:40.376 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - {option_id=[224]}
+16:28:40.376 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - {option_id=[224]}
+16:29:51.833 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:29:51.833 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:29:51.833 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:29:52.365 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.552 seconds (process running for 1228.909)
+16:29:53.874 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:29:53.874 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:29:53.874 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:29:54.318 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.463 seconds (process running for 1230.862)
+16:29:58.885 [http-nio-8085-exec-1] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+16:29:58.892 [http-nio-8085-exec-1] INFO  com.exam_organizer.service.ExamService - ..3
+16:29:58.893 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Exam B, status=ACTIVE, examDate=2024-03-04, startTime=00:00, duration=20, totalMarks=2, organizer=null, questions=null)
+16:37:25.084 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:37:25.084 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:37:25.084 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:37:29.044 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:37:29.044 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:37:29.045 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:38:46.283 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 17140 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:38:46.284 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:38:46.284 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:38:46.869 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.606 seconds (process running for 1763.414)
+16:44:29.748 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 15948 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:44:29.754 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:44:29.755 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:44:35.562 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 6.145 seconds (process running for 6.913)
+16:45:21.056 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 15948 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:45:21.057 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:45:21.057 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:45:22.296 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 1.285 seconds (process running for 53.648)
+16:45:23.834 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 15948 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:45:23.834 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:45:23.834 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:45:24.658 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 0.862 seconds (process running for 56.008)
+16:45:43.509 [http-nio-8085-exec-7] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+16:45:43.666 [http-nio-8085-exec-7] INFO  com.exam_organizer.service.ExamService - ..3
+16:45:43.666 [http-nio-8085-exec-7] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Exam B, status=ACTIVE, examDate=2024-03-04, startTime=00:00, duration=20, totalMarks=2, organizer=null, questions=null)
+16:48:08.880 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 9160 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:48:08.891 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:48:08.892 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:48:14.304 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 5.772 seconds (process running for 6.649)
+16:51:00.295 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 7016 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:51:00.303 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:51:00.305 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:51:05.523 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 5.577 seconds (process running for 6.366)
+16:51:06.736 [http-nio-8085-exec-1] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+16:51:06.826 [http-nio-8085-exec-1] INFO  com.exam_organizer.service.ExamService - ..3
+16:51:06.826 [http-nio-8085-exec-1] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Exam B, status=ACTIVE, examDate=2024-03-04, startTime=00:00, duration=20, totalMarks=2, organizer=null, questions=null)
+16:53:00.227 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 12832 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+16:53:00.237 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+16:53:00.238 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+16:53:06.110 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 6.278 seconds (process running for 7.247)
+16:53:54.576 [http-nio-8085-exec-9] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+16:53:54.703 [http-nio-8085-exec-9] INFO  com.exam_organizer.service.ExamService - ..3
+16:53:54.703 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Exam B, status=ACTIVE, examDate=2024-03-04, startTime=00:00, duration=20, totalMarks=2, organizer=null, questions=null)
+16:56:20.248 [http-nio-8085-exec-2] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+16:56:20.253 [http-nio-8085-exec-2] INFO  com.exam_organizer.service.ExamService - ..3
+16:56:20.254 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Exam B, status=ACTIVE, examDate=2024-03-04, startTime=00:00, duration=20, totalMarks=2, organizer=null, questions=null)
+16:56:31.275 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Question - from question save...
+16:56:31.275 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Question - [{"number":"V","text":"dthf"}]
+16:56:31.275 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Question - A
+16:56:31.376 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Question - Question Saved...
+16:56:31.410 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Question - Received Option: {number=V, text=dthf} 
+16:56:31.410 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Question - Received Option: V
+16:56:31.418 [http-nio-8085-exec-10] INFO  com.exam_organizer.controller.Question - [225]
+16:56:47.041 [http-nio-8085-exec-4] INFO  com.exam_organizer.service.ExamService - from EXAM Service: 2
+16:56:47.049 [http-nio-8085-exec-4] INFO  com.exam_organizer.service.ExamService - ..3
+16:56:47.049 [http-nio-8085-exec-4] INFO  com.exam_organizer.controller.Question - ...2  ExamModel(examId=2, examName=Exam B, status=ACTIVE, examDate=2024-03-04, startTime=00:00, duration=20, totalMarks=2, organizer=null, questions=null)
+16:56:57.116 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Question - from question save...
+16:56:57.116 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Question - [{"number":"V","text":"dthf"},{"number":"g","text":"giughi"}]
+16:56:57.116 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Question - A
+16:56:57.134 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Question - Question Saved...
+16:56:57.139 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Question - Received Option: {number=V, text=dthf} 
+16:56:57.140 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Question - Received Option: V
+16:56:57.145 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Question - Received Option: {number=g, text=giughi} 
+16:56:57.145 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Question - Received Option: g
+16:56:57.151 [http-nio-8085-exec-9] INFO  com.exam_organizer.controller.Question - [226, 227]
+17:00:48.689 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Starting ExamOrganizerApplication using Java 17.0.9 with PID 12176 (D:\SpringBoot\exam_organizer\target\classes started by Lenovo in D:\SpringBoot\exam_organizer)
+17:00:48.696 [restartedMain] DEBUG com.exam_organizer.ExamOrganizerApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+17:00:48.698 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - No active profile set, falling back to 1 default profile: "default"
+17:00:54.094 [restartedMain] INFO  com.exam_organizer.ExamOrganizerApplication - Started ExamOrganizerApplication in 5.74 seconds (process running for 6.463)
+17:00:59.327 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - from question save...
+17:00:59.327 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - [{"number":"V","text":"dthf"},{"number":"g","text":"giughi"}]
+17:00:59.327 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - A
+17:00:59.422 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - Question Saved...
+17:00:59.497 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - Received Option: {number=V, text=dthf} 
+17:00:59.497 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - Received Option: V
+17:00:59.504 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - Received Option: {number=g, text=giughi} 
+17:00:59.504 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - Received Option: g
+17:00:59.509 [http-nio-8085-exec-2] INFO  com.exam_organizer.controller.Question - [228, 229]

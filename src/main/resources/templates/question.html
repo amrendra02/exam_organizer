@@ -177,7 +177,7 @@
                     <div class="question_block_c_a">
                         <!-- question block -->
 
-                        <form id="question_form" th:action="@{/admin/question}" method="post" enctype="multipart/form-data"
+                        <form id="question_form" enctype="multipart/form-data"
                               style="margin:0px; height:auto; width:100%; display:flex; flex-direction:column;">
                             <div class="question_input">
                                 <p>Question :</p>
@@ -202,87 +202,172 @@
                                         <input type="file" id="imageInput" name="image" onchange="previewFile()"/>
                                     </div>
                                     <p id="fileWarning">* Please upload only .jpge, .png, .jpeg file</p>
+                                    <!-- correct option-->
                                     <input type="text" name="correctOption" style="outline:none; background-color:white; font-size:16px;
                                     width:250px;margin-top:10px;height: 30px; border-radius: 6px;"
                                            placeholder="Answer/Options"/>
                                 </div>
 
-                                <button id="question_save" class="q_o_add_li_btn" type="button" onclick="submitForm()"
-                                        style="align-self:flex-end">Save
-                                </button>
-                            </div>
-                        </form>
+<!--                                <button id="question_save" class="q_o_add_li_btn" type="button" onclick="submitForm()"-->
+<!--                                        style="align-self:flex-end">Save-->
+<!--                                </button>-->
 
-                        <div class="question_option">
-                            <p>Options:</p>
-                            <div class="question_option_a">
-                                <!-- all question options show here  -->
-                                <!-- dummy option------------------------- -->
-                                <div class="question_option_a_a" id="optionsContainer">
-                                    <!-- option end  -->
-                                </div>
-                                <!-- add operation here- -->
-                                <div class="question_option_a_b">
-                                    <!-- --------------------------------- -->
-                                    <input class="q_o_no" type="text" id="optionNumber"/>
-                                    <input class="q_o_detail" type="text" id="optionInput"/>
-                                    <div class="q_o_add" onclick="addOptionToList()">
-                                        <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="30"
-                                                height="30"
-                                                viewBox="0 0 30 30"
-                                                fill="none"
-                                                style="cursor: pointer"
-                                        >
-                                            <path
-                                                    d="M15.9375 14.0625V7.5H14.0625V14.0625H7.5V15.9375H14.0625V22.5H15.9375V15.9375H22.5V14.0625H15.9375Z"
-                                                    fill="black"
-                                            />
-                                        </svg>
-                                    </div>
-                                    <!-- ------------------------------------ -->
-                                </div>
+
+
+
+
                             </div>
-                        </div>
-                        <!-- add question list   -->
-                        <div class="question_add_list">
-                            <div style="
+
+                            <div>
+                                <!--                                check - option add -updated-->
+                                <div class="question_option">
+                                    <p>Options:</p>
+                                    <div class="question_option_a">
+                                        <!-- all question options show here  -->
+                                        <!-- dummy option------------------------- -->
+                                        <div class="question_option_a_a" id="optionsContainer">
+                                            <!-- option end  -->
+                                        </div>
+                                        <!-- add operation here- -->
+                                        <div class="question_option_a_b">
+                                            <!-- --------------------------------- -->
+                                            <input class="q_o_no" type="text" id="optionNumber"/>
+                                            <input class="q_o_detail" type="text" id="optionInput"/>
+                                            <div class="q_o_add" onclick="addOptionToList()">
+                                                <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width="30"
+                                                        height="30"
+                                                        viewBox="0 0 30 30"
+                                                        fill="none"
+                                                        style="cursor: pointer"
+                                                >
+                                                    <path
+                                                            d="M15.9375 14.0625V7.5H14.0625V14.0625H7.5V15.9375H14.0625V22.5H15.9375V15.9375H22.5V14.0625H15.9375Z"
+                                                            fill="black"
+                                                    />
+                                                </svg>
+                                            </div>
+                                            <!-- ------------------------------------ -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="question_add_list">
+                                    <div style="
                       width: 350px;
                       display: flex;
                       flex-direction: row;
                       justify-content: space-around;
                     ">
-                                <p class="q_o_add_list_i">Add to Question list</p>
-                                <button id="option_add_b" class="q_o_add_li_btn" onclick="sendOptionsToAPI()">Add
-                                </button>
-                                <div class="q_o_add_li_v">
-                                    <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="25"
-                                            height="25"
-                                            viewBox="0 0 25 25"
-                                            fill="none"
-                                            style="cursor: pointer"
-                                    >
-                                        <path
-                                                d="M5.20825 12.5001C5.20825 12.5001 7.85929 7.29175 12.4999 7.29175C17.1395 7.29175 19.7916 12.5001 19.7916 12.5001C19.7916 12.5001 17.1395 17.7084 12.4999 17.7084C7.85929 17.7084 5.20825 12.5001 5.20825 12.5001Z"
-                                                stroke="black"
-                                                stroke-width="1.67"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                        />
-                                        <path
-                                                d="M21.875 17.7083V19.7917C21.875 20.3442 21.6555 20.8741 21.2648 21.2648C20.8741 21.6555 20.3442 21.875 19.7917 21.875H5.20833C4.6558 21.875 4.12589 21.6555 3.73519 21.2648C3.34449 20.8741 3.125 20.3442 3.125 19.7917V17.7083M21.875 7.29167V5.20833C21.875 4.6558 21.6555 4.12589 21.2648 3.73519C20.8741 3.34449 20.3442 3.125 19.7917 3.125H5.20833C4.6558 3.125 4.12589 3.34449 3.73519 3.73519C3.34449 4.12589 3.125 4.6558 3.125 5.20833V7.29167M12.5 13.5417C12.7763 13.5417 13.0412 13.4319 13.2366 13.2366C13.4319 13.0412 13.5417 12.7763 13.5417 12.5C13.5417 12.2237 13.4319 11.9588 13.2366 11.7634C13.0412 11.5681 12.7763 11.4583 12.5 11.4583C12.2237 11.4583 11.9588 11.5681 11.7634 11.7634C11.5681 11.9588 11.4583 12.2237 11.4583 12.5C11.4583 12.7763 11.5681 13.0412 11.7634 13.2366C11.9588 13.4319 12.2237 13.5417 12.5 13.5417Z"
-                                                stroke="black"
-                                                stroke-width="1.67"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                        />
-                                    </svg>
+                                        <p class="q_o_add_list_i">Add to Question list</p>
+
+                                        <button id="question_save" class="q_o_add_li_btn" type="button" onclick="submitForm()" style="align-self:flex-end">
+                                            Save
+                                        </button>
+                                        <div class="q_o_add_li_v">
+                                            <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="25"
+                                                    height="25"
+                                                    viewBox="0 0 25 25"
+                                                    fill="none"
+                                                    style="cursor: pointer"
+                                            >
+                                                <path
+                                                        d="M5.20825 12.5001C5.20825 12.5001 7.85929 7.29175 12.4999 7.29175C17.1395 7.29175 19.7916 12.5001 19.7916 12.5001C19.7916 12.5001 17.1395 17.7084 12.4999 17.7084C7.85929 17.7084 5.20825 12.5001 5.20825 12.5001Z"
+                                                        stroke="black"
+                                                        stroke-width="1.67"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                />
+                                                <path
+                                                        d="M21.875 17.7083V19.7917C21.875 20.3442 21.6555 20.8741 21.2648 21.2648C20.8741 21.6555 20.3442 21.875 19.7917 21.875H5.20833C4.6558 21.875 4.12589 21.6555 3.73519 21.2648C3.34449 20.8741 3.125 20.3442 3.125 19.7917V17.7083M21.875 7.29167V5.20833C21.875 4.6558 21.6555 4.12589 21.2648 3.73519C20.8741 3.34449 20.3442 3.125 19.7917 3.125H5.20833C4.6558 3.125 4.12589 3.34449 3.73519 3.73519C3.34449 4.12589 3.125 4.6558 3.125 5.20833V7.29167M12.5 13.5417C12.7763 13.5417 13.0412 13.4319 13.2366 13.2366C13.4319 13.0412 13.5417 12.7763 13.5417 12.5C13.5417 12.2237 13.4319 11.9588 13.2366 11.7634C13.0412 11.5681 12.7763 11.4583 12.5 11.4583C12.2237 11.4583 11.9588 11.5681 11.7634 11.7634C11.5681 11.9588 11.4583 12.2237 11.4583 12.5C11.4583 12.7763 11.5681 13.0412 11.7634 13.2366C11.9588 13.4319 12.2237 13.5417 12.5 13.5417Z"
+                                                        stroke="black"
+                                                        stroke-width="1.67"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                />
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </div>
+
+
                             </div>
-                        </div>
+
+                        </form>
+
+<!--                        <div class="question_option">-->
+<!--                            <p>Options:</p>-->
+<!--                            <div class="question_option_a">-->
+<!--                                &lt;!&ndash; all question options show here  &ndash;&gt;-->
+<!--                                &lt;!&ndash; dummy option-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; &ndash;&gt;-->
+<!--                                <div class="question_option_a_a" id="optionsContainer">-->
+<!--                                    &lt;!&ndash; option end  &ndash;&gt;-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash; add operation here- &ndash;&gt;-->
+<!--                                <div class="question_option_a_b">-->
+<!--                                    &lt;!&ndash; -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; &ndash;&gt;-->
+<!--                                    <input class="q_o_no" type="text" id="optionNumber"/>-->
+<!--                                    <input class="q_o_detail" type="text" id="optionInput"/>-->
+<!--                                    <div class="q_o_add" onclick="addOptionToList()">-->
+<!--                                        <svg-->
+<!--                                                xmlns="http://www.w3.org/2000/svg"-->
+<!--                                                width="30"-->
+<!--                                                height="30"-->
+<!--                                                viewBox="0 0 30 30"-->
+<!--                                                fill="none"-->
+<!--                                                style="cursor: pointer"-->
+<!--                                        >-->
+<!--                                            <path-->
+<!--                                                    d="M15.9375 14.0625V7.5H14.0625V14.0625H7.5V15.9375H14.0625V22.5H15.9375V15.9375H22.5V14.0625H15.9375Z"-->
+<!--                                                    fill="black"-->
+<!--                                            />-->
+<!--                                        </svg>-->
+<!--                                    </div>-->
+<!--                                    &lt;!&ndash; &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; &ndash;&gt;-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                        <!-- add question list   -->
+<!--                        <div class="question_add_list">-->
+<!--                            <div style="-->
+<!--                      width: 350px;-->
+<!--                      display: flex;-->
+<!--                      flex-direction: row;-->
+<!--                      justify-content: space-around;-->
+<!--                    ">-->
+<!--                                <p class="q_o_add_list_i">Add to Question list</p>-->
+<!--                                <button id="option_add_b" class="q_o_add_li_btn" onclick="sendOptionsToAPI()">Add-->
+<!--                                </button>-->
+<!--                                <div class="q_o_add_li_v">-->
+<!--                                    <svg-->
+<!--                                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                                            width="25"-->
+<!--                                            height="25"-->
+<!--                                            viewBox="0 0 25 25"-->
+<!--                                            fill="none"-->
+<!--                                            style="cursor: pointer"-->
+<!--                                    >-->
+<!--                                        <path-->
+<!--                                                d="M5.20825 12.5001C5.20825 12.5001 7.85929 7.29175 12.4999 7.29175C17.1395 7.29175 19.7916 12.5001 19.7916 12.5001C19.7916 12.5001 17.1395 17.7084 12.4999 17.7084C7.85929 17.7084 5.20825 12.5001 5.20825 12.5001Z"-->
+<!--                                                stroke="black"-->
+<!--                                                stroke-width="1.67"-->
+<!--                                                stroke-linecap="round"-->
+<!--                                                stroke-linejoin="round"-->
+<!--                                        />-->
+<!--                                        <path-->
+<!--                                                d="M21.875 17.7083V19.7917C21.875 20.3442 21.6555 20.8741 21.2648 21.2648C20.8741 21.6555 20.3442 21.875 19.7917 21.875H5.20833C4.6558 21.875 4.12589 21.6555 3.73519 21.2648C3.34449 20.8741 3.125 20.3442 3.125 19.7917V17.7083M21.875 7.29167V5.20833C21.875 4.6558 21.6555 4.12589 21.2648 3.73519C20.8741 3.34449 20.3442 3.125 19.7917 3.125H5.20833C4.6558 3.125 4.12589 3.34449 3.73519 3.73519C3.34449 4.12589 3.125 4.6558 3.125 5.20833V7.29167M12.5 13.5417C12.7763 13.5417 13.0412 13.4319 13.2366 13.2366C13.4319 13.0412 13.5417 12.7763 13.5417 12.5C13.5417 12.2237 13.4319 11.9588 13.2366 11.7634C13.0412 11.5681 12.7763 11.4583 12.5 11.4583C12.2237 11.4583 11.9588 11.5681 11.7634 11.7634C11.5681 11.9588 11.4583 12.2237 11.4583 12.5C11.4583 12.7763 11.5681 13.0412 11.7634 13.2366C11.9588 13.4319 12.2237 13.5417 12.5 13.5417Z"-->
+<!--                                                stroke="black"-->
+<!--                                                stroke-width="1.67"-->
+<!--                                                stroke-linecap="round"-->
+<!--                                                stroke-linejoin="round"-->
+<!--                                        />-->
+<!--                                    </svg>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                     <div class="question_block_c_b">
                         <p class="question_total">Question list total:</p>

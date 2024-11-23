@@ -61,6 +61,8 @@ function submitForm() {
     const form = document.getElementById('question_form');
     const formData = new FormData(form);
     formData.append('examId', eId);
+//    console.log('from submit:',sendOptionsToAPI())
+    formData.append('options',JSON.stringify(options))
     if (eId == null) {
         console.log("Exam Id not found!...");
         return;
@@ -181,8 +183,12 @@ function sendOptionsToAPI() {
     console.log(options);
     console.log("qID:" + qId);
 
+//    return JSON.stringify(options)
+    return
+
+
     var formData = new FormData();
-    formData.append("options", JSON.stringify(options)); //append  json as string
+    formData.append("options", JSON.stringify(options));//append  json as string
     formData.append("qId", qId);
     formData.append("eId", eId);
     fetch("/admin/option-add", {
